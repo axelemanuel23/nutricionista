@@ -4,7 +4,7 @@ package entidades;
 import entidades.Paciente;
 import java.time.LocalDate;
 
-public class dieta {
+public class Dieta {
     int idDieta;
     String nombre;
     Paciente paciente;
@@ -13,10 +13,10 @@ public class dieta {
     double pesoFinal;
     LocalDate fechaFinal;
 
-    public dieta() {
+    public Dieta() {
     }
 
-    public dieta(String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
         this.nombre = nombre;
         this.paciente = paciente;
         this.fechaInicial = fechaInicial;
@@ -25,7 +25,7 @@ public class dieta {
         this.fechaFinal = fechaFinal;
     }
 
-    public dieta(int idDieta, String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(int idDieta, String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.paciente = paciente;
@@ -89,6 +89,11 @@ public class dieta {
 
     public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
+    }
+
+    @Override
+    public String toString() {
+        return idDieta + "," + nombre + "," + paciente + "," + fechaInicial + "," + pesoInicial + "," + pesoFinal + "," + fechaFinal;
     }
     
 }
