@@ -8,6 +8,6 @@ package accesoADatos;
  *
  * @author axele
  */
-public class conexion {
+public class pacienteData {
     
 }
