@@ -8,6 +8,6 @@ package vistas;
  *
  * @author axele
  */
-public class formularioPaciente {
+public class FormularioPaciente {
     
 }
