@@ -9,24 +9,24 @@ package entidades;
  *
  * @author danig
  */
-public class comida {
+public class Comida {
     private String nombre;
     private String detalle;
     private int cantCalorias;
     private int idComida;
     
-    public comida () {
+    public Comida () {
         
     }
 
-    public comida(String nombre, String detalle, int cantCalorias) {
+    public Comida(String nombre, String detalle, int cantCalorias) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
     }
     
 
-    public comida(String nombre, String detalle, int cantCalorias, int idComida) {
+    public Comida(String nombre, String detalle, int cantCalorias, int idComida) {
         this.nombre = nombre;
         this.detalle = detalle;
         this.cantCalorias = cantCalorias;
@@ -68,8 +68,5 @@ public class comida {
     @Override
     public String toString() {
         return "comida{" + "nombre=" + nombre + ", detalle=" + detalle + ", cantCalorias=" + cantCalorias + ", idComida=" + idComida + '}';
-    }
-    
-    
-    
+    } 
 }
