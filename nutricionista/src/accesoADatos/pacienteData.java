@@ -17,15 +17,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class pacienteData {
+public class PacienteData {
 
     private Connection con = null;
 
-    public pacienteData() {
-        con = conexion.getConexion();
+    public PacienteData() {
+        con = Conexion.getConexion();
     }
-}
-/*
     public void crearPaciente(Paciente paciente) {
 
         try {
@@ -40,7 +38,7 @@ public class pacienteData {
                 }
             } else {
                 try {
-                    String sql = "INSERT INTO alumno(dni, apellido, nombre, fechaNacimiento, estado) VALUES (?, ?, ?, ?, ?)";
+                    String sql = "INSERT INTO paciente(dni, nombre, domicilio, telefono) VALUES (?, ?, ?, ?, ?)";
                     PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                     ps.setInt(1, alumno.getDni());
                     ps.setString(2, alumno.getApellido());
@@ -190,4 +188,3 @@ public class pacienteData {
         }
     } 
 }
-*/

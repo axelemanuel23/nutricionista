@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-public class conexion {
+public class Conexion {
     private static final String URL = "jdbc:mariadb://localhost:3306/";
     private static final String DB = "universidad";
     private static final String USUARIO = "root";
@@ -17,7 +17,7 @@ public class conexion {
     
     private static Connection connection;
 
-    public conexion() {
+    public Conexion() {
     }
     public static Connection getConexion(){
         if (connection == null){
