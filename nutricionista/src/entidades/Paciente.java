@@ -16,6 +16,7 @@ public class Paciente {
     private String domicilio;
     private String telefono;
     
+    
     public Paciente(){
     
     }

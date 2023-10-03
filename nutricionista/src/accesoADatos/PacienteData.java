@@ -6,7 +6,6 @@ package accesoADatos;
 
 import entidades.Paciente;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 public class PacienteData {    
 
@@ -27,16 +25,18 @@ public class PacienteData {
     public void crearPaciente(Paciente paciente) {
 
         try {
-            //Consulta SQL 
+            //Corroborar si el DNI ya existe
             String sqlDni = "SELECT dni FROM paciente WHERE dni = ?";
             PreparedStatement psDni = con.prepareStatement(sqlDni);
             psDni.setInt(1, paciente.getDni());
             ResultSet rsdni = psDni.executeQuery();
             if (rsdni.next()) {
                 if (paciente.getDni() == rsdni.getInt("dni")) {
-                    JOptionPane.showMessageDialog(null, "Dni existente");
+                    //Parte Grafica del mensaje
+                    System.out.println("Dni existente");
                 }
             } else {
+                //Si no hay ningun DNI se agrega a la base de datos
                 try {
                     String sql = "INSERT INTO paciente(dni, nombre, domicilio, telefono) VALUES (?, ?, ?, ?)";
                     PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -46,14 +46,14 @@ public class PacienteData {
                     ps.setString(4, paciente.getTelefono());
                     ps.executeUpdate();
                     ResultSet rs = ps.getGeneratedKeys();
-
                     if (rs.next()) {
-                        //    alumno.setIdAlumno(rs.getInt("idAlumno"));
-                        JOptionPane.showMessageDialog(null, "Paciente añadido con exito");
+                        //Parte Grafica del mensaje
+                        System.out.println("Paciente añadido con exito");
                     }
                     ps.close();
                 } catch (SQLException e) {
-                    JOptionPane.showConfirmDialog(null, "Error al acceder a la tabla Paciente" + e.getMessage());
+                    //Parte grafica del mensaje
+                    System.out.println("Error al acceder a la tabla paciente");
                 }
             }
         } catch (SQLException ex) {
@@ -79,12 +79,14 @@ public class PacienteData {
                 paciente.setDomicilio(rs.getString("domicilio"));
                 paciente.setTelefono(rs.getString("telefono"));
             } else {
-                JOptionPane.showMessageDialog(null, "No existe el paciente");
+                //Parte Grafica del mensaje
+                System.out.println("No existe el paciente");
             }
             ps.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paciente" + e.getMessage());
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
         }
         return paciente;
     }
@@ -109,7 +111,8 @@ public class PacienteData {
             ps.close();
 
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paciente" + e.getMessage());
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
         }
         return pacientes;
     }
@@ -128,17 +131,20 @@ public class PacienteData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Modificacion con exito");
+                //Parte grafica del mensaje
+                System.out.println("Actualización exitosa");
             } else {
-                JOptionPane.showMessageDialog(null, "El paciente no existe");
+                //Parte grafica del mensaje
+                System.out.println("El paciente no existe");
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paciente" + e.getMessage());
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
         }
     }
 
-    public void eliminarAlumno(int id) {
+    public void eliminarPaciente(int id) {
         try {
             String sql = "DELETE FROM paciente WHERE idPaciente = ? ";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -148,11 +154,13 @@ public class PacienteData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                JOptionPane.showMessageDialog(null, "Se elimino con exito");
+                //Parte grafica del mensaje
+            System.out.println("Borrado con exito");
             }
             ps.close();
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla paciente" + e.getMessage());
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
         }
     } 
 }
