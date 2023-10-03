@@ -4,7 +4,9 @@
  */
 package accesoADatos;
 
+import accesoADatos.ComidaData;
 import entidades.DietaComida;
+import entidades.Comida;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -52,22 +54,65 @@ public class DietaComidaData {
         }
     }
 
-    public DietaComida buscarDietaComida() {
-        DietaComida dietaComida = null;
-
-        return dietaComida;
-    }
-
-    public List<DietaComida> listarDietaComida() {
-        List<DietaComida> dc = new ArrayList<>();
-        return dc;
-    }
-
-    public void modificarDietaComida() {
+    public List<Comida> listarComidasXDieta(int idDieta) {
+        List<Comida> comidas = new ArrayList<>();
         
+        try{
+            ComidaData cd = new ComidaData();
+            String sql = "SELECT * FROM dietacomida WHERE iddieta = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+            ResultSet rs = ps.executeQuery();
+            
+            while(rs.next()){
+                comidas.add(cd.buscarComida(rs.getInt("idcomida")));
+            }
+            
+        }catch(SQLException ex){
+            System.out.println("Error al conectarse a la base de datos");
+        
+        }
+
+        return comidas;
     }
 
-    public void eliminarDietaComida() {
-        
+    public void modificarDietaComida(int idDietaA, int idDietaN, int idComidaA, int idComidaN) {
+        try{
+            String sql = "UPDATE dietacomida SET iddieta = ?, idcomida = ? WHERE iddieta = ? AND idcomida = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDietaN);
+            ps.setInt(2, idComidaN);
+            ps.setInt(1, idDietaA);
+            ps.setInt(2, idComidaA);
+            int filas = ps.executeUpdate();
+            
+            if(filas == 1){
+                System.out.println("Actualizado con exito");
+            }else{
+                System.out.println("Hubo un problema");
+            }
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error en la base de datos");
+        }
+    }
+
+    public void eliminarDietaComida(int idDieta, int idComida) {
+        try{
+            String sql = "DELETE FROM dietacomida WHERE iddieta = ? AND idcomida = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+            ps.setInt(2, idComida);
+            int filas = ps.executeUpdate();
+            
+            if(filas == 1){
+                System.out.println("Eliminado con exito");
+            }else{
+                System.out.println("Hubo un problema");
+            }
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error en la base de datos");
+        }
     } 
 }

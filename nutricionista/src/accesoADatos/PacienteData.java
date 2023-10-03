@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package accesoADatos;
 
+import entidades.Dieta;
 import entidades.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,8 +10,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class PacienteData {    
 
@@ -57,7 +53,7 @@ public class PacienteData {
                 }
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PacienteData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en la base de datos");
         }
     }
 
@@ -116,7 +112,40 @@ public class PacienteData {
         }
         return pacientes;
     }
-
+    
+    public List<Paciente> listarPacientesExitosos(){
+        List<Paciente> pacientes = new ArrayList<>();
+        List<Dieta> dietas = new ArrayList<>();
+        
+        DietaData dd = new DietaData();
+        PacienteData pd = new PacienteData();
+        
+        dietas = dd.listarDietasExitosas();
+        
+        for(Dieta dieta : dietas){
+            pacientes.add(dieta.getPaciente());
+        }
+        
+        
+        return pacientes;
+    }
+     public List<Paciente> listarPacientesSinExito(){
+        List<Paciente> pacientes = new ArrayList<>();
+        List<Dieta> dietas = new ArrayList<>();
+        
+        DietaData dd = new DietaData();
+        PacienteData pd = new PacienteData();
+        
+        dietas = dd.listarDietasExitosas();
+        
+        for(Dieta dieta : dietas){
+            pacientes.add(dieta.getPaciente());
+        }
+        
+        
+        return pacientes;
+    }
+     
     public void modificarPaciente(Paciente paciente) {
         try {
             String sql = "UPDATE paciente SET dni = ? , nombre = ?, domicilio = ?, telefono = ? WHERE idPaciente = ?";

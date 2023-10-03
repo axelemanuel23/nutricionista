@@ -10,11 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,12 +38,12 @@ public class ComidaData {
              
            if (rsnombre.next()) {
                if(rsnombre.getString("nombre").equals(comida.getNombre())) {
-                   JOptionPane.showMessageDialog(null, "Comida existente");
+                   System.out.println("Comida existente");
                }
            } else {
                String sql = "INSERT INTO comida(nombre, detalle, cantCalorias) VALUES (?, ?, ?)";
                
-               PreparedStatement ps = con.prepareStatement(sql);
+               PreparedStatement ps = con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
                ps.setString(1, comida.getNombre());
                ps.setString(2, comida.getDetalle());
                ps.setDouble(3, comida.getCantCalorias());
@@ -54,17 +52,11 @@ public class ComidaData {
                ResultSet rs = ps.getGeneratedKeys();
                
                if (rs.next()) {
-                        //
-                        JOptionPane.showMessageDialog(null, "Comida añadida : \n "+ "Nombre: " + comida.getNombre()
-                                                      + "\n" + " Detalle: "+ comida.getDetalle()
-                                                      + "\n" + " Calorias: "+ comida.getCantCalorias()
-                                                      + "\n" + " Codigo: "+rs);
-                    }
-        
-        }
-            
+                  System.out.println("Se añadio con exito");
+               }
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en la base de datos");
         }
   
     }
@@ -83,21 +75,15 @@ public class ComidaData {
             int exito = ps.executeUpdate();
             
             if (exito == 1) {
-                JOptionPane.showMessageDialog(null, "Comida modificada : \n "+ "Nombre: " + comida.getNombre()
-                                                      + "\n" + " Detalle: "+ comida.getDetalle()
-                                                      + "\n" + " Calorias: "+ comida.getCantCalorias()
-                                                      + "\n" + " Codigo: "+comida.getIdComida());
+                System.out.println("Se actualizó con exito");
             } else {
-                JOptionPane.showMessageDialog(null, "La comida no existe");
+                System.out.println("La comida no existe");
             }
             ps.close();    
             
         } catch (SQLException ex) {
-            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en la base de datos");
         }
-        
-        
-        
     }
     
     public List<Comida> listarComida () {
@@ -123,11 +109,81 @@ public class ComidaData {
             ps.close();
             
         } catch (SQLException ex) {
-            Logger.getLogger(ComidaData.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error en la base de datos");
         }
         
         return comidas;
     }
     
+    public Comida buscarComida (int idComida) {
+        Comida comida = new Comida();
+        
+        try {
+            String sql = "SELECT * FROM comida WHERE idcomida = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+                comida.setIdComida(rs.getInt("idComida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantcalorias"));
+                
+            }else{
+                System.out.println("No existe esa comida");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en la base de datos");
+        }
+        
+        return comida;
+    }
+    public List<Comida> buscarCaloriasMax (int calorias) {
+        List<Comida> comidas = new ArrayList<>();
+        Comida comida = new Comida();
+        
+        try {
+            String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, calorias);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                comidas.add(buscarComida(rs.getInt("idcomida")));
+            }else{
+                System.out.println("No existe esa comida");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en la base de datos");
+        }
+        
+        return comidas;
+    }
     
+    public void eliminarComida( int idComida) {
+        try{
+            String sql = "DELETE FROM comida WHERE idcomida = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            int filas = ps.executeUpdate();
+            
+            if(filas == 1){
+                System.out.println("Eliminado con exito");
+            }else{
+                System.out.println("Hubo un problema");
+            }
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error en la base de datos");
+        }
+    } 
 }

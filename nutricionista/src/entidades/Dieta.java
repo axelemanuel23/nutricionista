@@ -1,36 +1,38 @@
 package entidades;
 
 
-import entidades.Paciente;
 import java.time.LocalDate;
 
 public class Dieta {
     int idDieta;
     String nombre;
     Paciente paciente;
-    LocalDate fechaInicial;
-    double pesoInicial;
-    double pesoFinal;
-    LocalDate fechaFinal;
+    LocalDate fechaInicial;//Comienza la dieta
+    double pesoInicial;//Comienza la dieta
+    double meta;//Peso Objetivo
+    double pesoFinal;//Peso conseguido
+    LocalDate fechaFinal;//Fin de la dieta
 
     public Dieta() {
     }
 
-    public Dieta(String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial,double meta, double pesoFinal, LocalDate fechaFinal) {
         this.nombre = nombre;
         this.paciente = paciente;
         this.fechaInicial = fechaInicial;
         this.pesoInicial = pesoInicial;
+        this.meta = meta;
         this.pesoFinal = pesoFinal;
         this.fechaFinal = fechaFinal;
     }
 
-    public Dieta(int idDieta, String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial, double pesoFinal, LocalDate fechaFinal) {
+    public Dieta(int idDieta, String nombre, Paciente paciente, LocalDate fechaInicial, double pesoInicial,double meta, double pesoFinal, LocalDate fechaFinal) {
         this.idDieta = idDieta;
         this.nombre = nombre;
         this.paciente = paciente;
         this.fechaInicial = fechaInicial;
         this.pesoInicial = pesoInicial;
+        this.meta = meta;
         this.pesoFinal = pesoFinal;
         this.fechaFinal = fechaFinal;
     }
@@ -74,6 +76,14 @@ public class Dieta {
     public void setPesoInicial(double pesoInicial) {
         this.pesoInicial = pesoInicial;
     }
+    
+    public double getMeta() {
+        return meta;
+    }
+
+    public void setMeta(double meta) {
+        this.meta = meta;
+    }
 
     public double getPesoFinal() {
         return pesoFinal;
@@ -90,10 +100,23 @@ public class Dieta {
     public void setFechaFinal(LocalDate fechaFinal) {
         this.fechaFinal = fechaFinal;
     }
-
+    
+    public boolean finalizado(){
+        return this.fechaFinal.isBefore(LocalDate.now());
+    }
+    
+    public boolean metaCumplida(){
+        if(finalizado()){
+            return this.pesoFinal == meta ;
+        }else{
+            return false;
+        }
+        
+    }
+    
     @Override
     public String toString() {
-        return idDieta + "," + nombre + "," + paciente + "," + fechaInicial + "," + pesoInicial + "," + pesoFinal + "," + fechaFinal;
+        return idDieta + "," + nombre + "," + paciente + "," + fechaInicial + "," + pesoInicial + "," + meta + ", " + pesoFinal + "," + fechaFinal;
     }
     
 }

@@ -1,29 +1,27 @@
 package entidades;
 
 public class DietaComida {
-    //Usaremos esta informacion?
-    //Buscar casos de uso reales
     int idDietaComida;
-    Comida comida;
-    Dieta dieta;
+    int idComida;
+    int idDieta;
 
     public DietaComida() {
     }
 
-    public DietaComida(Comida comida, Dieta dieta) {
-        this.comida = comida;
-        this.dieta = dieta;
+    public DietaComida(int idComida, int idDieta) {
+        this.idComida = idComida;
+        this.idDieta = idDieta;
     }
 
-    public DietaComida(int idDietaComida, Comida comida, Dieta dieta) {
+    public DietaComida(int idDietaComida, int idComida, int idDieta) {
         this.idDietaComida = idDietaComida;
-        this.comida = comida;
-        this.dieta = dieta;
+        this.idComida = idComida;
+        this.idDieta = idDieta;
     }
 
     @Override
     public String toString() {
-        return idDietaComida + "," + comida + "," + dieta;
+        return idDietaComida + "," + idComida + "," + idDieta;
     }
     
 

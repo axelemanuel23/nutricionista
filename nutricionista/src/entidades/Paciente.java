@@ -15,6 +15,7 @@ public class Paciente {
     private int dni;
     private String domicilio;
     private String telefono;
+    //private boolean estado;
     
     
     public Paciente(){
