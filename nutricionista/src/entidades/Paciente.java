@@ -15,7 +15,7 @@ public class Paciente {
     private int dni;
     private String domicilio;
     private String telefono;
-    //private boolean estado;
+    private boolean estado;
     
     
     public Paciente(){
@@ -75,6 +75,14 @@ public class Paciente {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+    
+    public void setEstado(boolean estado){
+        this.estado = estado;
+    }
+    
+    public boolean getEstado(){
+        return estado;
     }
     
     @Override

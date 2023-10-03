@@ -7,7 +7,6 @@ package accesoADatos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
 
 public class Conexion {
     private static final String URL = "jdbc:mariadb://localhost:3306/";
@@ -27,9 +26,9 @@ public class Conexion {
                 
                 
             } catch (ClassNotFoundException ex) {
-                JOptionPane.showMessageDialog(null,"Error SQL= "+ ex.getMessage());
+                System.out.println("Error de Driver");
             } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null,"Error De Drivers= "+ ex.getMessage());
+                System.out.println("Error SQL");
             }
         }
         return connection;

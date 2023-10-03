@@ -17,16 +17,34 @@ public class DietaData {
         con = Conexion.getConexion();
     }
     public void crearDieta(Dieta dieta) {
+        try {
+            String sql1 = "SELECT * FROM dieta WHERE idpaciente = ? AND nombre = ?";
+            PreparedStatement ps1 = con.prepareStatement(sql1);
+            ps1.setInt(1, dieta.getPaciente().getIdPaciente());
+            ps1.setString(2, dieta.getNombre());
+
+            ResultSet rs1 = ps1.executeQuery();
+
+            if (rs1.next()) {
+                System.out.println("Ya existe la dieta");
+            } else {
                 try {
                     String sql = "INSERT INTO dieta(nombre, idpaciente, fechainicial, pesoinicial,meta, pesofinal, fechafinal) VALUES (?,?,?,?,?,?,?)";
                     PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                     ps.setString(1, dieta.getNombre());
+                    System.out.println(dieta.getNombre());
                     ps.setInt(2, dieta.getPaciente().getIdPaciente());
+                    System.out.println(dieta.getPaciente().getIdPaciente());
                     ps.setDate(3, Date.valueOf(dieta.getFechaInicial()));
+                    System.out.println(dieta.getFechaInicial());
                     ps.setDouble(4, dieta.getPesoInicial());
+                    System.out.println(dieta.getPesoInicial());
                     ps.setDouble(5, dieta.getMeta());
+                    System.out.println(dieta.getMeta());
                     ps.setDouble(6, dieta.getPesoFinal());
+                    System.out.println(dieta.getPesoFinal());
                     ps.setDate(7, Date.valueOf(dieta.getFechaFinal()));
+                    System.out.println(dieta.getFechaFinal());
                     ps.executeUpdate();
                     ResultSet rs = ps.getGeneratedKeys();
 
@@ -37,6 +55,10 @@ public class DietaData {
                 } catch (SQLException e) {
                     System.out.println("Error al acceder a la tabla Dieta");
                 }
+            }
+        } catch (SQLException ex) {
+            System.out.println("Error en la base de datos");
+        }
     }
 
     public Dieta buscarDieta(int id) {
@@ -102,7 +124,6 @@ public class DietaData {
         List<Comida> comidas = new ArrayList<>();
         Comida comida = new Comida();
         
-        PacienteData pacienteData= new PacienteData();
         ComidaData cd = new ComidaData();
         try {
             String sql = "SELECT * FROM comidadieta WHERE iddieta = ?";

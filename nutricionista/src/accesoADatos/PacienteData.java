@@ -30,6 +30,7 @@ public class PacienteData {
                 if (paciente.getDni() == rsdni.getInt("dni")) {
                     //Parte Grafica del mensaje
                     System.out.println("Dni existente");
+                    System.out.println("Registro NO añadido");
                 }
             } else {
                 //Si no hay ningun DNI se agrega a la base de datos
@@ -43,6 +44,7 @@ public class PacienteData {
                     ps.executeUpdate();
                     ResultSet rs = ps.getGeneratedKeys();
                     if (rs.next()) {
+                        paciente.setIdPaciente(rs.getInt("idpaciente"));
                         //Parte Grafica del mensaje
                         System.out.println("Paciente añadido con exito");
                     }
@@ -118,7 +120,6 @@ public class PacienteData {
         List<Dieta> dietas = new ArrayList<>();
         
         DietaData dd = new DietaData();
-        PacienteData pd = new PacienteData();
         
         dietas = dd.listarDietasExitosas();
         
@@ -134,7 +135,6 @@ public class PacienteData {
         List<Dieta> dietas = new ArrayList<>();
         
         DietaData dd = new DietaData();
-        PacienteData pd = new PacienteData();
         
         dietas = dd.listarDietasSinExito();
         
