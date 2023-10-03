@@ -136,7 +136,7 @@ public class PacienteData {
         DietaData dd = new DietaData();
         PacienteData pd = new PacienteData();
         
-        dietas = dd.listarDietasExitosas();
+        dietas = dd.listarDietasSinExito();
         
         for(Dieta dieta : dietas){
             pacientes.add(dieta.getPaciente());
