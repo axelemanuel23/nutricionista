@@ -35,7 +35,7 @@ public class DietaComidaData {
             }else{
                 try{
                     String sql1 = "INSERT INTO dietacomida(iddieta, idcomida) VALUES (?, ?)";
-                    PreparedStatement ps1 = con.prepareStatement(sql1);
+                    PreparedStatement ps1 = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
                     ps1.setInt(1, idDieta);
                     ps1.setInt(2, idComida);
                     ResultSet rs1 = ps1.getGeneratedKeys();

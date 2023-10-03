@@ -1,6 +1,8 @@
 package entidades;
 
 public class DietaComida {
+    //Usaremos esta informacion?
+    //Buscar casos de uso reales
     int idDietaComida;
     Comida comida;
     Dieta dieta;

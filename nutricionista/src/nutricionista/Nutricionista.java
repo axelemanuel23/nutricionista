@@ -15,8 +15,11 @@ public class Nutricionista {
     public static void main(String[] args) {
         //------------------------------------
         //Pruebas Paciente
-        Paciente p1 = new Paciente("Roberto Raul", 12345678, "Avenida Siempre Viva", "+5412345678");
+        Paciente p1 = new Paciente("Roberto Rodriguez", 12345678, "Avenida Siempre Viva", "+5412345678");
+        Paciente p2 = new Paciente("Edgardo Perez", 12345678, "Avenida Siempre Viva", "+5412345678");
+        Paciente p3 = new Paciente("Martin Nuñez", 98765432, "Avenida Siempre Viva", "+5412345678");
         System.out.println(p1.toString());
+        //Pruebas PacienteData
         PacienteData pd = new PacienteData();
         pd.crearPaciente(p1);
         
