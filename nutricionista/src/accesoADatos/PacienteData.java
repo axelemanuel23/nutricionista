@@ -47,6 +47,7 @@ public class PacienteData {
                         paciente.setIdPaciente(rs.getInt("idpaciente"));
                         //Parte Grafica del mensaje
                         System.out.println("Paciente añadido con exito");
+                        paciente.setIdPaciente(buscarPaciente(paciente.getDni()).getIdPaciente());
                     }
                     ps.close();
                 } catch (SQLException e) {

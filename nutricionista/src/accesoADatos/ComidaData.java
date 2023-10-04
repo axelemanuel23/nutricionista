@@ -53,6 +53,8 @@ public class ComidaData {
                
                if (rs.next()) {
                   System.out.println("Se añadio con exito");
+                  //Agregar el id al objeto
+                  comida.setIdComida(buscarComida(comida.getNombre()).getIdComida());
                }
             }
         } catch (SQLException ex) {
@@ -115,6 +117,34 @@ public class ComidaData {
         return comidas;
     }
     
+    public Comida buscarComida (String nombre) {
+        Comida comida = new Comida();
+        
+        try {
+            String sql = "SELECT * FROM comida WHERE nombre = ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                
+                comida.setIdComida(rs.getInt("idcomida"));
+                comida.setNombre(rs.getString("nombre"));
+                comida.setDetalle(rs.getString("detalle"));
+                comida.setCantCalorias(rs.getInt("cantcalorias"));
+                
+            }else{
+                System.out.println("No existe esa comida");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en la base de datos");
+        }
+        
+        return comida;
+    }
     public Comida buscarComida (int idComida) {
         Comida comida = new Comida();
         
@@ -127,7 +157,7 @@ public class ComidaData {
             
             if (rs.next()) {
                 
-                comida.setIdComida(rs.getInt("idComida"));
+                comida.setIdComida(rs.getInt("idcomida"));
                 comida.setNombre(rs.getString("nombre"));
                 comida.setDetalle(rs.getString("detalle"));
                 comida.setCantCalorias(rs.getInt("cantcalorias"));

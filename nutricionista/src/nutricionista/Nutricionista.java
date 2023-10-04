@@ -21,15 +21,15 @@ public class Nutricionista {
     public static void main(String[] args) {
         //------------------------------------
         //Pruebas Paciente
-        Paciente p1 = new Paciente("Roberto Rodriguez", 12345678, "Avenida Siempre Viva", "+5412345678");
+        Paciente p1 = new Paciente("Roberto Rodriguez", 64575667, "Avenida Siempre Viva", "+5412345678");
         Paciente p2 = new Paciente("Edgardo Perez", 45645645, "Avenida Siempre Viva", "+5412345678");
         Paciente p3 = new Paciente("Martin Nuñez", 98765432, "Avenida Siempre Viva", "+5412345678");
         Paciente p4 = new Paciente("Luciano Pereyra", 124675678, "Avenida Siempre Viva", "+5412345678");
         Paciente p5 = new Paciente("Martina Quiroga", 987654432, "Avenida Siempre Viva", "+5412345678");
-        System.out.println(p1.toString());
         //Pruebas PacienteData
         PacienteData pd = new PacienteData();
         pd.crearPaciente(p1);
+        System.out.println(p1.toString());
         pd.crearPaciente(p2);
         pd.crearPaciente(p3);
         pd.crearPaciente(p4);
@@ -50,10 +50,10 @@ public class Nutricionista {
         Comida c4 = new Comida("Pechuga de pollo","Carne",500);
         Comida c5 = new Comida("Chuleta de Cerdo","Carne",700);
         Comida c6 = new Comida("Yogurt","Alimento Lacteo",300);
-        System.out.println(c3.toString());
         //Pruebas ComidaData
         ComidaData cd = new ComidaData();
         cd.guardarComida(c1);
+        System.out.println(c3.toString());
         cd.guardarComida(c2);
         cd.guardarComida(c3);
         cd.guardarComida(c4);

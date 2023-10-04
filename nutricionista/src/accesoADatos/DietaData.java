@@ -43,6 +43,8 @@ public class DietaData {
 
                     if (rs.next()) {
                         System.out.println("Dieta añadida con exito");
+                        //Añadir el idDieta
+                        dieta.setIdDieta(buscarDieta(dieta.getNombre()).getIdDieta());
                     }
                     ps.close();
                 } catch (SQLException e) {
@@ -67,6 +69,38 @@ public class DietaData {
             if (rs.next()) {
                 dieta = new Dieta();
                 dieta.setIdDieta(id);
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPesoInicial(rs.getInt("pesoinicial"));
+                dieta.setMeta(rs.getInt("meta"));
+                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
+                
+            } else {
+                System.out.println("No existe la Dieta");
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al acceder a la tabla Dieta" );
+        }
+        return dieta;
+    }
+    
+    public Dieta buscarDieta(String nombre) {
+        Dieta dieta = null;
+
+        try {
+            String sql = "SELECT iddieta, nombre, idpaciente, fechainicial, pesoinicial,meta, pesofinal, fechafinal FROM dieta WHERE nombre = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setString(1, nombre);
+            PacienteData pacienteData= new PacienteData();
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
