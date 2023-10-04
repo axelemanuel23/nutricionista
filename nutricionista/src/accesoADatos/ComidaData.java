@@ -156,8 +156,10 @@ public class ComidaData {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
+                while(rs.next()){
                 comidas.add(buscarComida(rs.getInt("idcomida")));
-            }else{
+                }
+                }else{
                 System.out.println("No existe esa comida");
             }
             ps.close();
@@ -182,7 +184,9 @@ public class ComidaData {
             ResultSet rs = ps.executeQuery();
             
             if (rs.next()) {
+                while(rs.next()){
                 comidas.add(buscarComida(rs.getInt("idcomida")));
+                }
             }else{
                 System.out.println("No existe esa comida");
             }
