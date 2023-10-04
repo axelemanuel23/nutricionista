@@ -29,6 +29,7 @@ public class Nutricionista {
         //Pruebas PacienteData
         PacienteData pd = new PacienteData();
         pd.crearPaciente(p1);
+        p1.setIdPaciente(pd.buscarPaciente(p1.getDni()).getIdPaciente());
         System.out.println(p1.toString());
         pd.crearPaciente(p2);
         pd.crearPaciente(p3);
@@ -76,19 +77,22 @@ public class Nutricionista {
         //------------------------------------
         //------------------------------------
         //Pruebas Dieta
-        Paciente pa1 = pd.buscarPaciente(p1.getDni());
-        Paciente pa2 = pd.buscarPaciente(p2.getDni());
-        Dieta d1 = new Dieta("Dieta Ensalada",pa1,LocalDate.of(2023, Month.OCTOBER, 1),80,70,75,LocalDate.of(2023, Month.OCTOBER, 3));
+        Paciente pa1 = pd.buscarPaciente(p3.getDni());
+        Paciente pa2 = pd.buscarPaciente(p4.getDni());
+        Dieta d1 = new Dieta("Dieta Ensalada Verdes",pa1,LocalDate.of(2023, Month.OCTOBER, 1),80,70,75,LocalDate.of(2023, Month.OCTOBER, 3));
         System.out.println("Ha finalizado la dieta?: " + d1.finalizado());
         System.out.println("Ha cumplido la meta?:" + d1.metaCumplida());
-        Dieta d2 = new Dieta("Dieta Proteinas",pa2,LocalDate.of(2023, Month.OCTOBER, 1),80,90,90,LocalDate.of(2023, Month.OCTOBER, 3));
+        Dieta d2 = new Dieta("Dieta Proteinas Muscular",pa2,LocalDate.of(2023, Month.OCTOBER, 1),80,90,90,LocalDate.of(2023, Month.OCTOBER, 3));
         System.out.println("Ha finalizado la dieta?: " + d2.finalizado());
         System.out.println("Ha cumplido la meta?:" + d2.metaCumplida());
         
         //Pruebas DietaData
         DietaData dd = new DietaData();
         dd.crearDieta(d1);
+        d1.setIdDieta(dd.buscarDieta(d1.getNombre()).getIdDieta());
         dd.crearDieta(d2);
+        System.out.println(d1.toString());
+        System.out.println(d2.toString());
         //------------------------------------
         //------------------------------------
         //Pruebas DietaComida
