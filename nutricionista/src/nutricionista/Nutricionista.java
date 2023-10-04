@@ -23,13 +23,21 @@ public class Nutricionista {
         Paciente p1 = new Paciente("Roberto Rodriguez", 12345678, "Avenida Siempre Viva", "+5412345678");
         Paciente p2 = new Paciente("Edgardo Perez", 45645645, "Avenida Siempre Viva", "+5412345678");
         Paciente p3 = new Paciente("Martin Nuñez", 98765432, "Avenida Siempre Viva", "+5412345678");
+        Paciente p4 = new Paciente("Luciano Pereyra", 124675678, "Avenida Siempre Viva", "+5412345678");
+        Paciente p5 = new Paciente("Martina Quiroga", 987654432, "Avenida Siempre Viva", "+5412345678");
         System.out.println(p1.toString());
         //Pruebas PacienteData
         PacienteData pd = new PacienteData();
         pd.crearPaciente(p1);
         pd.crearPaciente(p2);
         pd.crearPaciente(p3);
-        Paciente p4 = pd.buscarPaciente(12345678);
+        pd.crearPaciente(p4);
+        pd.crearPaciente(p5);
+        Paciente pM = pd.buscarPaciente(p2.getDni());
+        // ABM de la clase Paciente (PacienteData) y pruebas desde el main
+        pM.setNombre("Luciana Robles");
+        pd.modificarPaciente(pM);
+        //pd.eliminarPaciente(pd.buscarPaciente(p6.getDni()).getIdPaciente());
         //Lista de Pacientes
         List<Paciente> pacientes = pd.listarPacientes();
         //------------------------------------
@@ -57,16 +65,24 @@ public class Nutricionista {
         //------------------------------------
         //------------------------------------
         //Pruebas Dieta
-        Dieta d1 = new Dieta("Dieta Ensalada",p4,LocalDate.of(2023, Month.OCTOBER, 1),80,70,75,LocalDate.of(2023, Month.OCTOBER, 3));
-        System.out.println(d1.finalizado());
-        System.out.println(d1.metaCumplida());
+        Paciente pa1 = pd.buscarPaciente(p1.getDni());
+        Paciente pa2 = pd.buscarPaciente(p2.getDni());
+        Dieta d1 = new Dieta("Dieta Ensalada",pa1,LocalDate.of(2023, Month.OCTOBER, 1),80,70,75,LocalDate.of(2023, Month.OCTOBER, 3));
+        System.out.println("Ha finalizado la dieta?: " + d1.finalizado());
+        System.out.println("Ha cumplido la meta?:" + d1.metaCumplida());
+        Dieta d2 = new Dieta("Dieta Proteinas",pa2,LocalDate.of(2023, Month.OCTOBER, 1),80,90,90,LocalDate.of(2023, Month.OCTOBER, 3));
+        System.out.println("Ha finalizado la dieta?: " + d2.finalizado());
+        System.out.println("Ha cumplido la meta?:" + d2.metaCumplida());
+        
         //Pruebas DietaData
         DietaData dd = new DietaData();
         dd.crearDieta(d1);
+        dd.crearDieta(d2);
         //------------------------------------
         //------------------------------------
         //Pruebas DietaComida
         DietaComida dc1 = new DietaComida(d1.getIdDieta(),c1.getIdComida());
+        DietaComida dc2 = new DietaComida(d2.getIdDieta(),c4.getIdComida());
         //------------------------------------
     }
     

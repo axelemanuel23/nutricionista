@@ -29,7 +29,7 @@ public class PacienteData {
             if (rsdni.next()) {
                 if (paciente.getDni() == rsdni.getInt("dni")) {
                     //Parte Grafica del mensaje
-                    System.out.println("Dni existente");
+                    System.out.println("Dni existente: " + paciente.getDni());
                     System.out.println("Registro NO añadido");
                 }
             } else {

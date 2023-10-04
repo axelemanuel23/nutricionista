@@ -4,14 +4,14 @@ package entidades;
 import java.time.LocalDate;
 
 public class Dieta {
-    int idDieta;
-    String nombre;
-    Paciente paciente;
-    LocalDate fechaInicial;//Comienza la dieta
-    double pesoInicial;//Comienza la dieta
-    double meta;//Peso Objetivo
-    double pesoFinal;//Peso conseguido
-    LocalDate fechaFinal;//Fin de la dieta
+    private int idDieta;
+    private String nombre;
+    private Paciente paciente;
+    private LocalDate fechaInicial;//Comienza la dieta
+    private double pesoInicial;//Comienza la dieta
+    private double meta;//Peso Objetivo
+    private double pesoFinal;//Peso conseguido
+    private LocalDate fechaFinal;//Fin de la dieta
 
     public Dieta() {
     }

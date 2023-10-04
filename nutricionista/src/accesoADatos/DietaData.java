@@ -18,7 +18,7 @@ public class DietaData {
     }
     public void crearDieta(Dieta dieta) {
         try {
-            String sql1 = "SELECT * FROM dieta WHERE idpaciente = ? AND nombre = ?";
+            String sql1 = "SELECT * FROM dieta WHERE idpaciente = ?";
             PreparedStatement ps1 = con.prepareStatement(sql1);
             ps1.setInt(1, dieta.getPaciente().getIdPaciente());
             ps1.setString(2, dieta.getNombre());
@@ -32,19 +32,12 @@ public class DietaData {
                     String sql = "INSERT INTO dieta(nombre, idpaciente, fechainicial, pesoinicial,meta, pesofinal, fechafinal) VALUES (?,?,?,?,?,?,?)";
                     PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
                     ps.setString(1, dieta.getNombre());
-                    System.out.println(dieta.getNombre());
                     ps.setInt(2, dieta.getPaciente().getIdPaciente());
-                    System.out.println(dieta.getPaciente().getIdPaciente());
                     ps.setDate(3, Date.valueOf(dieta.getFechaInicial()));
-                    System.out.println(dieta.getFechaInicial());
                     ps.setDouble(4, dieta.getPesoInicial());
-                    System.out.println(dieta.getPesoInicial());
                     ps.setDouble(5, dieta.getMeta());
-                    System.out.println(dieta.getMeta());
                     ps.setDouble(6, dieta.getPesoFinal());
-                    System.out.println(dieta.getPesoFinal());
                     ps.setDate(7, Date.valueOf(dieta.getFechaFinal()));
-                    System.out.println(dieta.getFechaFinal());
                     ps.executeUpdate();
                     ResultSet rs = ps.getGeneratedKeys();
 
