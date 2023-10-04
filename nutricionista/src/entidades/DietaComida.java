@@ -19,6 +19,22 @@ public class DietaComida {
         this.idDieta = idDieta;
     }
 
+    public int getIdComida() {
+        return idComida;
+    }
+
+    public void setIdComida(int idComida) {
+        this.idComida = idComida;
+    }
+
+    public int getIdDieta() {
+        return idDieta;
+    }
+
+    public void setIdDieta(int idDieta) {
+        this.idDieta = idDieta;
+    }
+
     @Override
     public String toString() {
         return idDietaComida + "," + idComida + "," + idDieta;

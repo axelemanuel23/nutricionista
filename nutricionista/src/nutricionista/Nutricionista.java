@@ -4,6 +4,7 @@ package nutricionista;
 import accesoADatos.PacienteData;
 import accesoADatos.DietaData;
 import accesoADatos.ComidaData;
+import accesoADatos.DietaComidaData;
 import entidades.Paciente;
 import entidades.Comida;
 import entidades.Dieta;
@@ -81,8 +82,20 @@ public class Nutricionista {
         //------------------------------------
         //------------------------------------
         //Pruebas DietaComida
-        DietaComida dc1 = new DietaComida(d1.getIdDieta(),c1.getIdComida());
-        DietaComida dc2 = new DietaComida(d2.getIdDieta(),c4.getIdComida());
+        // La dieta1 del paciente pa1 incluye todas las ensalada        
+        DietaComida dc1 = new DietaComida(d1.getIdDieta(),c1.getIdComida());//segun el uml recibe como parametro los objetos Dieta y Comida
+        System.out.println(d1.getIdDieta());
+        DietaComida dc2 = new DietaComida(d1.getIdDieta(),c2.getIdComida());
+        DietaComida dc3 = new DietaComida(d1.getIdDieta(),c3.getIdComida());
+        DietaComidaData dCData = new DietaComidaData();
+        dCData.crearDietaComida(dc1);
+        dCData.crearDietaComida(dc2);
+        dCData.crearDietaComida(dc3);
+        // La d2 del paciente pa2 incluye todas las proteinas     
+        DietaComida dc4 = new DietaComida(d2.getIdDieta(),c4.getIdComida());
+        DietaComida dc5 = new DietaComida(d2.getIdDieta(),c5.getIdComida());
+        dCData.crearDietaComida(dc4);
+        dCData.crearDietaComida(dc5);
         //------------------------------------
     }
     

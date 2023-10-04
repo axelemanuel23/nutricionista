@@ -7,6 +7,7 @@ package accesoADatos;
 import accesoADatos.ComidaData;
 import entidades.DietaComida;
 import entidades.Comida;
+import entidades.Dieta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,24 +23,25 @@ public class DietaComidaData {
     public DietaComidaData() {
         con = Conexion.getConexion();
     }
-    public void crearDietaComida(int idDieta, int idComida) {
+    public void crearDietaComida(DietaComida dieta) {
         try{
             String sql = "SELECT * FROM dietacomida WHERE iddieta = ? AND idcomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idDieta);
-            ps.setInt(2, idComida);
+            ps.setInt(1, dieta.getIdDieta());
+            ps.setInt(2, dieta.getIdComida());
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                if(rs.getInt("iddieta") == idDieta && rs.getInt("idcomida") == idComida){
+                if(rs.getInt("iddieta") == dieta.getIdDieta() && rs.getInt("idcomida") == dieta.getIdComida()){
                     System.out.println("Ya existe la relacion");
                 }
                 ps.close();
             }else{
+                System.out.println("1");
                 try{
                     String sql1 = "INSERT INTO dietacomida(iddieta, idcomida) VALUES (?, ?)";
                     PreparedStatement ps1 = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
-                    ps1.setInt(1, idDieta);
-                    ps1.setInt(2, idComida);
+                    ps1.setInt(1, dieta.getIdDieta());
+                    ps1.setInt(2, dieta.getIdComida());
                     ResultSet rs1 = ps1.getGeneratedKeys();
                     if(rs1.next()){
                         System.out.println("Relacion añadida");
