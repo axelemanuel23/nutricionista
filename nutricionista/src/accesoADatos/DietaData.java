@@ -43,6 +43,7 @@ public class DietaData {
 
                     if (rs.next()) {
                         System.out.println("Dieta añadida con exito");
+                        dieta.setIdDieta(rs.getInt("iddieta"));
                     }
                     ps.close();
                 } catch (SQLException e) {
