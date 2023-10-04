@@ -26,6 +26,14 @@ public class DietaComida {
     public void setIdComida(int idComida) {
         this.idComida = idComida;
     }
+     public int getIdDietaComida() {
+        return idDietaComida;
+    }
+
+    public void setIdDietaComida(int idDietaComida) {
+        this.idDietaComida = idDietaComida;
+    }
+    
 
     public int getIdDieta() {
         return idDieta;

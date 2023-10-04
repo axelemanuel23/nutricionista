@@ -148,7 +148,7 @@ public class ComidaData {
         Comida comida = new Comida();
         
         try {
-            String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
+            String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, calorias);
@@ -157,9 +157,9 @@ public class ComidaData {
             
             if (rs.next()) {
                 while(rs.next()){
-                comidas.add(buscarComida(rs.getInt("idcomida")));
+                    comidas.add(buscarComida(rs.getInt("idcomida")));
                 }
-                }else{
+            }else{
                 System.out.println("No existe esa comida");
             }
             ps.close();
@@ -176,7 +176,7 @@ public class ComidaData {
         Comida comida = new Comida();
         
         try {
-            String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
+            String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, calorias);
@@ -185,7 +185,7 @@ public class ComidaData {
             
             if (rs.next()) {
                 while(rs.next()){
-                comidas.add(buscarComida(rs.getInt("idcomida")));
+                    comidas.add(buscarComida(rs.getInt("idcomida")));
                 }
             }else{
                 System.out.println("No existe esa comida");

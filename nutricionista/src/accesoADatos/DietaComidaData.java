@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package accesoADatos;
 
-import accesoADatos.ComidaData;
 import entidades.DietaComida;
 import entidades.Comida;
 import entidades.Dieta;
@@ -23,15 +19,22 @@ public class DietaComidaData {
     public DietaComidaData() {
         con = Conexion.getConexion();
     }
-    public void crearDietaComida(DietaComida dieta) {
+    /**
+     * crearDietaComida
+     * 
+     * Recibe un objeto Comida y lo añade a la base de datos
+     * 
+     * @param dietaComida 
+     */
+    public void crearDietaComida(DietaComida dietaComida) {
         try{
             String sql = "SELECT * FROM dietacomida WHERE iddieta = ? AND idcomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, dieta.getIdDieta());
-            ps.setInt(2, dieta.getIdComida());
+            ps.setInt(1, dietaComida.getIdDieta());
+            ps.setInt(2, dietaComida.getIdComida());
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-                if(rs.getInt("iddieta") == dieta.getIdDieta() && rs.getInt("idcomida") == dieta.getIdComida()){
+                if(rs.getInt("iddieta") == dietaComida.getIdDieta() && rs.getInt("idcomida") == dietaComida.getIdComida()){
                     System.out.println("Ya existe la relacion");
                 }
                 ps.close();
@@ -39,16 +42,17 @@ public class DietaComidaData {
                 try{
                     String sql1 = "INSERT INTO dietacomida(iddieta, idcomida) VALUES (?, ?)";
                     PreparedStatement ps1 = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
-                    ps1.setInt(1, dieta.getIdDieta());
-                    ps1.setInt(2, dieta.getIdComida());
+                    ps1.setInt(1, dietaComida.getIdDieta());
+                    ps1.setInt(2, dietaComida.getIdComida());
                     ps1.executeUpdate();
                     ResultSet rs1 = ps1.getGeneratedKeys();
                     if(rs1.next()){
                         System.out.println("Relacion añadida");
+                        dietaComida.setIdDietaComida(rs.getInt("iddietacomida"));
                     }
                     ps1.close();
                 }catch(SQLException e){
-                    System.out.println("Error al agregar la relacion, id: " + dieta.getIdDieta() + ", " + dieta.getIdComida());
+                    System.out.println("Error al agregar la relacion, id: " + dietaComida.getIdDieta() + ", " + dietaComida.getIdComida());
                 }
             }
         }catch(SQLException ex){
@@ -77,15 +81,29 @@ public class DietaComidaData {
 
         return comidas;
     }
-
-    public void modificarDietaComida(int idDietaA, int idDietaN, int idComidaA, int idComidaN) {
+    
+    public int CaloriasXDieta(int idDieta){
+        List<Comida> comidas = listarComidasXDieta(idDieta);
+        int calorias = 0;
+        for(Comida comida:comidas){
+            calorias += comida.getCantCalorias();
+        }
+        return calorias;
+    }
+    
+    /**
+     * 
+     * @param antiguo Objeto DietaComida a modificar
+     * @param nuevo  Objeto DietaComida con datos actualizados
+     */
+    public void modificarDietaComida(DietaComida antiguo, DietaComida nuevo) {
         try{
             String sql = "UPDATE dietacomida SET iddieta = ?, idcomida = ? WHERE iddieta = ? AND idcomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idDietaN);
-            ps.setInt(2, idComidaN);
-            ps.setInt(1, idDietaA);
-            ps.setInt(2, idComidaA);
+            ps.setInt(1, nuevo.getIdDieta());
+            ps.setInt(2, nuevo.getIdComida());
+            ps.setInt(1, antiguo.getIdDieta());
+            ps.setInt(2, antiguo.getIdComida());
             int filas = ps.executeUpdate();
             
             if(filas == 1){

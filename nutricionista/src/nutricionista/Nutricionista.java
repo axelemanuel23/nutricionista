@@ -65,11 +65,11 @@ public class Nutricionista {
         };
         
         //Consultar la búsqueda de comidas que tengan una cantidad menor de un determinado número de calorías:
-        System.out.println("Lista todas las comidas con mayor caloria");
+        System.out.println("Lista todas las comidas que tengan un maximo de 300 calorias");
         for (Comida comida : cd.buscarCaloriasMax(300)) {
             System.out.println(comida.toString());
         }
-        System.out.println("Lista todas las comidas con menor caloria");
+        System.out.println("Lista todas las comidas que tengan como minimo 300 calorias");
         for (Comida comida : cd.buscarCaloriasMin(300)) {
             System.out.println(comida.toString());
         }
@@ -95,6 +95,10 @@ public class Nutricionista {
         // La d1 del paciente pa1 incluye todas las ensalada        
         //los id quedan e 0
         DietaComida dc1 = new DietaComida(d1.getIdDieta(),c1.getIdComida());//segun el uml recibe como parametro los objetos Dieta y Comida
+        /*
+        No parece eficiente asignar Objeto Comida y Objeto Dieta al Objeto DietaComida; si una Dieta tiene 4 Comida habria 4 Objetos DietaComida con una copia del Objeto Dieta.
+        En cualquier caso con el id podemos traer esos objetos.
+        */
         DietaComida dc2 = new DietaComida(d1.getIdDieta(),c2.getIdComida());
         DietaComidaData dCData = new DietaComidaData();
         dCData.crearDietaComida(dc1);
@@ -107,8 +111,8 @@ public class Nutricionista {
         
         //saber las comidas incluidas en una dieta específica y agregar o borrar comidas a una Dieta:
         System.out.println("En la dieta " + d2.getNombre() + ":");
-        for (Comida c : dCData.listarComidasXDieta(28)) {
-            System.out.println(c.getNombre());
+        for (Comida c : dCData.listarComidasXDieta(d2.getIdDieta())) {
+            System.out.println(c.toString());
         }
         DietaComida dc6= new DietaComida(28,10);
         dCData.crearDietaComida(dc6);
