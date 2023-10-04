@@ -1,9 +1,9 @@
 package entidades;
 
 public class DietaComida {
-    int idDietaComida;
-    int idComida;
-    int idDieta;
+    private int idDietaComida;
+    private int idComida;
+    private int idDieta;
 
     public DietaComida() {
     }

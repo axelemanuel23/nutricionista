@@ -172,7 +172,28 @@ public class PacienteData {
             System.out.println("Error al acceder a la tabla paciente");
         }
     }
+    
+    public void darBajaPaciente(int id) {
+        try {
+            String sql = "UPDATE paciente SET estado = ? WHERE idPaciente = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
 
+            ps.setBoolean(1, false);
+            ps.setInt(2, id);
+
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                //Parte grafica del mensaje
+            System.out.println("Actualizado con exito");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
+        }
+    } 
+    
     public void eliminarPaciente(int id) {
         try {
             String sql = "DELETE FROM paciente WHERE idPaciente = ? ";
