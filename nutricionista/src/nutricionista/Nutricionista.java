@@ -59,10 +59,20 @@ public class Nutricionista {
         cd.guardarComida(c4);
         cd.guardarComida(c5);
         cd.guardarComida(c6);
-        
+        System.out.println("Lista todas las comidas");
         for(Comida comida: cd.listarComida()){
             System.out.println(comida.toString());
         };
+        
+        //Consultar la búsqueda de comidas que tengan una cantidad menor de un determinado número de calorías:
+        System.out.println("Lista todas las comidas con mayor caloria");
+        for (Comida comida : cd.buscarCaloriasMax(300)) {
+            System.out.println(comida.toString());
+        }
+        System.out.println("Lista todas las comidas con menor caloria");
+        for (Comida comida : cd.buscarCaloriasMin(300)) {
+            System.out.println(comida.toString());
+        }
         //------------------------------------
         //------------------------------------
         //Pruebas Dieta
@@ -94,6 +104,18 @@ public class Nutricionista {
         DietaComida dc5 = new DietaComida(28,7);
         dCData.crearDietaComida(dc4);
         dCData.crearDietaComida(dc5);
+        
+        //saber las comidas incluidas en una dieta específica y agregar o borrar comidas a una Dieta:
+        System.out.println("En la dieta " + d2.getNombre() + ":");
+        for (Comida c : dCData.listarComidasXDieta(28)) {
+            System.out.println(c.getNombre());
+        }
+        DietaComida dc6= new DietaComida(28,10);
+        dCData.crearDietaComida(dc6);
+        dCData.eliminarDietaComida(28, 10);
+        
+        
+        
         //------------------------------------
     }
     

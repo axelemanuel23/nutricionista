@@ -148,6 +148,32 @@ public class ComidaData {
         Comida comida = new Comida();
         
         try {
+            String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
+            
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, calorias);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                comidas.add(buscarComida(rs.getInt("idcomida")));
+            }else{
+                System.out.println("No existe esa comida");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            System.out.println("Error en la base de datos");
+        }
+        
+        return comidas;
+    }
+    
+    public List<Comida> buscarCaloriasMin (int calorias) {
+        List<Comida> comidas = new ArrayList<>();
+        Comida comida = new Comida();
+        
+        try {
             String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
