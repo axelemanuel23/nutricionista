@@ -82,18 +82,16 @@ public class Nutricionista {
         //------------------------------------
         //------------------------------------
         //Pruebas DietaComida
-        // La dieta1 del paciente pa1 incluye todas las ensalada        
+        // La d1 del paciente pa1 incluye todas las ensalada        
+        //los id quedan e 0
         DietaComida dc1 = new DietaComida(d1.getIdDieta(),c1.getIdComida());//segun el uml recibe como parametro los objetos Dieta y Comida
-        System.out.println(d1.getIdDieta());
         DietaComida dc2 = new DietaComida(d1.getIdDieta(),c2.getIdComida());
-        DietaComida dc3 = new DietaComida(d1.getIdDieta(),c3.getIdComida());
         DietaComidaData dCData = new DietaComidaData();
         dCData.crearDietaComida(dc1);
         dCData.crearDietaComida(dc2);
-        dCData.crearDietaComida(dc3);
         // La d2 del paciente pa2 incluye todas las proteinas     
-        DietaComida dc4 = new DietaComida(d2.getIdDieta(),c4.getIdComida());
-        DietaComida dc5 = new DietaComida(d2.getIdDieta(),c5.getIdComida());
+        DietaComida dc4 = new DietaComida(28,2);
+        DietaComida dc5 = new DietaComida(28,7);
         dCData.crearDietaComida(dc4);
         dCData.crearDietaComida(dc5);
         //------------------------------------

@@ -36,19 +36,19 @@ public class DietaComidaData {
                 }
                 ps.close();
             }else{
-                System.out.println("1");
                 try{
                     String sql1 = "INSERT INTO dietacomida(iddieta, idcomida) VALUES (?, ?)";
                     PreparedStatement ps1 = con.prepareStatement(sql1, Statement.RETURN_GENERATED_KEYS);
                     ps1.setInt(1, dieta.getIdDieta());
                     ps1.setInt(2, dieta.getIdComida());
+                    ps1.executeUpdate();
                     ResultSet rs1 = ps1.getGeneratedKeys();
                     if(rs1.next()){
                         System.out.println("Relacion añadida");
                     }
                     ps1.close();
                 }catch(SQLException e){
-                    System.out.println("Error al agregar la relacion");
+                    System.out.println("Error al agregar la relacion, id: " + dieta.getIdDieta() + ", " + dieta.getIdComida());
                 }
             }
         }catch(SQLException ex){
