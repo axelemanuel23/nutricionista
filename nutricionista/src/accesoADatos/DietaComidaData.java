@@ -3,7 +3,6 @@ package accesoADatos;
 
 import entidades.DietaComida;
 import entidades.Comida;
-import entidades.Dieta;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,7 +21,7 @@ public class DietaComidaData {
     /**
      * crearDietaComida
      * 
-     * Recibe un objeto Comida y lo añade a la base de datos
+     * Recibe un objeto DietaComida y lo añade a la base de datos
      * 
      * @param dietaComida 
      */
@@ -81,8 +80,14 @@ public class DietaComidaData {
 
         return comidas;
     }
-    
-    public int CaloriasXDieta(int idDieta){
+    /**
+     * caloriasXDieta
+     * Calcula las cantidad de calorias por dieta sumando el atributo cantCalorias de cada Comida.
+     * 
+     * @param idDieta Entero - idDieta de la dieta a calcular
+     * @return Entero - Suma de todas las calorias.
+     */
+    public int caloriasXDieta(int idDieta){
         List<Comida> comidas = listarComidasXDieta(idDieta);
         int calorias = 0;
         for(Comida comida:comidas){
@@ -92,6 +97,8 @@ public class DietaComidaData {
     }
     
     /**
+     * modificarDietaComida
+     * Modificar un registro de relacion por otro nuevo
      * 
      * @param antiguo Objeto DietaComida a modificar
      * @param nuevo  Objeto DietaComida con datos actualizados
