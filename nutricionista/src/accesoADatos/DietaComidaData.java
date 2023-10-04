@@ -47,7 +47,6 @@ public class DietaComidaData {
                     ResultSet rs1 = ps1.getGeneratedKeys();
                     if(rs1.next()){
                         System.out.println("Relacion añadida");
-                        dietaComida.setIdDietaComida(rs.getInt("iddietacomida"));
                     }
                     ps1.close();
                 }catch(SQLException e){
@@ -57,6 +56,29 @@ public class DietaComidaData {
         }catch(SQLException ex){
             System.out.println("Error al intentar conectarse con la base de datos");
         }
+    }
+    
+    public int buscarIdDietaComida(int idDieta, int idComida){
+        int id = 0;
+        try{
+            String sql = "SELECT * FROM dietacomida WHERE iddieta = ? AND idcomida = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+            ps.setInt(2, idComida);
+            ResultSet rs = ps.executeQuery();
+            
+            if(rs.next()){
+                id=rs.getInt("iddietacomida");
+            }else{
+                System.out.println("No existe");
+            }
+            
+        }catch(SQLException ex){
+            System.out.println("Error al conectarse a la base de datos");
+        
+        }
+
+        return id;
     }
 
     public List<Comida> listarComidasXDieta(int idDieta) {
@@ -96,21 +118,15 @@ public class DietaComidaData {
         return calorias;
     }
     
-    /**
-     * modificarDietaComida
-     * Modificar un registro de relacion por otro nuevo
-     * 
-     * @param antiguo Objeto DietaComida a modificar
-     * @param nuevo  Objeto DietaComida con datos actualizados
-     */
-    public void modificarDietaComida(DietaComida antiguo, DietaComida nuevo) {
+    
+    public void modificarDietaComida(int idDietaA, int idComidaA, int idDieta, int idComida) {
         try{
             String sql = "UPDATE dietacomida SET iddieta = ?, idcomida = ? WHERE iddieta = ? AND idcomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, nuevo.getIdDieta());
-            ps.setInt(2, nuevo.getIdComida());
-            ps.setInt(1, antiguo.getIdDieta());
-            ps.setInt(2, antiguo.getIdComida());
+            ps.setInt(1, idDieta);
+            ps.setInt(2, idComida);
+            ps.setInt(3, idDietaA);
+            ps.setInt(4,    idComidaA);
             int filas = ps.executeUpdate();
             
             if(filas == 1){
@@ -121,6 +137,7 @@ public class DietaComidaData {
             ps.close();
         }catch(SQLException ex){
             System.out.println("Error en la base de datos");
+            System.out.println("Actualizando");
         }
     }
 

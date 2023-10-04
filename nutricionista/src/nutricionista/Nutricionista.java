@@ -11,6 +11,7 @@ import entidades.Dieta;
 import entidades.DietaComida;
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Nutricionista {
@@ -38,7 +39,7 @@ public class Nutricionista {
         Paciente pM = pd.buscarPaciente(p2.getDni());
         // ABM de la clase Paciente (PacienteData) y pruebas desde el main
         pM.setNombre("Luciana Robles");
-        pd.modificarPaciente(pM);
+        pd.modificarPaciente(2,pM);
         //pd.eliminarPaciente(pd.buscarPaciente(p6.getDni()).getIdPaciente());
         //Lista de Pacientes
         List<Paciente> pacientes = pd.listarPacientes();
@@ -54,9 +55,12 @@ public class Nutricionista {
         //Pruebas ComidaData
         ComidaData cd = new ComidaData();
         cd.guardarComida(c1);
+        c1.setIdComida(cd.buscarComida(c1.getNombre()).getIdComida());
         System.out.println(c3.toString());
         cd.guardarComida(c2);
+        c2.setIdComida(cd.buscarComida(c2.getNombre()).getIdComida());
         cd.guardarComida(c3);
+        c3.setIdComida(cd.buscarComida(c3.getNombre()).getIdComida());
         cd.guardarComida(c4);
         cd.guardarComida(c5);
         cd.guardarComida(c6);
@@ -107,20 +111,17 @@ public class Nutricionista {
         DietaComidaData dCData = new DietaComidaData();
         dCData.crearDietaComida(dc1);
         dCData.crearDietaComida(dc2);
-        // La d2 del paciente pa2 incluye todas las proteinas     
-        DietaComida dc4 = new DietaComida(28,2);
-        DietaComida dc5 = new DietaComida(28,7);
-        dCData.crearDietaComida(dc4);
-        dCData.crearDietaComida(dc5);
+        // La d2 del paciente pa2 incluye todas las proteinas
+        //dCData.modificarDietaComida(12,1, 12,4);
         
         //saber las comidas incluidas en una dieta específica y agregar o borrar comidas a una Dieta:
-        System.out.println("En la dieta " + d2.getNombre() + ":");
-        for (Comida c : dCData.listarComidasXDieta(d2.getIdDieta())) {
-            System.out.println(c.toString());
+        System.out.println("En la dieta -" + d2.getNombre() + "- :");
+        List<Comida> comidas = dCData.listarComidasXDieta(d1.getIdDieta());
+        for (Comida comida : comidas ) {
+            System.out.println(comida.toString());
         }
         DietaComida dc6= new DietaComida(28,10);
-        dCData.crearDietaComida(dc6);
-        dCData.eliminarDietaComida(28, 10);
+        //dCData.eliminarDietaComida(12,4);
         
         
         

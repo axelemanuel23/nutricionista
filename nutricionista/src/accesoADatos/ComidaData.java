@@ -53,8 +53,6 @@ public class ComidaData {
                
                if (rs.next()) {
                   System.out.println("Se añadio con exito");
-                  //Agregar el id al objeto
-                  comida.setIdComida(buscarComida(comida.getNombre()).getIdComida());
                }
             }
         } catch (SQLException ex) {
