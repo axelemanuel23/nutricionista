@@ -128,46 +128,7 @@ public class PacienteData {
         }
         return pacientes;
     }
-    /**
-     * listarPacientesExitosos
-     * Lista de Pacientes que han finalizado con exito su dieta
-     * @return Lista de Pacientes
-     */
-    public List<Paciente> listarPacientesExitosos(){
-        List<Paciente> pacientes = new ArrayList<>();
-        List<Dieta> dietas = new ArrayList<>();
-        
-        DietaData dd = new DietaData();
-        
-        dietas = dd.listarDietasExitosas();
-        
-        for(Dieta dieta : dietas){
-            pacientes.add(dieta.getPaciente());
-        }
-        
-        
-        return pacientes;
-    }
-    /**
-     * listarPacientesSinExito
-     * Lista de Pacientes que han finalizado sin exito su dieta
-     * @return Lista de Pacientes
-     */
-    public List<Paciente> listarPacientesSinExito(){
-        List<Paciente> pacientes = new ArrayList<>();
-        List<Dieta> dietas = new ArrayList<>();
-        
-        DietaData dd = new DietaData();
-        
-        dietas = dd.listarDietasSinExito();
-        
-        for(Dieta dieta : dietas){
-            pacientes.add(dieta.getPaciente());
-        }
-        
-        
-        return pacientes;
-    }
+    
      /**
       * modificarPaciente
       * Modificar un Paciente ubicandolo por su id y reemplazandolo con un objeto nuevo

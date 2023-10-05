@@ -3,6 +3,8 @@ package accesoADatos;
 
 import entidades.DietaComida;
 import entidades.Comida;
+import entidades.Dieta;
+import entidades.Paciente;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +20,8 @@ public class DietaComidaData {
     public DietaComidaData() {
         con = Conexion.getConexion();
     }
+    
+    
     /**
      * crearDietaComida
      * Recibe un objeto DietaComida y lo añade a la base de datos
@@ -175,4 +179,73 @@ public class DietaComidaData {
             System.out.println("Error en la base de datos");
         }
     } 
+    /**
+     * listarPacientesExitosos
+     * Lista de Pacientes que han finalizado con exito su dieta
+     * @return Lista de Pacientes
+     */
+    public List<Paciente> listarPacientesExitosos(){
+        List<Paciente> pacientes = new ArrayList<>();
+        List<Dieta> dietas = new ArrayList<>();
+        
+        DietaData dd = new DietaData();
+        
+        dietas = dd.listarDietasExitosas();
+        
+        for(Dieta dieta : dietas){
+            pacientes.add(dieta.getPaciente());
+        }
+        
+        
+        return pacientes;
+    }
+    /**
+     * listarPacientesSinExito
+     * Lista de Pacientes que han finalizado sin exito su dieta
+     * @return Lista de Pacientes
+     */
+    public List<Paciente> listarPacientesSinExito(){
+        List<Paciente> pacientes = new ArrayList<>();
+        List<Dieta> dietas = new ArrayList<>();
+        
+        DietaData dd = new DietaData();
+        
+        dietas = dd.listarDietasSinExito();
+        
+        for(Dieta dieta : dietas){
+            pacientes.add(dieta.getPaciente());
+        }
+        
+        
+        return pacientes;
+    }
+    
+    /**
+     * listarComidasDeDieta
+     * Lista las Comidas de una determinada Dieta
+     * @param idDieta Entero - id de la Dieta
+     * @return Lista de Comidas
+     */
+    public List<Comida> listarComidasDeDieta(int idDieta) {
+        List<Comida> comidas = new ArrayList<>();
+        Comida comida = new Comida();
+        
+        ComidaData cd = new ComidaData();
+        try {
+            String sql = "SELECT * FROM comidadieta WHERE iddieta = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idDieta);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                comida = cd.buscarComida(rs.getInt("idcomida"));
+                comidas.add(comida);
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al acceder a la tabla ComidaDieta");
+        }
+        return comidas;
+    }
 }

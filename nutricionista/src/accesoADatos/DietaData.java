@@ -163,34 +163,7 @@ public class DietaData {
         }
         return dietas;
     }
-    /**
-     * listarComidasDeDieta
-     * Lista las Comidas de una determinada Dieta
-     * @param idDieta Entero - id de la Dieta
-     * @return Lista de Comidas
-     */
-    public List<Comida> listarComidasDeDieta(int idDieta) {
-        List<Comida> comidas = new ArrayList<>();
-        Comida comida = new Comida();
-        
-        ComidaData cd = new ComidaData();
-        try {
-            String sql = "SELECT * FROM comidadieta WHERE iddieta = ?";
-            PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1,idDieta);
-            ResultSet rs = ps.executeQuery();
-            
-            while (rs.next()) {
-                comida = cd.buscarComida(rs.getInt("idcomida"));
-                comidas.add(comida);
-            }
-            ps.close();
-
-        } catch (SQLException e) {
-            System.out.println("Error al acceder a la tabla ComidaDieta");
-        }
-        return comidas;
-    }
+    
     /**
      * listarDietasSinExito
      * Lista de dietas que han finalizado y los pacientes NO han llegado a la meta
