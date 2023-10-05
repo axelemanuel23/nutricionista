@@ -18,8 +18,12 @@ public class PacienteData {
     public PacienteData() {
         con = Conexion.getConexion();
     }
+    /**
+     * crearPaciente
+     * Crea un paciente en la base de datos
+     * @param paciente Paciente - Objeto a guardar
+     */
     public void crearPaciente(Paciente paciente) {
-
         try {
             //Corroborar si el DNI ya existe
             String sqlDni = "SELECT dni FROM paciente WHERE dni = ?";
@@ -59,7 +63,12 @@ public class PacienteData {
             System.out.println("Error en la base de datos");
         }
     }
-
+    /**
+     * buscarPaciente
+     * Busca un paciente por su dni
+     * @param dni Entero - DNI del paciente
+     * @return Paciente
+     */
     public Paciente buscarPaciente(int dni) {
         Paciente paciente = null;
 
@@ -89,7 +98,11 @@ public class PacienteData {
         }
         return paciente;
     }
-
+    /**
+     * listarPacientes
+     * Lista de todos los pacientes
+     * @return Lista de Pacientes
+     */
     public List<Paciente> listarPacientes() {
         List<Paciente> pacientes = new ArrayList<>();
         try {
@@ -115,7 +128,11 @@ public class PacienteData {
         }
         return pacientes;
     }
-    
+    /**
+     * listarPacientesExitosos
+     * Lista de Pacientes que han finalizado con exito su dieta
+     * @return Lista de Pacientes
+     */
     public List<Paciente> listarPacientesExitosos(){
         List<Paciente> pacientes = new ArrayList<>();
         List<Dieta> dietas = new ArrayList<>();
@@ -131,7 +148,12 @@ public class PacienteData {
         
         return pacientes;
     }
-     public List<Paciente> listarPacientesSinExito(){
+    /**
+     * listarPacientesSinExito
+     * Lista de Pacientes que han finalizado sin exito su dieta
+     * @return Lista de Pacientes
+     */
+    public List<Paciente> listarPacientesSinExito(){
         List<Paciente> pacientes = new ArrayList<>();
         List<Dieta> dietas = new ArrayList<>();
         
@@ -146,7 +168,12 @@ public class PacienteData {
         
         return pacientes;
     }
-     
+     /**
+      * modificarPaciente
+      * Modificar un Paciente ubicandolo por su id y reemplazandolo con un objeto nuevo
+      * @param idPaciente Entero - id del Pacinte a reemplazar
+      * @param paciente Paciente - Nuevo objeto
+      */
     public void modificarPaciente(int idPaciente, Paciente paciente) {
         try {
             String sql = "UPDATE paciente SET dni = ? , nombre = ?, domicilio = ?, telefono = ? WHERE idPaciente = ?";
@@ -173,7 +200,11 @@ public class PacienteData {
             System.out.println("Error al acceder a la tabla paciente");
         }
     }
-    
+    /**
+     * darBajaPaciente
+     * Modifica el estado del paciente para no tener que eliminarlo de la base de datos
+     * @param id Entero - id del paciente a dar de baja
+     */
     public void darBajaPaciente(int id) {
         try {
             String sql = "UPDATE paciente SET estado = ? WHERE idPaciente = ? ";
@@ -194,7 +225,11 @@ public class PacienteData {
             System.out.println("Error al acceder a la tabla paciente");
         }
     } 
-    
+    /**
+     * eliminarPaciente
+     * Elimina un paciente de la base de datos
+     * @param id Entero - id del Paciente a eliminar
+     */
     public void eliminarPaciente(int id) {
         try {
             String sql = "DELETE FROM paciente WHERE idPaciente = ? ";

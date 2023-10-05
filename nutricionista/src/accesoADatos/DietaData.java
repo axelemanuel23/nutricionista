@@ -16,6 +16,11 @@ public class DietaData {
     public DietaData() {
         con = Conexion.getConexion();
     }
+    /**
+     * crearDieta
+     * Crea una dieta en la base de datos
+     * @param dieta Dieta - Objeto a guardar
+     */
     public void crearDieta(Dieta dieta) {
         try {
             String sql1 = "SELECT * FROM dieta WHERE idpaciente = ?";
@@ -53,7 +58,12 @@ public class DietaData {
             System.out.println("Error en la base de datos");
         }
     }
-
+    /**
+     * buscarDieta
+     * Busca una dieta por su id
+     * @param id Entero - id de la Dieta
+     * @return Dieta
+     */
     public Dieta buscarDieta(int id) {
         Dieta dieta = null;
 
@@ -85,7 +95,12 @@ public class DietaData {
         }
         return dieta;
     }
-    
+    /**
+     * buscarDieta
+     * Busca una dieta por su nombre
+     * @param nombre String - nombre de la Dieta
+     * @return Dieta
+     */
     public Dieta buscarDieta(String nombre) {
         Dieta dieta = null;
 
@@ -117,7 +132,11 @@ public class DietaData {
         }
         return dieta;
     }
-
+    /**
+     * listarDietas
+     * Lista todas las Dietas
+     * @return Lista de Dietas
+     */
     public List<Dieta> listarDietas() {
         List<Dieta> dietas = new ArrayList<>();
         try {
@@ -144,7 +163,12 @@ public class DietaData {
         }
         return dietas;
     }
-    
+    /**
+     * listarComidasDeDieta
+     * Lista las Comidas de una determinada Dieta
+     * @param idDieta Entero - id de la Dieta
+     * @return Lista de Comidas
+     */
     public List<Comida> listarComidasDeDieta(int idDieta) {
         List<Comida> comidas = new ArrayList<>();
         Comida comida = new Comida();
@@ -167,7 +191,11 @@ public class DietaData {
         }
         return comidas;
     }
-    
+    /**
+     * listarDietasSinExito
+     * Lista de dietas que han finalizado y los pacientes NO han llegado a la meta
+     * @return Lista de Dietas
+     */
     public List<Dieta> listarDietasSinExito() {
         List<Dieta> dietas = new ArrayList<>();
         try {
@@ -197,7 +225,11 @@ public class DietaData {
         }
         return dietas;
     }
-    
+    /**
+     * listarDietasExitosas
+     * Lista de dietas que han finalizado y los pacientes han llegado a la meta
+     * @return Lista de Dietas
+     */
     public List<Dieta> listarDietasExitosas() {
         List<Dieta> dietas = new ArrayList<>();
         try {
@@ -227,7 +259,12 @@ public class DietaData {
         }
         return dietas;
     }
-
+    /**
+     * modificarDieta
+     * Modificar una dieta ubicada por id por un nuevo ojeto Dieta
+     * @param idDieta Entero - id de la dieta a modificar
+     * @param dieta Dieta - Objeto de reemplazo
+     */
     public void modificarDieta(int idDieta, Dieta dieta) {
         try {
             String sql = "UPDATE dieta SET nombre=?,idpaciente=?,fechainicial=?,pesoinicial=?,meta=?,pesofinal=?,fechafinal=? WHERE iddieta = ?";
@@ -254,7 +291,11 @@ public class DietaData {
             System.out.println("Error al acceder a la tabla Dieta");
         }
     }
-
+    /**
+     * eliminarDieta
+     * Elimina un registro de la base de datos
+     * @param id Entero - id del registro a eliminar
+     */
     public void eliminarDieta(int id) {
         try {
             String sql = "DELETE FROM dieta WHERE iddieta = ? ";

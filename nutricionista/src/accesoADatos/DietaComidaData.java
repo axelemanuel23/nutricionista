@@ -20,10 +20,8 @@ public class DietaComidaData {
     }
     /**
      * crearDietaComida
-     * 
      * Recibe un objeto DietaComida y lo añade a la base de datos
-     * 
-     * @param dietaComida 
+     * @param dietaComida DietaComida
      */
     public void crearDietaComida(DietaComida dietaComida) {
         try{
@@ -57,7 +55,13 @@ public class DietaComidaData {
             System.out.println("Error al intentar conectarse con la base de datos");
         }
     }
-    
+    /**
+     * buscarIdDietaComida
+     * Buscar una relacion mediante la relacion
+     * @param idDieta Entero - id de la dieta
+     * @param idComida Entero - id de la comida
+     * @return Entero - Si existe una dieta, devuelve el id.
+     */
     public int buscarIdDietaComida(int idDieta, int idComida){
         int id = 0;
         try{
@@ -80,7 +84,12 @@ public class DietaComidaData {
 
         return id;
     }
-
+    /**
+     * listarComidasXDieta
+     * Lista las comidas de una dieta
+     * @param idDieta Entero - id de la dieta
+     * @return Lista de Comida
+     */
     public List<Comida> listarComidasXDieta(int idDieta) {
         List<Comida> comidas = new ArrayList<>();
         
@@ -105,7 +114,6 @@ public class DietaComidaData {
     /**
      * caloriasXDieta
      * Calcula las cantidad de calorias por dieta sumando el atributo cantCalorias de cada Comida.
-     * 
      * @param idDieta Entero - idDieta de la dieta a calcular
      * @return Entero - Suma de todas las calorias.
      */
@@ -118,15 +126,20 @@ public class DietaComidaData {
         return calorias;
     }
     
-    
-    public void modificarDietaComida(int idDietaA, int idComidaA, int idDieta, int idComida) {
+    /**
+     * modificarDietaComida
+     * Modifica la relacion con sus nuevos valores
+     * @param idDietaComida Entero - id de la dietacomida
+     * @param idDieta Entero - id de la nueva dieta
+     * @param idComida Entero - id de la nueva comida
+     */
+    public void modificarDietaComida(int idDietaComida, int idDieta, int idComida) {
         try{
             String sql = "UPDATE dietacomida SET iddieta = ?, idcomida = ? WHERE iddieta = ? AND idcomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idDieta);
             ps.setInt(2, idComida);
-            ps.setInt(3, idDietaA);
-            ps.setInt(4,    idComidaA);
+            ps.setInt(3, idDietaComida);
             int filas = ps.executeUpdate();
             
             if(filas == 1){
@@ -140,13 +153,16 @@ public class DietaComidaData {
             System.out.println("Actualizando");
         }
     }
-
-    public void eliminarDietaComida(int idDieta, int idComida) {
+    /**
+     * eliminarDietaComida
+     * Elimiar una relacion del registro
+     * @param idDietaComida Entero - id de la dietacomida
+     */
+    public void eliminarDietaComida(int idDietaComida) {
         try{
-            String sql = "DELETE FROM dietacomida WHERE iddieta = ? AND idcomida = ?";
+            String sql = "DELETE FROM dietacomida WHERE AND iddietacomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
-            ps.setInt(1, idDieta);
-            ps.setInt(2, idComida);
+            ps.setInt(1, idDietaComida);
             int filas = ps.executeUpdate();
             
             if(filas == 1){

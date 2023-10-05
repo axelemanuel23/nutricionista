@@ -27,6 +27,7 @@ public class ComidaData {
     
     /**
      * guardarComida
+     * Guardar una comida en la base de datos
      * @param comida Comida - Objeto a guardar
      */
     public void guardarComida (Comida comida) {
@@ -64,7 +65,8 @@ public class ComidaData {
     }
     /**
      * modificarComida
-     * @param idComida Entero - Id del amulno a modificar
+     * Modifica una comida ubicada por su id por los nuevos datos del objeto Comida
+     * @param idComida Entero - Id de ña comida a modificar
      * @param comida Comida - Objeto de reemplazo
      */
     public void modificarComida (int idComida, Comida comida) {
@@ -92,6 +94,7 @@ public class ComidaData {
     }
     /**
      * listarComida
+     * Retorna una lista de todas las comidas
      * @return Lista de todas las comidas
      */
     public List<Comida> listarComida () {
@@ -124,7 +127,8 @@ public class ComidaData {
     }
     /**
      * buscarComida
-     * @param nombre String
+     * Busca una comida por su nombre
+     * @param nombre String - Nombre de la comida
      * @return Comida
      */
     public Comida buscarComida (String nombre) {
@@ -157,7 +161,8 @@ public class ComidaData {
     }
     /**
      * buscarComida
-     * @param idComida Entero
+     * Busca una comida por id
+     * @param idComida Entero - id de la comida
      * @return Comida
      */
     public Comida buscarComida (int idComida) {
@@ -190,7 +195,8 @@ public class ComidaData {
     }
     /**
      * buscarCaloriasMax
-     * @param calorias Entero
+     * Busca comidas con un valor maximo de calorias
+     * @param calorias Entero - Cantidad maxima de calorias
      * @return Lista de comidas
      */
     public List<Comida> buscarCaloriasMax (int calorias) {
@@ -222,12 +228,12 @@ public class ComidaData {
     }
     /**
      * buscarCaloriasMin
-     * @param calorias Entero
+     * Busca comidas con un valor minimo de calorias
+     * @param calorias Entero - Cantidad minima de calorias
      * @return Lista de comidas
      */
     public List<Comida> buscarCaloriasMin (int calorias) {
         List<Comida> comidas = new ArrayList<>();
-        Comida comida = new Comida();
         
         try {
             String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
@@ -254,10 +260,8 @@ public class ComidaData {
     }
     /**
      * eliminarComida
-     * 
      * Elimina la comida de la base de datos
-     * 
-     * @param idComida Entero
+     * @param idComida Entero - id de la comida
      */
     public void eliminarComida( int idComida) {
         try{
