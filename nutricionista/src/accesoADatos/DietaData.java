@@ -228,7 +228,7 @@ public class DietaData {
         return dietas;
     }
 
-    public void modificarDieta(Dieta dieta) {
+    public void modificarDieta(int idDieta, Dieta dieta) {
         try {
             String sql = "UPDATE dieta SET nombre=?,idpaciente=?,fechainicial=?,pesoinicial=?,meta=?,pesofinal=?,fechafinal=? WHERE iddieta = ?";
             PreparedStatement ps = con.prepareStatement(sql);
@@ -240,7 +240,7 @@ public class DietaData {
             ps.setDouble(5,dieta.getMeta());
             ps.setDouble(6,dieta.getPesoFinal());
             ps.setDate(7, Date.valueOf(dieta.getFechaFinal()));
-            ps.setInt(8, dieta.getIdDieta());
+            ps.setInt(8, idDieta);
 
             int exito = ps.executeUpdate();
 

@@ -11,7 +11,6 @@ import entidades.Dieta;
 import entidades.DietaComida;
 import java.time.LocalDate;
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Nutricionista {

@@ -25,9 +25,11 @@ public class ComidaData {
         con = Conexion.getConexion();
     }
     
-    
+    /**
+     * guardarComida
+     * @param comida Comida - Objeto a guardar
+     */
     public void guardarComida (Comida comida) {
-        
         try {
             String sqlnombre = "SELECT nombre FROM comida WHERE nombre = ?";
             
@@ -60,9 +62,12 @@ public class ComidaData {
         }
   
     }
-    
-    public void modificarComida (Comida comida) {
-        
+    /**
+     * modificarComida
+     * @param idComida Entero - Id del amulno a modificar
+     * @param comida Comida - Objeto de reemplazo
+     */
+    public void modificarComida (int idComida, Comida comida) {
         try {
             String sql = "UPDATE comida SET nombre = ?, detalle = ?, cantCalorias = ? WHERE idComida = ?";
             
@@ -70,7 +75,7 @@ public class ComidaData {
             ps.setString(1, comida.getNombre());
             ps.setString(2, comida.getDetalle());
             ps.setDouble(3, comida.getCantCalorias());
-            ps.setInt(4, comida.getIdComida());
+            ps.setInt(4, idComida);
             
             int exito = ps.executeUpdate();
             
@@ -85,7 +90,10 @@ public class ComidaData {
             System.out.println("Error en la base de datos");
         }
     }
-    
+    /**
+     * listarComida
+     * @return Lista de todas las comidas
+     */
     public List<Comida> listarComida () {
         List<Comida> comidas = new ArrayList<>();
         
@@ -114,7 +122,11 @@ public class ComidaData {
         
         return comidas;
     }
-    
+    /**
+     * buscarComida
+     * @param nombre String
+     * @return Comida
+     */
     public Comida buscarComida (String nombre) {
         Comida comida = new Comida();
         
@@ -143,6 +155,11 @@ public class ComidaData {
         
         return comida;
     }
+    /**
+     * buscarComida
+     * @param idComida Entero
+     * @return Comida
+     */
     public Comida buscarComida (int idComida) {
         Comida comida = new Comida();
         
@@ -171,6 +188,11 @@ public class ComidaData {
         
         return comida;
     }
+    /**
+     * buscarCaloriasMax
+     * @param calorias Entero
+     * @return Lista de comidas
+     */
     public List<Comida> buscarCaloriasMax (int calorias) {
         List<Comida> comidas = new ArrayList<>();
         Comida comida = new Comida();
@@ -198,7 +220,11 @@ public class ComidaData {
         
         return comidas;
     }
-    
+    /**
+     * buscarCaloriasMin
+     * @param calorias Entero
+     * @return Lista de comidas
+     */
     public List<Comida> buscarCaloriasMin (int calorias) {
         List<Comida> comidas = new ArrayList<>();
         Comida comida = new Comida();
@@ -226,7 +252,13 @@ public class ComidaData {
         
         return comidas;
     }
-    
+    /**
+     * eliminarComida
+     * 
+     * Elimina la comida de la base de datos
+     * 
+     * @param idComida Entero
+     */
     public void eliminarComida( int idComida) {
         try{
             String sql = "DELETE FROM comida WHERE idcomida = ?";
