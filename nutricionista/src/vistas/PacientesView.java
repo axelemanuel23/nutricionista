@@ -6,6 +6,8 @@
 package vistas;
 
 import java.awt.Container;
+import javax.swing.JInternalFrame;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
  *
@@ -18,6 +20,12 @@ public class PacientesView extends javax.swing.JInternalFrame {
      */
     public PacientesView() {
         initComponents();
+//        JInternalFrame myFrame = new JInternalFrame();
+//        // Aquí se configura el JInternalFrame (myFrame)
+//
+//        // Ahora, vamos a eliminar la barra de título
+//        BasicInternalFrameUI bi = (BasicInternalFrameUI)myFrame.getUI();
+//        bi.setNorthPane(null);
     }
     
     
