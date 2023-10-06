@@ -177,7 +177,7 @@ static PacienteData pD = new PacienteData();
                 .addComponent(jBDietas, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jBConf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         jPPresentacion.setBackground(new java.awt.Color(204, 255, 255));
@@ -654,12 +654,12 @@ static PacienteData pD = new PacienteData();
                 .addComponent(jPToggleMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE))
+                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
+                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
                 .addGap(69, 69, 69))
         );
 
