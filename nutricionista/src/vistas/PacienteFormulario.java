@@ -2,6 +2,7 @@ package vistas;
 
 import accesoADatos.PacienteData;
 import entidades.Paciente;
+import javax.swing.JOptionPane;
 
 public class PacienteFormulario extends javax.swing.JInternalFrame {
     
@@ -11,6 +12,7 @@ static PacienteData pD = new PacienteData();
      */
     public PacienteFormulario() {
         initComponents();
+        coloresBotones();
         cargarCombo();
     }
 
@@ -29,6 +31,13 @@ static PacienteData pD = new PacienteData();
         }
     }
     
+    private void coloresBotones(){
+        jBSalir.setBackground(new java.awt.Color(240,240,240));
+        jBGuardar.setBackground(new java.awt.Color(240,240,240));
+        jBLimpiar.setBackground(new java.awt.Color(240,240,240));
+        jBEliminar.setBackground(new java.awt.Color(240,240,240));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -40,44 +49,32 @@ static PacienteData pD = new PacienteData();
 
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        jTFTelefono = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jTFNombre = new javax.swing.JTextField();
         jTFDomicilio = new javax.swing.JTextField();
-        jTFTelefono = new javax.swing.JTextField();
         jCBDni = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        jBGuardar = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jBLimpiar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        setResizable(true);
+        setTitle("Formulario de Paciente");
+        setFrameIcon(null);
+        setPreferredSize(new java.awt.Dimension(425, 405));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulario de Pacientes");
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Documento: ");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Nombre y Apellido: ");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Domicilio: ");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Telefono: ");
-
-        jTFNombre.setBackground(new java.awt.Color(242, 248, 248));
-        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTFNombreKeyTyped(evt);
-            }
-        });
-
-        jTFDomicilio.setBackground(new java.awt.Color(242, 248, 248));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
+        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 320, 10));
 
         jTFTelefono.setBackground(new java.awt.Color(242, 248, 248));
         jTFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -85,6 +82,38 @@ static PacienteData pD = new PacienteData();
                 jTFTelefonoKeyTyped(evt);
             }
         });
+        getContentPane().add(jTFTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 167, 25));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Documento: ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Nombre y Apellido: ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Domicilio: ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Telefono: ");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
+
+        jTFNombre.setBackground(new java.awt.Color(242, 248, 248));
+        jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFNombreKeyTyped(evt);
+            }
+        });
+        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 167, 25));
+
+        jTFDomicilio.setBackground(new java.awt.Color(242, 248, 248));
+        getContentPane().add(jTFDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 167, 25));
 
         jCBDni.setBackground(new java.awt.Color(242, 248, 248));
         jCBDni.setEditable(true);
@@ -103,117 +132,76 @@ static PacienteData pD = new PacienteData();
                 jCBDniKeyTyped(evt);
             }
         });
+        getContentPane().add(jCBDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 165, 25));
 
-        jButton1.setBackground(new java.awt.Color(0, 38, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Guardar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setFocusPainted(false);
-
-        jButton2.setBackground(new java.awt.Color(0, 38, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Eliminar");
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
-
-        jButton3.setBackground(new java.awt.Color(0, 38, 255));
-        jButton3.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setText("Limpiar");
-        jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton3.setFocusPainted(false);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jBGuardar.setBackground(new java.awt.Color(0, 38, 255));
+        jBGuardar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jBGuardar.setForeground(new java.awt.Color(51, 51, 51));
+        jBGuardar.setText("Guardar");
+        jBGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBGuardar.setFocusPainted(false);
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jBGuardarActionPerformed(evt);
             }
         });
+        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 90, 38));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addComponent(jLabel1))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel2)
-                .addGap(38, 38, 38)
-                .addComponent(jCBDni, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel3)
-                .addGap(1, 1, 1)
-                .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel4)
-                .addGap(58, 58, 58)
-                .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jLabel5)
-                .addGap(59, 59, 59)
-                .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(76, 76, 76)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jLabel1)
-                .addGap(11, 11, 11)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jCBDni, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(jLabel3))
-                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabel4))
-                    .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel5))
-                    .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
+        jBEliminar.setBackground(new java.awt.Color(0, 38, 255));
+        jBEliminar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jBEliminar.setForeground(new java.awt.Color(51, 51, 51));
+        jBEliminar.setText("Eliminar");
+        jBEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBEliminar.setFocusPainted(false);
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 90, 38));
+
+        jBLimpiar.setBackground(new java.awt.Color(0, 38, 255));
+        jBLimpiar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
+        jBLimpiar.setForeground(new java.awt.Color(51, 51, 51));
+        jBLimpiar.setText("Limpiar");
+        jBLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBLimpiar.setFocusPainted(false);
+        jBLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLimpiarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, 38));
+
+        jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        jBSalir.setText("X");
+        jBSalir.setBorder(null);
+        jBSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBSalir.setFocusPainted(false);
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
+            }
+        });
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 25, 26));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul.jpeg"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
         limpiarCasilla();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jTFNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFNombreKeyTyped
     int key = evt.getKeyChar();
@@ -231,8 +219,7 @@ static PacienteData pD = new PacienteData();
     int key = evt.getKeyChar();
 
     boolean numeros = key >= 48 && key <= 57;
-    boolean espacio = key == 32;
-    if (!(numeros || espacio)){
+    if (!numeros){
         evt.consume();
     }
     }//GEN-LAST:event_jTFTelefonoKeyTyped
@@ -250,7 +237,7 @@ static PacienteData pD = new PacienteData();
     }//GEN-LAST:event_jCBDniMouseClicked
 
     private void jCBDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBDniActionPerformed
-        try {
+        try { //mostrar si el paciente esta realizando una dieta??
              if (jCBDni.getSelectedIndex() != 0 && jCBDni.getSelectedIndex() != -1) {
                 int dni = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
                 Paciente paciente = pD.buscarPaciente(dni);
@@ -265,17 +252,89 @@ static PacienteData pD = new PacienteData();
         }
     }//GEN-LAST:event_jCBDniActionPerformed
 
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        try{
+            int dni = Integer.parseInt(jCBDni.getSelectedItem().toString());
+                        
+            if (jCBDni.getSelectedIndex() != -1) {
+                Paciente paciente = pD.buscarPaciente(dni);
+                int id = paciente.getIdPaciente();
+                int dni1 = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
+                String nombre = jTFNombre.getText();
+                String domicilio = jTFDomicilio.getText();
+                String tel = jTFTelefono.getText();
+                
+                    Paciente dupPaciente = new Paciente(nombre, dni, domicilio, tel);
+                    pD.modificarPaciente(id, dupPaciente);
+            } else {
+                try{
+                    int dni1 = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
+                    String nombre = jTFNombre.getText();
+                    String domicilio = jTFDomicilio.getText();
+                    String tel = jTFTelefono.getText();
+
+                    Paciente pacienteNuevo = new Paciente(nombre, dni, domicilio, tel);
+                    pD.crearPaciente(pacienteNuevo);
+                    jCBDni.addItem(pacienteNuevo.getDni()+"");
+                    }
+                    catch(NumberFormatException e){
+                        JOptionPane.showMessageDialog(null, "Ingrese valores validos");
+
+                    }catch(NullPointerException e){
+                        JOptionPane.showMessageDialog(null, "Complete todos los campos");
+                    }
+            }
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingrese valores validos");
+
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        }
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        try{
+            int dni = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
+            pD.buscarPaciente(dni);
+            Paciente paciente = pD.buscarPaciente(dni);
+            pD.darBajaPaciente(paciente.getIdPaciente()); //dar de baja o eliminar definitivamente
+        
+        limpiarCasilla();
+        }
+        catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(null, "Ingrese valores validos");
+
+        }catch(NullPointerException e){
+            JOptionPane.showMessageDialog(null, "Complete todos los campos");
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
+        jBSalir.setBackground(new java.awt.Color(255,0,0));
+    }//GEN-LAST:event_jBSalirMouseEntered
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+        jBSalir.setBackground(new java.awt.Color(240,240,240));
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JButton jBGuardar;
+    private javax.swing.JButton jBLimpiar;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JComboBox<String> jCBDni;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTFDomicilio;
     private javax.swing.JTextField jTFNombre;

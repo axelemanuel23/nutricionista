@@ -767,6 +767,7 @@ static PacienteData pD = new PacienteData();
         Contenedor.add(pF);
         pF.setLocation(0, 53);
         pF.setVisible(true);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) pF.getUI()).setNorthPane(null);
         pF.moveToFront();
     }//GEN-LAST:event_jBFPacientesActionPerformed
 
