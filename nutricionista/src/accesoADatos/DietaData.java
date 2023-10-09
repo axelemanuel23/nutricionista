@@ -181,8 +181,8 @@ public class DietaData {
                 Dieta dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
-                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
                 dieta.setPesoFinal(rs.getInt("pesofinal"));
@@ -215,8 +215,8 @@ public class DietaData {
                 Dieta dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
-                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
                 dieta.setPesoFinal(rs.getInt("pesofinal"));
@@ -286,4 +286,36 @@ public class DietaData {
             System.out.println("Error al acceder a la tabla Dieta");
         }
     } 
+    
+    public Dieta buscarDietaXPaciente(int idPaciente) {
+        Dieta dieta = null;
+
+        try {
+            String sql = "SELECT iddieta, nombre, idpaciente, fechainicial, pesoinicial,meta, pesofinal, fechafinal FROM dieta WHERE idpaciente = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPaciente);
+            PacienteData pacienteData= new PacienteData();
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("iddieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPesoInicial(rs.getInt("pesoinicial"));
+                dieta.setMeta(rs.getInt("meta"));
+                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
+                
+            } else {
+                System.out.println("No existe la Dieta");
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al acceder a la tabla Dieta" );
+        }
+        return dieta;
+    }
 }

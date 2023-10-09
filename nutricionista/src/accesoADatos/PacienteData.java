@@ -98,6 +98,37 @@ public class PacienteData {
         }
         return paciente;
     }
+    
+        public Paciente buscarPacienteXID(int idPaciente) {
+        Paciente paciente = null;
+
+        try {
+            String sql = "SELECT * FROM paciente WHERE idpaciente = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idPaciente);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                paciente = new Paciente();
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setTelefono(rs.getString("telefono"));
+            } else {
+                //Parte Grafica del mensaje
+                System.out.println("No existe el paciente");
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
+        }
+        return paciente;
+    }
+    
     /**
      * listarPacientes
      * Lista de todos los pacientes

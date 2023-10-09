@@ -7,6 +7,7 @@ import java.util.List;
 
 public class MenuView extends javax.swing.JFrame {
 static PacienteFormulario pF = new PacienteFormulario();
+static PacienteInforme pI = new PacienteInforme();
 static PacienteData pD = new PacienteData();
     /**
      * Creates new form MenuView
@@ -567,7 +568,7 @@ static PacienteData pD = new PacienteData();
                 .addGap(27, 27, 27))
         );
 
-        jBFPacientes.setText("Formulario");
+        jBFPacientes.setText("Registro");
         jBFPacientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFPacientesActionPerformed(evt);
@@ -577,6 +578,11 @@ static PacienteData pD = new PacienteData();
         jBFComida.setText("Registro");
 
         jBIPacientes.setText("Informes");
+        jBIPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBIPacientesActionPerformed(evt);
+            }
+        });
 
         jBCPacientes.setText("Consultas");
 
@@ -799,6 +805,19 @@ static PacienteData pD = new PacienteData();
             jBCComida.setVisible(false);
         }
     }//GEN-LAST:event_jBDietasActionPerformed
+
+    private void jBIPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBIPacientesActionPerformed
+        Contenedor.remove(jTContDatosPaciente);
+        Contenedor.remove(jTContDatosComida);
+        Contenedor.remove(jTContDatosDieta);
+        Contenedor.remove(jTContDatosAlgo);
+        Contenedor.repaint();
+        Contenedor.add(pI);
+        pI.setLocation(0, 53);
+        pI.setVisible(true);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) pI.getUI()).setNorthPane(null);
+        pI.moveToFront();
+    }//GEN-LAST:event_jBIPacientesActionPerformed
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();

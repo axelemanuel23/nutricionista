@@ -1067,7 +1067,7 @@
               <SubComponents>
                 <Component class="javax.swing.JButton" name="jBFPacientes">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Formulario"/>
+                    <Property name="text" type="java.lang.String" value="Registro"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBFPacientesActionPerformed"/>
@@ -1082,6 +1082,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Informes"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBIPacientesActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jBCPacientes">
                   <Properties>
