@@ -87,9 +87,8 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         ));
         jScrollPane1.setViewportView(jTPInforme);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 690, 350));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 670, 310));
 
-        jRBPacienteE.setBackground(null);
         jRBPacienteE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBPacienteE.setText("Pacientes exitosos");
         jRBPacienteE.setBorder(null);
@@ -118,7 +117,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul 2.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(730, 450));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
