@@ -129,6 +129,9 @@
                   <Dimension value="[50, 50]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBInicioActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jBPacientes">
               <Properties>

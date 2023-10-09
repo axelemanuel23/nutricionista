@@ -110,6 +110,11 @@ static PacienteData pD = new PacienteData();
         jBInicio.setBorderPainted(false);
         jBInicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBInicio.setPreferredSize(new java.awt.Dimension(50, 50));
+        jBInicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBInicioActionPerformed(evt);
+            }
+        });
 
         jBPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/icn persona (1).png"))); // NOI18N
         jBPacientes.setBorder(null);
@@ -818,6 +823,18 @@ static PacienteData pD = new PacienteData();
         ((javax.swing.plaf.basic.BasicInternalFrameUI) pI.getUI()).setNorthPane(null);
         pI.moveToFront();
     }//GEN-LAST:event_jBIPacientesActionPerformed
+
+    private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
+        
+        Contenedor.removeAll();
+        Contenedor.repaint();
+        Contenedor.add(jTContDatosPaciente);
+        Contenedor.add(jTContDatosComida);
+        Contenedor.add(jTContDatosDieta);
+        Contenedor.add(jTContDatosAlgo);
+        Contenedor.add(jPToggleMenu);
+        
+    }//GEN-LAST:event_jBInicioActionPerformed
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();

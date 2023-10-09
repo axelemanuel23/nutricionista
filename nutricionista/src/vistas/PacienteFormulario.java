@@ -299,7 +299,9 @@ static PacienteData pD = new PacienteData();
             pD.buscarPaciente(dni);
             Paciente paciente = pD.buscarPaciente(dni);
             pD.darBajaPaciente(paciente.getIdPaciente()); //dar de baja o eliminar definitivamente
-        
+            
+            jCBDni.removeAllItems();
+            cargarCombo();
         limpiarCasilla();
         }
         catch(NumberFormatException e){
