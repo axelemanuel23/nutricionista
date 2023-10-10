@@ -51,7 +51,7 @@ public class PacienteData {
                         paciente.setIdPaciente(rs.getInt("idpaciente"));
                         //Parte Grafica del mensaje
                         System.out.println("Paciente añadido con exito");
-                        paciente.setIdPaciente(buscarPaciente(paciente.getDni()).getIdPaciente());
+                        paciente.setIdPaciente(buscarPacienteXDNI(paciente.getDni()).getIdPaciente());
                     }
                     ps.close();
                 } catch (SQLException e) {
@@ -64,12 +64,12 @@ public class PacienteData {
         }
     }
     /**
-     * buscarPaciente
-     * Busca un paciente por su dni
+     * buscarPacienteXDNI
+ Busca un paciente por su dni
      * @param dni Entero - DNI del paciente
      * @return Paciente
      */
-    public Paciente buscarPaciente(int dni) {
+    public Paciente buscarPacienteXDNI(int dni) {
         Paciente paciente = null;
 
         try {
@@ -186,6 +186,31 @@ public class PacienteData {
         return pacientes;
     }
     
+     public List<Paciente> listarPacientesInactivos() {
+        List<Paciente> pacientes = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM paciente WHERE estado = false";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+                paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setTelefono(rs.getString("telefono"));
+                pacientes.add(paciente);
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
+        }
+        return pacientes;
+    }
      /**
       * modificarPaciente
       * Modificar un Paciente ubicandolo por su id y reemplazandolo con un objeto nuevo
@@ -243,6 +268,27 @@ public class PacienteData {
             System.out.println("Error al acceder a la tabla paciente");
         }
     } 
+    
+    public void reactivarPaciente(int id) {
+        try {
+            String sql = "UPDATE paciente SET estado = ? WHERE idPaciente = ? ";
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setBoolean(1, true);
+            ps.setInt(2, id);
+
+            int fila = ps.executeUpdate();
+
+            if (fila == 1) {
+                //Parte grafica del mensaje
+            System.out.println("Se ha reactivado con exito");
+            }
+            ps.close();
+        } catch (SQLException e) {
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
+        }
+    } 
     /**
      * eliminarPaciente
      * Elimina un paciente de la base de datos
@@ -266,5 +312,5 @@ public class PacienteData {
             //Parte grafica del mensaje
             System.out.println("Error al acceder a la tabla paciente");
         }
-    } 
+    }
 }

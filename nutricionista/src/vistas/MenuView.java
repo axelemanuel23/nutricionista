@@ -9,6 +9,7 @@ public class MenuView extends javax.swing.JFrame {
 static PacienteFormulario pF = new PacienteFormulario();
 static PacienteInforme pI = new PacienteInforme();
 static PacienteData pD = new PacienteData();
+static PacienteConsulta pC = new PacienteConsulta();
     /**
      * Creates new form MenuView
      */
@@ -23,7 +24,6 @@ static PacienteData pD = new PacienteData();
     public void generarResumen(){
         List pA = pD.listarPacientesActivos();
         jTPacienteActivos.setText(pA.size()+"");
-        
     }
     
     private void inicioColores(){
@@ -590,6 +590,11 @@ static PacienteData pD = new PacienteData();
         });
 
         jBCPacientes.setText("Consultas");
+        jBCPacientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCPacientesActionPerformed(evt);
+            }
+        });
 
         jBLComida.setText("Listado");
 
@@ -650,12 +655,12 @@ static PacienteData pD = new PacienteData();
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
                 .addGap(101, 101, 101)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                 .addGap(56, 56, 56)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE))
+                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                 .addGap(102, 102, 102))
             .addComponent(jPToggleMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -665,12 +670,12 @@ static PacienteData pD = new PacienteData();
                 .addComponent(jPToggleMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE))
+                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE))
+                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
                 .addGap(69, 69, 69))
         );
 
@@ -774,12 +779,15 @@ static PacienteData pD = new PacienteData();
         Contenedor.remove(jTContDatosComida);
         Contenedor.remove(jTContDatosDieta);
         Contenedor.remove(jTContDatosAlgo);
+        Contenedor.remove(pI);
+        Contenedor.remove(pC);
         Contenedor.repaint();
         Contenedor.add(pF);
         pF.setLocation(0, 53);
         pF.setVisible(true);
         ((javax.swing.plaf.basic.BasicInternalFrameUI) pF.getUI()).setNorthPane(null);
         pF.moveToFront();
+        pF.cargarCombo();
     }//GEN-LAST:event_jBFPacientesActionPerformed
 
     private void jBDietasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDietasActionPerformed
@@ -816,6 +824,8 @@ static PacienteData pD = new PacienteData();
         Contenedor.remove(jTContDatosComida);
         Contenedor.remove(jTContDatosDieta);
         Contenedor.remove(jTContDatosAlgo);
+        Contenedor.remove(pF);
+        Contenedor.remove(pC);
         Contenedor.repaint();
         Contenedor.add(pI);
         pI.setLocation(0, 53);
@@ -833,8 +843,24 @@ static PacienteData pD = new PacienteData();
         Contenedor.add(jTContDatosDieta);
         Contenedor.add(jTContDatosAlgo);
         Contenedor.add(jPToggleMenu);
-        
+        generarResumen();
     }//GEN-LAST:event_jBInicioActionPerformed
+
+    private void jBCPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCPacientesActionPerformed
+        Contenedor.remove(jTContDatosPaciente);
+        Contenedor.remove(jTContDatosComida);
+        Contenedor.remove(jTContDatosDieta);
+        Contenedor.remove(jTContDatosAlgo);
+        Contenedor.remove(pF);
+        Contenedor.remove(pI);
+        Contenedor.repaint();
+        Contenedor.add(pC);
+        pC.setLocation(0, 53);
+        pC.setVisible(true);
+        ((javax.swing.plaf.basic.BasicInternalFrameUI) pC.getUI()).setNorthPane(null);
+        pC.moveToFront();
+        pC.cargarDatos();
+    }//GEN-LAST:event_jBCPacientesActionPerformed
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();

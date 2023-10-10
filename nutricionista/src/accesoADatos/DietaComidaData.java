@@ -186,17 +186,14 @@ public class DietaComidaData {
      */
     public List<Paciente> listarPacientesExitosos(){
         List<Paciente> pacientes = new ArrayList<>();
-        List<Dieta> dietas = new ArrayList<>();
+        List<Dieta> dietasExitosas = new ArrayList<>();
         
         DietaData dd = new DietaData();
         
-        dietas = dd.listarDietasExitosas();
-        
-        for(Dieta dieta : dietas){
+        dietasExitosas = dd.listarDietasExitosas();
+        for(Dieta dieta : dietasExitosas){
             pacientes.add(dieta.getPaciente());
         }
-        
-        
         return pacientes;
     }
     /**

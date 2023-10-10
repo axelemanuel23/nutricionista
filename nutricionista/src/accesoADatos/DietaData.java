@@ -1,7 +1,6 @@
 package accesoADatos;
 
 import entidades.Dieta;
-import entidades.Comida;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -78,7 +77,7 @@ public class DietaData {
                 dieta = new Dieta();
                 dieta.setIdDieta(id);
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
+                dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
@@ -115,7 +114,7 @@ public class DietaData {
                 dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
+                dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
@@ -149,7 +148,7 @@ public class DietaData {
                 Dieta dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
+                dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
@@ -291,7 +290,7 @@ public class DietaData {
         Dieta dieta = null;
 
         try {
-            String sql = "SELECT iddieta, nombre, idpaciente, fechainicial, pesoinicial,meta, pesofinal, fechafinal FROM dieta WHERE idpaciente = ?";
+            String sql = "SELECT iddieta, nombre, fechainicial, pesoinicial,meta, pesofinal, fechafinal FROM dieta WHERE idpaciente = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idPaciente);
             PacienteData pacienteData= new PacienteData();
@@ -301,8 +300,8 @@ public class DietaData {
                 dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPaciente(rs.getInt("idpaciente")));
-                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPaciente(pacienteData.buscarPacienteXID(idPaciente));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
                 dieta.setPesoFinal(rs.getInt("pesofinal"));

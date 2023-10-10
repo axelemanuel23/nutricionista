@@ -29,17 +29,17 @@ public class Nutricionista {
         //Pruebas PacienteData
         PacienteData pd = new PacienteData();
         pd.crearPaciente(p1);
-        p1.setIdPaciente(pd.buscarPaciente(p1.getDni()).getIdPaciente());
+        p1.setIdPaciente(pd.buscarPacienteXDNI(p1.getDni()).getIdPaciente());
         System.out.println(p1.toString());
         pd.crearPaciente(p2);
         pd.crearPaciente(p3);
         pd.crearPaciente(p4);
         pd.crearPaciente(p5);
-        Paciente pM = pd.buscarPaciente(p2.getDni());
+        Paciente pM = pd.buscarPacienteXDNI(p2.getDni());
         // ABM de la clase Paciente (PacienteData) y pruebas desde el main
         pM.setNombre("Luciana Robles");
         pd.modificarPaciente(2,pM);
-        //pd.eliminarPaciente(pd.buscarPaciente(p6.getDni()).getIdPaciente());
+        //pd.eliminarPaciente(pd.buscarPacienteXDNI(p6.getDni()).getIdPaciente());
         //Lista de Pacientes
         List<Paciente> pacientes = pd.listarPacientes();
         //------------------------------------
@@ -80,8 +80,8 @@ public class Nutricionista {
         //------------------------------------
         //------------------------------------
         //Pruebas Dieta
-        Paciente pa1 = pd.buscarPaciente(p3.getDni());
-        Paciente pa2 = pd.buscarPaciente(p4.getDni());
+        Paciente pa1 = pd.buscarPacienteXDNI(p3.getDni());
+        Paciente pa2 = pd.buscarPacienteXDNI(p4.getDni());
         Dieta d1 = new Dieta("Dieta Ensalada Verdes",pa1,LocalDate.of(2023, Month.OCTOBER, 1),80,70,75,LocalDate.of(2023, Month.OCTOBER, 3));
         System.out.println("Ha finalizado la dieta?: " + d1.finalizado());
         System.out.println("Ha cumplido la meta?:" + d1.metaCumplida());

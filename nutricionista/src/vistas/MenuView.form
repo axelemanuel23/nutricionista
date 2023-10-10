@@ -260,13 +260,13 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosComida" pref="236" max="32767" attributes="0"/>
-                          <Component id="jTContDatosPaciente" pref="236" max="32767" attributes="0"/>
+                          <Component id="jTContDatosComida" pref="237" max="32767" attributes="0"/>
+                          <Component id="jTContDatosPaciente" pref="237" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosDieta" pref="236" max="32767" attributes="0"/>
-                          <Component id="jTContDatosAlgo" pref="236" max="32767" attributes="0"/>
+                          <Component id="jTContDatosDieta" pref="237" max="32767" attributes="0"/>
+                          <Component id="jTContDatosAlgo" pref="237" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
                   </Group>
@@ -279,13 +279,13 @@
                       <Component id="jPToggleMenu" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosDieta" pref="145" max="32767" attributes="0"/>
-                          <Component id="jTContDatosPaciente" pref="145" max="32767" attributes="0"/>
+                          <Component id="jTContDatosDieta" pref="148" max="32767" attributes="0"/>
+                          <Component id="jTContDatosPaciente" pref="148" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosAlgo" pref="163" max="32767" attributes="0"/>
-                          <Component id="jTContDatosComida" pref="163" max="32767" attributes="0"/>
+                          <Component id="jTContDatosAlgo" pref="166" max="32767" attributes="0"/>
+                          <Component id="jTContDatosComida" pref="166" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                   </Group>
@@ -1093,6 +1093,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Consultas"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCPacientesActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="jBLComida">
                   <Properties>

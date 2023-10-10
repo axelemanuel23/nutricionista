@@ -10,49 +10,45 @@ import accesoADatos.DietaData;
 import accesoADatos.PacienteData;
 import entidades.Dieta;
 import entidades.Paciente;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Camila
- */
 public class PacienteInforme extends javax.swing.JInternalFrame {
-static PacienteData pD = new PacienteData();
-static DietaComidaData dCD = new DietaComidaData();
-static DietaData dD = new DietaData();
 
-private DefaultTableModel modelo = new DefaultTableModel(){
+    static PacienteData pD = new PacienteData();
+    static DietaComidaData dCD = new DietaComidaData();
+    static DietaData dD = new DietaData();
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
         public boolean isCellEditable(int f, int c) {
             return false;
-        } 
+        }
     };
-    /**
-     * Creates new form PacienteInforme
-     */
+    
     public PacienteInforme() {
         initComponents();
-        cargarCabecera();
+        cargarCabeceras();
     }
 
-    private void cargarCabecera(){
+    private void cargarCabeceras() {
         modelo.addColumn("Nombre");
         modelo.addColumn("DNI");
+        modelo.addColumn("Telefono");
         modelo.addColumn("Estado");
         modelo.addColumn("Nombre Dieta");
         jTPInforme.setModel(modelo);
     }
-    
-    public void borrarFilas(){
-        
-        int f = jTPInforme.getRowCount()-1;
-        for (; f >= 0 ; f--) {
+
+    public void borrarFilas() {
+
+        int f = jTPInforme.getRowCount() - 1;
+        for (; f >= 0; f--) {
             modelo.removeRow(f);
         }
-        
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +62,7 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         jTPInforme = new javax.swing.JTable();
         jRBPacienteE = new javax.swing.JRadioButton();
         jRBPacientesS = new javax.swing.JRadioButton();
+        jRBPacientesP = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -92,24 +89,30 @@ private DefaultTableModel modelo = new DefaultTableModel(){
         jRBPacienteE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBPacienteE.setText("Pacientes exitosos");
         jRBPacienteE.setBorder(null);
-        jRBPacienteE.setOpaque(false);
         jRBPacienteE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacienteEActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, -1, -1));
+        getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jRBPacientesS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jRBPacientesS.setText("Pacientes sin Exito");
         jRBPacientesS.setBorder(null);
-        jRBPacientesS.setOpaque(false);
         jRBPacientesS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesSActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 60, -1, -1));
+        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        jRBPacientesP.setText("Pacientes en progreso");
+        jRBPacientesP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBPacientesPActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Informe de Paciente");
@@ -125,35 +128,60 @@ private DefaultTableModel modelo = new DefaultTableModel(){
     private void jRBPacienteEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBPacienteEActionPerformed
         try {
             borrarFilas();
+            //Setea el otro radio en falso
             jRBPacientesS.setSelected(false);
-            for (Paciente PExitoso : dCD.listarPacientesExitosos()) {
-                Dieta dieta = dD.buscarDietaXPaciente(PExitoso.getIdPaciente());
-                modelo.addRow(new Object[]{PExitoso.getNombre(), PExitoso.getDni(), PExitoso.getEstado(), dieta.getNombre()});
+            jRBPacientesP.setSelected(false);
+            //Iterar sobre pacientes exitosos
+            List<Paciente> pExitosos = dCD.listarPacientesExitosos();
+            for (Paciente pExitoso : pExitosos ) {
+                //Obtener la dieta exitosa de cada paciente
+                Dieta dieta = dD.buscarDietaXPaciente(pExitoso.getIdPaciente());
+                //
+                modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDni(), pExitoso.getTelefono(), dD.buscarDietaXPaciente(pExitoso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
         }
-        
+
     }//GEN-LAST:event_jRBPacienteEActionPerformed
 
     private void jRBPacientesSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBPacientesSActionPerformed
-       try {
-           borrarFilas();
-           jRBPacienteE.setSelected(false);
-            for (Paciente PExitoso : dCD.listarPacientesSinExito()) {
-                Dieta dieta = dD.buscarDietaXPaciente(PExitoso.getIdPaciente());
-                modelo.addRow(new Object[]{PExitoso.getNombre(), PExitoso.getDni(), PExitoso.getEstado(), dieta.getNombre()});
+        try {
+            borrarFilas();
+            jRBPacienteE.setSelected(false);
+            jRBPacientesP.setSelected(false);
+            for (Paciente pSExito : dCD.listarPacientesSinExito()) {
+                Dieta dieta = dD.buscarDietaXPaciente(pSExito.getIdPaciente());
+                modelo.addRow(new Object[]{pSExito.getNombre(), pSExito.getDni(), pSExito.getTelefono(), dD.buscarDietaXPaciente(pSExito.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
         }
     }//GEN-LAST:event_jRBPacientesSActionPerformed
 
+    private void jRBPacientesPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBPacientesPActionPerformed
+        //REVISAR LA FUNCION
+        try {
+            borrarFilas();
+            jRBPacienteE.setSelected(false);
+            jRBPacientesS.setSelected(false);
+            for (Paciente pProgreso : pD.listarPacientesActivos()) {
+                Dieta dieta = dD.buscarDietaXPaciente(pProgreso.getIdPaciente());
+                if(!dieta.finalizado()){
+                    modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
+                }
+            }
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
+        }
+    }//GEN-LAST:event_jRBPacientesPActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRBPacienteE;
+    private javax.swing.JRadioButton jRBPacientesP;
     private javax.swing.JRadioButton jRBPacientesS;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTPInforme;

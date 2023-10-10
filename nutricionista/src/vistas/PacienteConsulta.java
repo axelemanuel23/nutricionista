@@ -5,17 +5,70 @@
  */
 package vistas;
 
+import accesoADatos.DietaComidaData;
+import accesoADatos.DietaData;
+import accesoADatos.PacienteData;
+import entidades.Dieta;
+import entidades.Paciente;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Camila
  */
 public class PacienteConsulta extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form PacienteConsulta
-     */
+    static PacienteData pD = new PacienteData();
+    static DietaComidaData dCD = new DietaComidaData();
+    static DietaData dD = new DietaData();
+
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+    };
+    
+    
     public PacienteConsulta() {
         initComponents();
+        cargarCabecera();
+        cargarDatos();
+    }
+
+    private void cargarCabecera() {
+        modelo.addColumn("Nombre");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Telefono");
+        jTPacientesInactivos.setModel(modelo);
+    }
+
+    public void borrarFilas() {
+
+        int f = jTPacientesInactivos.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+
+    }
+    
+    
+    public void cargarDatos(){
+         try {
+            
+            borrarFilas();
+            //Iterar sobre pacientes inactivos
+            List<Paciente> pInactivos = pD.listarPacientesInactivos();
+            for (Paciente pInactivo : pInactivos ) {
+                //Obtener la dieta exitosa de cada paciente
+                javax.swing.JCheckBox cBReactivar = new javax.swing.JCheckBox();
+                Dieta dieta = dD.buscarDietaXPaciente(pInactivo.getIdPaciente());
+                //
+                modelo.addRow(new Object[]{pInactivo.getNombre(), pInactivo.getDni(), pInactivo.getTelefono()});
+            }
+        } catch (NullPointerException e) {
+             System.out.println("Error al cargar los datos de la tabla");
+        }
     }
 
     /**
@@ -27,21 +80,78 @@ public class PacienteConsulta extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTPacientesInactivos = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+
+        jTPacientesInactivos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null,  new Boolean(false)},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Boolean.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTPacientesInactivos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTPacientesInactivosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTPacientesInactivos);
+
+        jLabel1.setText("Pacientes Inactivos");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTPacientesInactivosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPacientesInactivosMouseClicked
+        try {
+            int itemIndex = jTPacientesInactivos.getSelectedRow();
+            int dniPaciente = (int) jTPacientesInactivos.getValueAt(itemIndex, 1);
+            if (itemIndex != -1) {
+                pD.reactivarPaciente(pD.buscarPacienteXDNI(dniPaciente).getIdPaciente());
+                modelo.removeRow(itemIndex);
+                System.out.println("Se ha reactivado un paciente");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error de indices");
+        }
+    }//GEN-LAST:event_jTPacientesInactivosMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTPacientesInactivos;
     // End of variables declaration//GEN-END:variables
 }

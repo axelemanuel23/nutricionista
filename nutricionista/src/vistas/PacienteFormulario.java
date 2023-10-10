@@ -13,7 +13,7 @@ static PacienteData pD = new PacienteData();
     public PacienteFormulario() {
         initComponents();
         coloresBotones();
-        cargarCombo();
+        //cargarCombo();
     }
 
     private void limpiarCasilla () {
@@ -23,7 +23,8 @@ static PacienteData pD = new PacienteData();
         jCBDni.setSelectedIndex(0);
     }
     
-    private void cargarCombo(){
+    public void cargarCombo(){
+        jCBDni.removeAllItems();
         jCBDni.addItem("- Agregar Paciente -");
 
         for (Paciente elem : pD.listarPacientesActivos()) {
@@ -240,7 +241,7 @@ static PacienteData pD = new PacienteData();
         try { //mostrar si el paciente esta realizando una dieta??
              if (jCBDni.getSelectedIndex() != 0 && jCBDni.getSelectedIndex() != -1) {
                 int dni = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
-                Paciente paciente = pD.buscarPaciente(dni);
+                Paciente paciente = pD.buscarPacienteXDNI(dni);
                 
                 if(paciente != null){
                 jTFNombre.setText(paciente.getNombre());
@@ -257,7 +258,7 @@ static PacienteData pD = new PacienteData();
             int dni = Integer.parseInt(jCBDni.getSelectedItem().toString());
                         
             if (jCBDni.getSelectedIndex() != -1) {
-                Paciente paciente = pD.buscarPaciente(dni);
+                Paciente paciente = pD.buscarPacienteXDNI(dni);
                 int id = paciente.getIdPaciente();
                 int dni1 = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
                 String nombre = jTFNombre.getText();
@@ -296,8 +297,8 @@ static PacienteData pD = new PacienteData();
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         try{
             int dni = Integer.parseInt(jCBDni.getSelectedItem().toString()) ;
-            pD.buscarPaciente(dni);
-            Paciente paciente = pD.buscarPaciente(dni);
+            pD.buscarPacienteXDNI(dni);
+            Paciente paciente = pD.buscarPacienteXDNI(dni);
             pD.darBajaPaciente(paciente.getIdPaciente()); //dar de baja o eliminar definitivamente
             
             jCBDni.removeAllItems();
