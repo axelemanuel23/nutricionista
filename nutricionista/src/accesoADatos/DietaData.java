@@ -148,8 +148,8 @@ public class DietaData {
                 Dieta dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
-                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
+                dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
                 dieta.setPesoInicial(rs.getInt("pesoinicial"));
                 dieta.setMeta(rs.getInt("meta"));
                 dieta.setPesoFinal(rs.getInt("pesofinal"));

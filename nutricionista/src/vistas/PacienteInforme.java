@@ -222,10 +222,13 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             jRBPacienteE.setSelected(false);
             jRBPacientesS.setSelected(false);
             for (Paciente pProgreso : pD.listarPacientesActivos()) {
-                Dieta dieta = dD.buscarDietaXPaciente(pProgreso.getIdPaciente());
-                if(!dieta.finalizado()){
-                    modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
-                }
+                System.out.println("1");
+                if (dD.buscarDietaXPaciente(pProgreso.getIdPaciente()) == null) {
+                    if(!dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado()){
+                        System.out.println("2");
+                        modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).getNombre()});
+                    }
+                } else System.out.println("error");
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
