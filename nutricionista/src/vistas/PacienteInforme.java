@@ -63,11 +63,11 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBPacienteE = new javax.swing.JRadioButton();
         jRBPacientesS = new javax.swing.JRadioButton();
         jRBPacientesP = new javax.swing.JRadioButton();
+        jBSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(746, 450));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTPInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,9 +84,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTPInforme);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 670, 310));
-
-        jRBPacienteE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacienteE.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacienteE.setText("Pacientes exitosos");
         jRBPacienteE.setBorder(null);
         jRBPacienteE.addActionListener(new java.awt.event.ActionListener() {
@@ -94,9 +92,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacienteEActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jRBPacientesS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacientesS.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacientesS.setText("Pacientes sin Exito");
         jRBPacientesS.setBorder(null);
         jRBPacientesS.addActionListener(new java.awt.event.ActionListener() {
@@ -104,23 +101,81 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacientesSActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
+        jRBPacientesP.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacientesP.setText("Pacientes en progreso");
+        jRBPacientesP.setBorder(null);
         jRBPacientesP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesPActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+
+        jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        jBSalir.setText("X");
+        jBSalir.setBorder(null);
+        jBSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBSalir.setFocusPainted(false);
+        jBSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jBSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jBSalirMouseExited(evt);
+            }
+        });
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Informe de Paciente");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul 2.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(730, 450));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 420));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(290, 290, 290)
+                .addComponent(jLabel2)
+                .addGap(211, 211, 211)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jRBPacienteE)
+                .addGap(149, 149, 149)
+                .addComponent(jRBPacientesS))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(540, 540, 540)
+                .addComponent(jRBPacientesP))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jRBPacienteE)
+                    .addComponent(jRBPacientesS)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jRBPacientesP))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(90, 90, 90)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,8 +231,22 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_jRBPacientesPActionPerformed
 
+    private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
+        jBSalir.setBackground(new java.awt.Color(255,0,0));
+    }//GEN-LAST:event_jBSalirMouseEntered
+
+    private void jBSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseExited
+        jBSalir.setBackground(new java.awt.Color(240,240,240));
+    }//GEN-LAST:event_jBSalirMouseExited
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jBSalirActionPerformed
+
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JRadioButton jRBPacienteE;
