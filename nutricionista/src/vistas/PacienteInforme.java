@@ -10,6 +10,7 @@ import accesoADatos.DietaData;
 import accesoADatos.PacienteData;
 import entidades.Dieta;
 import entidades.Paciente;
+import java.time.LocalDate;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -223,16 +224,16 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             jRBPacientesS.setSelected(false);
             for (Paciente pProgreso : pD.listarPacientesActivos()) {
                 System.out.println("1");
-                if (dD.buscarDietaXPaciente(pProgreso.getIdPaciente()) == null) {
-                    if(!dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado()){
-                        System.out.println("2");
-                        modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).getNombre()});
-                    }
-                } else System.out.println("error");
+                Dieta dieta = dD.buscarDietaXPaciente(pProgreso.getIdPaciente());
+
+                if(!dieta.finalizado()){
+                    System.out.println("2");
+                    modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).getNombre()});
+                }
             }
         } catch (NullPointerException e) {
-            JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
-        }
+        JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
+        }    
     }//GEN-LAST:event_jRBPacientesPActionPerformed
 
     private void jBSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBSalirMouseEntered
