@@ -67,7 +67,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(746, 450));
+        setBorder(null);
+        setPreferredSize(new java.awt.Dimension(730, 450));
 
         jTPInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

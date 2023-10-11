@@ -86,6 +86,8 @@ public class PacienteConsulta extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
 
+        setBorder(null);
+        setPreferredSize(new java.awt.Dimension(565, 225));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTPacientesInactivos.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,7 +116,7 @@ public class PacienteConsulta extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTPacientesInactivos);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 62, 492, 115));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 492, 115));
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -134,14 +136,15 @@ public class PacienteConsulta extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 25, 26));
+        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 0, 25, 26));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 12)); // NOI18N
         jLabel1.setText("Pacientes Inactivos");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo panel1.jpg"))); // NOI18N
-        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-2, 0, 550, 190));
+        Fondo.setFocusable(false);
+        getContentPane().add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
