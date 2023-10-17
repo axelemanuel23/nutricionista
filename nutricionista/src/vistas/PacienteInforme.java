@@ -37,6 +37,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         modelo.addColumn("DNI");
         modelo.addColumn("Telefono");
         modelo.addColumn("Estado");
+        modelo.addColumn("Fecha Inicio");
+        modelo.addColumn("Fecha Final");
         modelo.addColumn("Nombre Dieta");
         jTPInforme.setModel(modelo);
     }
@@ -70,6 +72,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
 
         setBorder(null);
         setPreferredSize(new java.awt.Dimension(730, 450));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTPInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,6 +89,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTPInforme);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 710, 310));
+
         jRBPacienteE.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacienteE.setText("Pacientes exitosos");
         jRBPacienteE.setBorder(null);
@@ -94,6 +99,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacienteEActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
         jRBPacientesS.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacientesS.setText("Pacientes sin Exito");
@@ -103,6 +109,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacientesSActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jRBPacientesP.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
         jRBPacientesP.setText("Pacientes en progreso");
@@ -112,6 +119,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacientesPActionPerformed(evt);
             }
         });
+        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -131,53 +139,15 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
+        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 25, 26));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Informe de Paciente");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul 2.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(730, 450));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(290, 290, 290)
-                .addComponent(jLabel2)
-                .addGap(211, 211, 211)
-                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jRBPacienteE)
-                .addGap(149, 149, 149)
-                .addComponent(jRBPacientesS))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(540, 540, 540)
-                .addComponent(jRBPacientesP))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 670, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRBPacienteE)
-                    .addComponent(jRBPacientesS)))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jRBPacientesP))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -194,7 +164,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 //Obtener la dieta exitosa de cada paciente
                 Dieta dieta = dD.buscarDietaXPaciente(pExitoso.getIdPaciente());
                 //
-                modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDni(), pExitoso.getTelefono(), dD.buscarDietaXPaciente(pExitoso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
+                modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDni(), pExitoso.getTelefono(), dD.buscarDietaXPaciente(pExitoso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getFechaInicial(), dieta.getFechaFinal(), dieta.getNombre()});
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
@@ -209,7 +179,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             jRBPacientesP.setSelected(false);
             for (Paciente pSExito : dCD.listarPacientesSinExito()) {
                 Dieta dieta = dD.buscarDietaXPaciente(pSExito.getIdPaciente());
-                modelo.addRow(new Object[]{pSExito.getNombre(), pSExito.getDni(), pSExito.getTelefono(), dD.buscarDietaXPaciente(pSExito.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getNombre()});
+                modelo.addRow(new Object[]{pSExito.getNombre(), pSExito.getDni(), pSExito.getTelefono(), dD.buscarDietaXPaciente(pSExito.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getFechaInicial(), dieta.getFechaFinal(),  dieta.getNombre()});
             }
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
@@ -217,18 +187,14 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jRBPacientesSActionPerformed
 
     private void jRBPacientesPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBPacientesPActionPerformed
-        //REVISAR LA FUNCION
         try {
             borrarFilas();
             jRBPacienteE.setSelected(false);
             jRBPacientesS.setSelected(false);
-            for (Paciente pProgreso : pD.listarPacientesActivos()) {
-                System.out.println("1");
-                Dieta dieta = dD.buscarDietaXPaciente(pProgreso.getIdPaciente());
-
+            for (Dieta dieta : dD.listarTodasLasDietas()) {
                 if(!dieta.finalizado()){
-                    System.out.println("2");
-                    modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dD.buscarDietaXPaciente(pProgreso.getIdPaciente()).getNombre()});
+                    Paciente pProgreso = pD.buscarPacienteXID(dieta.getPaciente().getIdPaciente());
+                    modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), "En progreso", dieta.getFechaInicial(), dieta.getFechaFinal(), dieta.getNombre()});
                 }
             }
         } catch (NullPointerException e) {

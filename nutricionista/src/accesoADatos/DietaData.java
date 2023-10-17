@@ -287,6 +287,34 @@ public class DietaData {
         }
     } 
     
+    public List<Dieta> listarTodasLasDietas() {
+        List<Dieta> dietas = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM dieta";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            PacienteData pacienteData= new PacienteData();
+
+            while (rs.next()) {
+                Dieta dieta = new Dieta();
+                dieta.setIdDieta(rs.getInt("iddieta"));
+                dieta.setNombre(rs.getString("nombre"));
+                dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
+                dieta.setPesoInicial(rs.getInt("pesoinicial"));
+                dieta.setMeta(rs.getInt("meta"));
+                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
+                dietas.add(dieta);
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al acceder a la tabla Dieta");
+        }
+        return dietas;
+    }
+    
     public Dieta buscarDietaXPaciente(int idPaciente) {
         Dieta dieta = null;
 
