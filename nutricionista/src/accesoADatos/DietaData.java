@@ -154,6 +154,7 @@ public class DietaData {
                 dieta.setMeta(rs.getInt("meta"));
                 dieta.setPesoFinal(rs.getInt("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
+                dietas.add(dieta);
             }
             ps.close();
 
