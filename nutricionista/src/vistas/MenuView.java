@@ -19,6 +19,8 @@ static DietaComidaData dCData = new DietaComidaData();
 static PacienteFormulario pF = new PacienteFormulario();
 static PacienteInforme pI = new PacienteInforme();
 static PacienteConsulta pC = new PacienteConsulta();
+static ComidaRegistro cR = new ComidaRegistro();
+static ComidaInformacion cI = new ComidaInformacion();
     /**
      * Creates new form MenuView
      */
@@ -209,6 +211,11 @@ static PacienteConsulta pC = new PacienteConsulta();
         jBLComida.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
         jBLComida.setBorderPainted(false);
         jBLComida.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBLComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLComidaActionPerformed(evt);
+            }
+        });
 
         jBCComida.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         jBCComida.setText("Consultas");
@@ -906,6 +913,8 @@ static PacienteConsulta pC = new PacienteConsulta();
         pC.dispose();
         pF.dispose();
         pI.dispose();
+        cI.dispose();
+        cR.dispose();
         jTContDatosPaciente.setVisible(true);
         jTContDatosComida.setVisible(true);
         jTContDatosDieta.setVisible(true);
@@ -919,8 +928,12 @@ static PacienteConsulta pC = new PacienteConsulta();
     }//GEN-LAST:event_jBCPacientesActionPerformed
 
     private void jBFComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFComidaActionPerformed
-        // TODO add your handling code here:
+        superponerPanel(cR);
     }//GEN-LAST:event_jBFComidaActionPerformed
+
+    private void jBLComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLComidaActionPerformed
+        superponerPanel(cI);
+    }//GEN-LAST:event_jBLComidaActionPerformed
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();
@@ -1021,7 +1034,7 @@ static PacienteConsulta pC = new PacienteConsulta();
     private javax.swing.JLabel jTPacienteActivos;
     // End of variables declaration//GEN-END:variables
 
-    private void superponerPanel(JInternalFrame panelInterno){
+    private void superponerPanel(JInternalFrame panelInterno){ // cambiar por un SwitchCase
         jTContDatosPaciente.setVisible(false);
         jTContDatosComida.setVisible(false);
         jTContDatosDieta.setVisible(false);
@@ -1029,13 +1042,28 @@ static PacienteConsulta pC = new PacienteConsulta();
         if (panelInterno.equals(pF)) {
             pC.dispose();
             pI.dispose();
+            cI.dispose();
+            cR.dispose();
         } else if (panelInterno.equals(pC)) {
             pF.dispose();
             pI.dispose();
+            cI.dispose();
+            cR.dispose();
         } else if (panelInterno.equals(pI)) {
             pC.dispose();
             pF.dispose();
+        } else if (panelInterno.equals(cR)){
+            pF.dispose();
+            pI.dispose();
+            pC.dispose();
+            cI.dispose();
+        } else if (panelInterno.equals(cI)) {
+            pF.dispose();
+            pI.dispose();
+            pC.dispose();
+            cR.dispose();
         }
+            
         panelInterno.setLocation(0, 53);
         panelInterno.setVisible(true);
         ((javax.swing.plaf.basic.BasicInternalFrameUI) panelInterno.getUI()).setNorthPane(null);
@@ -1047,6 +1075,8 @@ static PacienteConsulta pC = new PacienteConsulta();
         Contenedor.add(pF);
         Contenedor.add(pC);
         Contenedor.add(pI);
+        Contenedor.add(cR);
+        Contenedor.add(cI);
     }
     
 }

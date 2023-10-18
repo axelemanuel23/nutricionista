@@ -94,19 +94,22 @@ static ComidaData cD = new ComidaData();
         jLabel4.setText("Cantidad de Caloria: ");
 
         jTFDescripcion.setColumns(6);
-        jTFDescripcion.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jTFDescripcion.setForeground(new java.awt.Color(204, 204, 204));
+        jTFDescripcion.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTFDescripcion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTFDescripcionMouseClicked(evt);
             }
         });
 
-        jTFCantCaloria.setFont(new java.awt.Font("Tahoma", 2, 11)); // NOI18N
-        jTFCantCaloria.setForeground(new java.awt.Color(204, 204, 204));
+        jTFCantCaloria.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTFCantCaloria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTFCantCaloriaMouseClicked(evt);
+            }
+        });
+        jTFCantCaloria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFCantCaloriaKeyTyped(evt);
             }
         });
 
@@ -135,6 +138,11 @@ static ComidaData cD = new ComidaData();
         });
 
         jCBNombreComida.setEditable(true);
+        jCBNombreComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBNombreComidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,7 +203,7 @@ static ComidaData cD = new ComidaData();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTFCantCaloria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,6 +296,30 @@ static ComidaData cD = new ComidaData();
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         }
     }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jCBNombreComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNombreComidaActionPerformed
+        try { //mostrar si el paciente esta realizando una dieta??
+             if (jCBNombreComida.getSelectedIndex() != 0 && jCBNombreComida.getSelectedIndex() != -1) {
+                String nombreC = jCBNombreComida.getSelectedItem().toString();
+                Comida comida = cD.buscarComida(nombreC);
+                
+                if(comida != null){
+                jTFDescripcion.setText(comida.getDetalle());
+                jTFCantCaloria.setText(comida.getCantCalorias() + "");
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jCBNombreComidaActionPerformed
+
+    private void jTFCantCaloriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFCantCaloriaKeyTyped
+        int key = evt.getKeyChar();
+
+        boolean numeros = key >= 48 && key <= 57;
+        if (!numeros){
+            evt.consume();
+        }
+    }//GEN-LAST:event_jTFCantCaloriaKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

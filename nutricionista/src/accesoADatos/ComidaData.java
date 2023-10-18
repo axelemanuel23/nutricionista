@@ -204,7 +204,7 @@ public class ComidaData {
         Comida comida = new Comida();
         
         try {
-            String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
+            String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, calorias);
@@ -236,7 +236,7 @@ public class ComidaData {
         List<Comida> comidas = new ArrayList<>();
         
         try {
-            String sql = "SELECT * FROM comida WHERE cantcalorias >= ?";
+            String sql = "SELECT * FROM comida WHERE cantcalorias <= ?";
             
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, calorias);
