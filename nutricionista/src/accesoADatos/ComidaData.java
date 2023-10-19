@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,7 +56,7 @@ public class ComidaData {
                ResultSet rs = ps.getGeneratedKeys();
                
                if (rs.next()) {
-                  System.out.println("Se añadio con exito");
+                  JOptionPane.showMessageDialog(null,"Se añadio con exito");
                }
             }
         } catch (SQLException ex) {
@@ -82,9 +83,9 @@ public class ComidaData {
             int exito = ps.executeUpdate();
             
             if (exito == 1) {
-                System.out.println("Se actualizó con exito");
+                JOptionPane.showMessageDialog(null,"Se actualizó con exito");
             } else {
-                System.out.println("La comida no existe");
+                JOptionPane.showMessageDialog(null,"La comida no existe");
             }
             ps.close();    
             
@@ -149,7 +150,7 @@ public class ComidaData {
                 comida.setCantCalorias(rs.getInt("cantcalorias"));
                 
             }else{
-                System.out.println("No existe esa comida");
+                JOptionPane.showMessageDialog(null,"No existe esa comida");
             }
             ps.close();
             
@@ -183,7 +184,7 @@ public class ComidaData {
                 comida.setCantCalorias(rs.getInt("cantcalorias"));
                 
             }else{
-                System.out.println("No existe esa comida");
+                JOptionPane.showMessageDialog(null,"No existe esa comida");
             }
             ps.close();
             
@@ -211,13 +212,12 @@ public class ComidaData {
             
             ResultSet rs = ps.executeQuery();
             
-            if (rs.next()) {
-                while(rs.next()){
-                    comidas.add(buscarComida(rs.getInt("idcomida")));
-                }
-            }else{
-                System.out.println("No existe esa comida");
+            
+            while(rs.next()){
+                comidas.add(buscarComida(rs.getInt("idcomida")));
             }
+            
+            
             ps.close();
             
         } catch (SQLException ex) {
@@ -243,13 +243,11 @@ public class ComidaData {
             
             ResultSet rs = ps.executeQuery();
             
-            if (rs.next()) {
+            
                 while(rs.next()){
                     comidas.add(buscarComida(rs.getInt("idcomida")));
                 }
-            }else{
-                System.out.println("No existe esa comida");
-            }
+            
             ps.close();
             
         } catch (SQLException ex) {
@@ -271,7 +269,7 @@ public class ComidaData {
             int filas = ps.executeUpdate();
             
             if(filas == 1){
-                System.out.println("Eliminado con exito");
+                JOptionPane.showMessageDialog(null,"Eliminado con exito");
             }else{
                 System.out.println("Hubo un problema");
             }

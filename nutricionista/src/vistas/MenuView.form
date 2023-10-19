@@ -127,13 +127,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosPaciente" pref="304" max="32767" attributes="0"/>
-                          <Component id="jTContDatosComida" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosPaciente" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosComida" pref="306" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosDieta" pref="304" max="32767" attributes="0"/>
-                          <Component id="jTContDatosAlgo" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosDieta" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosAlgo" pref="306" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -567,7 +567,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Exitosos"/>
+                    <Property name="text" type="java.lang.String" value=" +500 kcal"/>
                     <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 50]"/>
@@ -598,7 +598,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="text" type="java.lang.String" value="Sin Exito"/>
+                    <Property name="text" type="java.lang.String" value=" -500 kcal"/>
                     <Property name="opaque" type="boolean" value="true"/>
                     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[100, 50]"/>

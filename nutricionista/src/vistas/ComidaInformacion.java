@@ -28,6 +28,11 @@ static ComidaData cD = new ComidaData();
         initComponents();
         cargarCabeceras();
         jRBTodas.setSelected(true);
+        for (Comida comida : cD.listarComida()) {
+                modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
+                jLCantidadC.setText(cD.listarComida().size() + "");
+            }
+        
     }
 
     private void cargarCabeceras() {
@@ -240,19 +245,20 @@ static ComidaData cD = new ComidaData();
         borrarFilas();
         if (jRBMayorCaloria.isSelected()) {
             for (Comida comida : cD.buscarCaloriasMax(valor)) {
-                modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.buscarCaloriasMax(valor).size() + "");
+                modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});  
             }
+            jLCantidadC.setText(cD.buscarCaloriasMax(valor).size() + "");
+            System.out.println(cD.buscarCaloriasMax(valor).size());
         } else if (jRBMenorCaloria.isSelected()) {
             for (Comida comida : cD.buscarCaloriasMin(valor)) {
                 modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.buscarCaloriasMin(valor).size() + "");
             }
+            jLCantidadC.setText(cD.buscarCaloriasMin(valor).size() + "");
         } else if (jRBTodas.isSelected()){
             for (Comida comida : cD.listarComida()) {
                 modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.listarComida().size() + "");
             }
+            jLCantidadC.setText(cD.listarComida().size() + "");
         }
         }catch(NumberFormatException e){
             System.out.println("Vacio");
@@ -264,33 +270,43 @@ static ComidaData cD = new ComidaData();
         jRBMayorCaloria.setSelected(false);
         jRBTodas.setSelected(false);
         borrarFilas();
-        int valor = Integer.parseInt(jTFCantCalorias.getText());
-        for (Comida comida : cD.buscarCaloriasMin(valor)) {
+        int valor ;
+        if(!jTFCantCalorias.getText().equals("")){
+            valor = Integer.parseInt(jTFCantCalorias.getText());
+        }else valor =0;
+        
+            for (Comida comida : cD.buscarCaloriasMin(valor)) {
                 modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.buscarCaloriasMax(valor).size() + "");
+                
             }
+            jLCantidadC.setText(cD.buscarCaloriasMin(valor).size() + "");
     }//GEN-LAST:event_jRBMenorCaloriaActionPerformed
 
     private void jRBMayorCaloriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBMayorCaloriaActionPerformed
         jRBMenorCaloria.setSelected(false);
         jRBTodas.setSelected(false);
         borrarFilas();
-        int valor = Integer.parseInt(jTFCantCalorias.getText());
-        for (Comida comida : cD.buscarCaloriasMax(valor)) {
+        int valor ;
+        if(!jTFCantCalorias.getText().equals("")){
+            valor = Integer.parseInt(jTFCantCalorias.getText());
+        }else valor =0;
+        
+            for (Comida comida : cD.buscarCaloriasMax(valor)) {
                 modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.buscarCaloriasMin(valor).size() + "");
+                
+                
             }
+            jLCantidadC.setText(cD.buscarCaloriasMax(valor).size() + "");
+        
     }//GEN-LAST:event_jRBMayorCaloriaActionPerformed
 
     private void jRBTodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBTodasActionPerformed
         jRBMayorCaloria.setSelected(false);
         jRBMenorCaloria.setSelected(false);
         borrarFilas();
-        int valor = Integer.parseInt(jTFCantCalorias.getText());
         for (Comida comida : cD.listarComida()) {
-                modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});
-                jLCantidadC.setText(cD.listarComida().size() + "");
-            }
+                modelo.addRow(new Object[]{comida.getIdComida(), comida.getNombre(), comida.getDetalle(), comida.getCantCalorias()});   
+            }jLCantidadC.setText(cD.listarComida().size() + "");
     }//GEN-LAST:event_jRBTodasActionPerformed
 
 

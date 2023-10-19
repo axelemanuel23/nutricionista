@@ -248,30 +248,30 @@ static ComidaData cD = new ComidaData();
                 String nombre = nComida;
                 String desc = jTFDescripcion.getText();
                 int cantCal = Integer.parseInt(jTFCantCaloria.getText());
-                
-                    Comida comidaMod = new Comida(nombre, desc, cantCal);
-                    cD.modificarComida(id, comida);
+
+                Comida comidaMod = new Comida(nombre, desc, cantCal);
+                cD.modificarComida(id, comidaMod);
             } else {
                 try{
-                    int dni1 = Integer.parseInt(jCBNombreComida.getSelectedItem().toString());
-                    String nombre = nComida;
+//                    int dni1 = Integer.parseInt(jCBNombreComida.getSelectedItem().toString());
+//                    String nombre = nComida;
                     String desc = jTFDescripcion.getText();
                     int cantCal = Integer.parseInt(jTFCantCaloria.getText());
 
-                    Comida comidaNueva = new Comida(nombre, desc, cantCal);
+                    Comida comidaNueva = new Comida(nComida, desc, cantCal);
                     cD.guardarComida(comidaNueva);
                     jCBNombreComida.addItem(comidaNueva.getNombre());
-                    }
-                    catch(NumberFormatException e){
-                        JOptionPane.showMessageDialog(null, "Ingrese valores validos");
+//                    }
+//                    catch(NumberFormatException e){
+//                        JOptionPane.showMessageDialog(null, "Ingrese valores validos");
 
                     }catch(NullPointerException e){
                         JOptionPane.showMessageDialog(null, "Complete todos los campos");
                     }
             }
-        }
-        catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(null, "Ingrese valores validos");
+//        }
+//        catch(NumberFormatException e){
+//            JOptionPane.showMessageDialog(null, "Ingrese valores validos");
 
         }catch(NullPointerException e){
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
