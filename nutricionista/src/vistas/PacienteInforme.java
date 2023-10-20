@@ -49,9 +49,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         for (; f >= 0; f--) {
             modelo.removeRow(f);
         }
-
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,8 +65,11 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBPacienteE = new javax.swing.JRadioButton();
         jRBPacientesS = new javax.swing.JRadioButton();
         jRBPacientesP = new javax.swing.JRadioButton();
+        jRBInactivos = new javax.swing.JRadioButton();
+        jLTotal = new javax.swing.JLabel();
         jBSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
@@ -87,13 +89,19 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
             }
         ));
+        jTPInforme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTPInformeMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTPInforme);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 710, 310));
 
-        jRBPacienteE.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
-        jRBPacienteE.setText("Pacientes exitosos");
+        jRBPacienteE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacienteE.setText("Exitosos");
         jRBPacienteE.setBorder(null);
+        jRBPacienteE.setOpaque(false);
         jRBPacienteE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacienteEActionPerformed(evt);
@@ -101,25 +109,42 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         });
         getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jRBPacientesS.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
-        jRBPacientesS.setText("Pacientes sin Exito");
+        jRBPacientesS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacientesS.setText("Sin Exito");
         jRBPacientesS.setBorder(null);
+        jRBPacientesS.setOpaque(false);
         jRBPacientesS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesSActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
-        jRBPacientesP.setFont(new java.awt.Font("Tahoma", 2, 13)); // NOI18N
-        jRBPacientesP.setText("Pacientes en progreso");
+        jRBPacientesP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacientesP.setText("En Progreso");
         jRBPacientesP.setBorder(null);
+        jRBPacientesP.setOpaque(false);
         jRBPacientesP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesPActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
+
+        jRBInactivos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBInactivos.setText("Inactivos");
+        jRBInactivos.setBorder(null);
+        jRBInactivos.setOpaque(false);
+        jRBInactivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBInactivosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jRBInactivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
+
+        jLTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLTotal.setText("Total: ?");
+        getContentPane().add(jLTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, -1, -1));
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -145,6 +170,10 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jLabel2.setText("Informe de Paciente");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
+        jLabel3.setText("Eliga una opcion:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul 2.jpg"))); // NOI18N
         jLabel1.setPreferredSize(new java.awt.Dimension(730, 450));
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
@@ -158,6 +187,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             //Setea el otro radio en falso
             jRBPacientesS.setSelected(false);
             jRBPacientesP.setSelected(false);
+            jRBInactivos.setSelected(false);
             //Iterar sobre pacientes exitosos
             List<Paciente> pExitosos = dCD.listarPacientesExitosos();
             for (Paciente pExitoso : pExitosos ) {
@@ -166,6 +196,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 //
                 modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDni(), pExitoso.getTelefono(), dD.buscarDietaXPaciente(pExitoso.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getFechaInicial(), dieta.getFechaFinal(), dieta.getNombre()});
             }
+            jLTotal.setText("Total: " + dCD.listarPacientesExitosos().size());
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
         }
@@ -177,10 +208,12 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             borrarFilas();
             jRBPacienteE.setSelected(false);
             jRBPacientesP.setSelected(false);
+            jRBInactivos.setSelected(false);
             for (Paciente pSExito : dCD.listarPacientesSinExito()) {
                 Dieta dieta = dD.buscarDietaXPaciente(pSExito.getIdPaciente());
                 modelo.addRow(new Object[]{pSExito.getNombre(), pSExito.getDni(), pSExito.getTelefono(), dD.buscarDietaXPaciente(pSExito.getIdPaciente()).finalizado() ? "En progreso" : "Finalizado", dieta.getFechaInicial(), dieta.getFechaFinal(),  dieta.getNombre()});
             }
+            jLTotal.setText("Total: " + dCD.listarPacientesSinExito().size());
         } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
         }
@@ -191,12 +224,14 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
             borrarFilas();
             jRBPacienteE.setSelected(false);
             jRBPacientesS.setSelected(false);
+            jRBInactivos.setSelected(false);
             for (Dieta dieta : dD.listarTodasLasDietas()) {
                 if(!dieta.finalizado()){
                     Paciente pProgreso = pD.buscarPacienteXID(dieta.getPaciente().getIdPaciente());
                     modelo.addRow(new Object[]{pProgreso.getNombre(), pProgreso.getDni(), pProgreso.getTelefono(), "En progreso", dieta.getFechaInicial(), dieta.getFechaFinal(), dieta.getNombre()});
                 }
             }
+            jLTotal.setText("Total: " + dD.listarTodasLasDietas().size());
         } catch (NullPointerException e) {
         JOptionPane.showMessageDialog(null, "No se pudo cargar la tabla");
         }    
@@ -214,12 +249,44 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
-    
+    private void jTPInformeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTPInformeMouseClicked
+        try {
+            if (jRBInactivos.isSelected()) {
+                int itemIndex = jTPInforme.getSelectedRow();
+                int dniPaciente = (int) jTPInforme.getValueAt(itemIndex, 1);
+                if (itemIndex != -1) {
+                    pD.reactivarPaciente(pD.buscarPacienteXDNI(dniPaciente).getIdPaciente());
+                    modelo.removeRow(itemIndex);
+                    JOptionPane.showMessageDialog(null, "Se reactivo al paciente");
+                }  
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error de indices");
+        }
+    }//GEN-LAST:event_jTPInformeMouseClicked
+
+    private void jRBInactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBInactivosActionPerformed
+        jRBPacienteE.setSelected(false);
+        jRBPacientesP.setSelected(false);
+        jRBPacientesS.setSelected(false);
+        try {
+            borrarFilas();
+            for (Paciente pInactivo :pD.listarPacientesInactivos()) {
+                modelo.addRow(new Object[]{pInactivo.getNombre(), pInactivo.getDni(), pInactivo.getTelefono(), "Inactivo", "-----", "-----", "-----"});
+            }
+            jLTotal.setText("Total: " + pD.listarPacientesInactivos().size());
+        } catch (NullPointerException e) {
+             System.out.println("Error al cargar los datos de la tabla");
+        }
+    }//GEN-LAST:event_jRBInactivosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;
+    private javax.swing.JLabel jLTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JRadioButton jRBInactivos;
     private javax.swing.JRadioButton jRBPacienteE;
     private javax.swing.JRadioButton jRBPacientesP;
     private javax.swing.JRadioButton jRBPacientesS;
