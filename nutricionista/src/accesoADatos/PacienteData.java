@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class PacienteData {    
 
@@ -50,7 +51,7 @@ public class PacienteData {
                     if (rs.next()) {
                         paciente.setIdPaciente(rs.getInt("idpaciente"));
                         //Parte Grafica del mensaje
-                        System.out.println("Paciente añadido con exito");
+                        JOptionPane.showMessageDialog(null,"Paciente añadido con exito");
                         paciente.setIdPaciente(buscarPacienteXDNI(paciente.getDni()).getIdPaciente());
                     }
                     ps.close();
@@ -88,7 +89,7 @@ public class PacienteData {
                 paciente.setTelefono(rs.getString("telefono"));
             } else {
                 //Parte Grafica del mensaje
-                System.out.println("No existe el paciente");
+                JOptionPane.showMessageDialog(null,"No existe el paciente");
             }
             ps.close();
 
@@ -116,9 +117,9 @@ public class PacienteData {
                 paciente.setNombre(rs.getString("nombre"));
                 paciente.setDomicilio(rs.getString("domicilio"));
                 paciente.setTelefono(rs.getString("telefono"));
-            } else {
-                //Parte Grafica del mensaje
-                System.out.println("No existe el paciente");
+//            } else {
+//                //Parte Grafica del mensaje
+//                JOptionPane.showMessageDialog(null,"No existe el paciente");
             }
             ps.close();
 
@@ -232,10 +233,10 @@ public class PacienteData {
 
             if (exito == 1) {
                 //Parte grafica del mensaje
-                System.out.println("Actualización exitosa");
+                JOptionPane.showMessageDialog(null,"Actualización exitosa");
             } else {
                 //Parte grafica del mensaje
-                System.out.println("El paciente no existe");
+                JOptionPane.showMessageDialog(null,"El paciente no existe");
             }
             ps.close();
         } catch (SQLException e) {
@@ -260,7 +261,7 @@ public class PacienteData {
 
             if (fila == 1) {
                 //Parte grafica del mensaje
-            System.out.println("Actualizado con exito");
+            JOptionPane.showMessageDialog(null,"Actualizado con exito");
             }
             ps.close();
         } catch (SQLException e) {
@@ -281,7 +282,7 @@ public class PacienteData {
 
             if (fila == 1) {
                 //Parte grafica del mensaje
-            System.out.println("Se ha reactivado con exito");
+            JOptionPane.showMessageDialog(null,"Se ha reactivado con exito");
             }
             ps.close();
         } catch (SQLException e) {
@@ -305,7 +306,7 @@ public class PacienteData {
 
             if (fila == 1) {
                 //Parte grafica del mensaje
-            System.out.println("Borrado con exito");
+            JOptionPane.showMessageDialog(null,"Borrado con exito");
             }
             ps.close();
         } catch (SQLException e) {

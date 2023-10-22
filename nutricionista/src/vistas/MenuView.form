@@ -127,13 +127,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosPaciente" pref="304" max="32767" attributes="0"/>
-                          <Component id="jTContDatosComida" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosPaciente" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosComida" pref="306" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosDieta" pref="304" max="32767" attributes="0"/>
-                          <Component id="jTContDatosAlgo" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosDieta" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosAlgo" pref="306" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -366,6 +366,9 @@
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLDietaActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

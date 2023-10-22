@@ -5,19 +5,58 @@
  */
 package vistas;
 
+import accesoADatos.ComidaData;
+import accesoADatos.DietaComidaData;
+import accesoADatos.DietaData;
+import entidades.Comida;
+import entidades.Dieta;
+import entidades.DietaComida;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Camila
  */
 public class DietaInformacion extends javax.swing.JInternalFrame {
-
+    static DietaComidaData dCD = new DietaComidaData();
+    static ComidaData cD = new ComidaData();
+    static DietaData dD = new DietaData();
     /**
      * Creates new form DietaInformacion
      */
     public DietaInformacion() {
         initComponents();
+        cargarCabeceras();
+        cargarCombo();
+        jRBIncluidas.setSelected(true);
     }
+    private DefaultTableModel modelo = new DefaultTableModel() {
+        public boolean isCellEditable(int f, int c) {
+            return false;
+        }
+    };
+    private void cargarCabeceras() {
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Detalle");
+        modelo.addColumn("CantidadCalorias");
+        jTComidas.setModel(modelo);
+    }
+    public void borrarFilas() {
 
+        int f = jTComidas.getRowCount() - 1;
+        for (; f >= 0; f--) {
+            modelo.removeRow(f);
+        }
+    }
+    public void cargarCombo(){
+        jCBNombreD.removeAllItems();
+        for (Dieta elem : dD.listarDietas()) {
+            jCBNombreD.addItem(  elem.getNombre()  +"");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,21 +66,227 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTComidas = new javax.swing.JTable();
+        jCBNombreD = new javax.swing.JComboBox<>();
+        jRBIncluidas = new javax.swing.JRadioButton();
+        jRBNoIncluidas = new javax.swing.JRadioButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jBAñadir = new javax.swing.JButton();
+        jBEliminar = new javax.swing.JButton();
+        jLTotal1 = new javax.swing.JLabel();
+        jLTotal = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(833, 515));
+
+        jTComidas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTComidas);
+
+        jCBNombreD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jCBNombreD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBNombreDActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRBIncluidas);
+        jRBIncluidas.setText("Incluidas");
+        jRBIncluidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBIncluidasActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jRBNoIncluidas);
+        jRBNoIncluidas.setText("No Incluidas");
+        jRBNoIncluidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBNoIncluidasActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Nombre Dieta:");
+
+        jLabel2.setText("Comidas : ");
+
+        jBAñadir.setText("Añadir");
+        jBAñadir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBAñadirActionPerformed(evt);
+            }
+        });
+
+        jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
+
+        jLTotal1.setText("Total: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(35, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jCBNombreD, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRBIncluidas)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jRBNoIncluidas)))
+                            .addGap(119, 119, 119)
+                            .addComponent(jLTotal1)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(jLTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 448, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(248, 248, 248)
+                        .addComponent(jBAñadir)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBEliminar)))
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jCBNombreD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jRBIncluidas)
+                        .addComponent(jRBNoIncluidas)
+                        .addComponent(jLTotal1)
+                        .addComponent(jLTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBAñadir)
+                    .addComponent(jBEliminar))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jRBNoIncluidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBNoIncluidasActionPerformed
+        borrarFilas();
+        String nombre = (String) jCBNombreD.getSelectedItem().toString();
+        Dieta dieta = dD.buscarDieta(nombre);
+        for (Comida pExitoso : dCD.listarComidasNoDieta(dieta.getIdDieta())) {
+            modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDetalle(), pExitoso.getCantCalorias()});
+        }
+        jLTotal.setText("Total: " + dCD.listarComidasNoDieta(dieta.getIdDieta()).size());
+    }//GEN-LAST:event_jRBNoIncluidasActionPerformed
+
+    private void jRBIncluidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBIncluidasActionPerformed
+        borrarFilas();
+        String nombre = (String) jCBNombreD.getSelectedItem().toString();
+        Dieta dieta = dD.buscarDieta(nombre);
+        for (Comida pExitoso : dCD.listarComidasDeDieta(dieta.getIdDieta())) {
+            modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDetalle(), pExitoso.getCantCalorias()});
+        }
+        jLTotal.setText("Total: " + dCD.listarComidasDeDieta(dieta.getIdDieta()).size());
+    }//GEN-LAST:event_jRBIncluidasActionPerformed
+
+    private void jCBNombreDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBNombreDActionPerformed
+        borrarFilas();
+        String nombre ;
+        Dieta dieta;
+
+        if (jRBIncluidas.isSelected()) {
+            nombre = (String) jCBNombreD.getSelectedItem().toString();
+            dieta = dD.buscarDieta(nombre);
+            for (Comida pExitoso : dCD.listarComidasDeDieta(dieta.getIdDieta())) {
+                modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDetalle(), pExitoso.getCantCalorias()});
+            }
+            jLTotal.setText("Total: " + dCD.listarComidasDeDieta(dieta.getIdDieta()).size());
+        } else if(jRBNoIncluidas.isSelected()){
+            nombre = (String) jCBNombreD.getSelectedItem().toString();
+            dieta = dD.buscarDieta(nombre);
+            for (Comida pExitoso : dCD.listarComidasNoDieta(dieta.getIdDieta())) {
+            modelo.addRow(new Object[]{pExitoso.getNombre(), pExitoso.getDetalle(), pExitoso.getCantCalorias()});
+        }
+        jLTotal.setText("Total: " + dCD.listarComidasNoDieta(dieta.getIdDieta()).size());
+        }
+    }//GEN-LAST:event_jCBNombreDActionPerformed
+
+    private void jBAñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAñadirActionPerformed
+        try {
+            String nombreD = (String) jCBNombreD.getSelectedItem().toString();
+            Dieta dieta = dD.buscarDieta(nombreD);
+            int itemIndex = jTComidas.getSelectedRow();
+            if (jRBNoIncluidas.isSelected()) {
+                if (itemIndex != -1) {
+                    String NombreC = jTComidas.getValueAt(itemIndex, 0).toString();
+                    Comida comida = cD.buscarComida(NombreC);
+                    DietaComida dc = new DietaComida(dieta.getIdDieta(), comida.getIdComida());
+                    dCD.crearDietaComida(dc);
+                    modelo.removeRow(itemIndex);
+                    JOptionPane.showMessageDialog(null, "Se Añiado correctamente");
+                }else JOptionPane.showMessageDialog(null, "Seleccione una comida");
+            }
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("Error de indices");
+        }
+    }//GEN-LAST:event_jBAñadirActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        int itemIndex = jTComidas.getSelectedRow();
+        if (jRBIncluidas.isSelected()) {
+            if (itemIndex != -1) {
+                String nombreD = (String) jCBNombreD.getSelectedItem().toString();
+                Dieta dieta = dD.buscarDieta(nombreD);
+                String NombreC = jTComidas.getValueAt(itemIndex, 0).toString();
+                Comida comida = cD.buscarComida(NombreC);
+                int idDCD =  dCD.buscarIdDietaComida(dieta.getIdDieta(), comida.getIdComida());
+                dCD.eliminarDietaComida(idDCD);
+                JOptionPane.showMessageDialog(null, "Se Eliminado correctamente");
+                modelo.removeRow(itemIndex);
+            }else JOptionPane.showMessageDialog(null, "Seleccione una comida");
+        }
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jBAñadir;
+    private javax.swing.JButton jBEliminar;
+    private javax.swing.JComboBox<String> jCBNombreD;
+    private javax.swing.JLabel jLTotal;
+    private javax.swing.JLabel jLTotal1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JRadioButton jRBIncluidas;
+    private javax.swing.JRadioButton jRBNoIncluidas;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTComidas;
     // End of variables declaration//GEN-END:variables
 }

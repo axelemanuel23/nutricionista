@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class DietaData {
     private Connection con = null;
@@ -46,7 +47,7 @@ public class DietaData {
                     ResultSet rs = ps.getGeneratedKeys();
 
                     if (rs.next()) {
-                        System.out.println("Dieta añadida con exito");
+                        JOptionPane.showMessageDialog(null, "Dieta añadida con exito");
                     }
                     ps.close();
                 } catch (SQLException e) {
@@ -79,9 +80,9 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 
             } else {
@@ -114,15 +115,15 @@ public class DietaData {
                 dieta = new Dieta();
                 dieta.setIdDieta(rs.getInt("iddieta"));
                 dieta.setNombre(rs.getString("nombre"));
-                dieta.setPaciente(pacienteData.buscarPacienteXDNI(rs.getInt("idpaciente")));
-                dieta.setFechaFinal(rs.getDate("fechaNacimiento").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
+                dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 
             } else {
-                System.out.println("No existe la Dieta");
+                JOptionPane.showMessageDialog(null, "No existe la Dieta");
             }
             ps.close();
 
@@ -150,9 +151,9 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 dietas.add(dieta);
             }
@@ -183,9 +184,9 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 if(!dieta.metaCumplida()){
                     dietas.add(dieta);
@@ -217,9 +218,9 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 if(dieta.metaCumplida()){
                     dietas.add(dieta);
@@ -255,9 +256,10 @@ public class DietaData {
             int exito = ps.executeUpdate();
 
             if (exito == 1) {
-                System.out.println("Modificacion con exito");
+                JOptionPane.showMessageDialog(null, "Modificacion con exito");
             } else {
                 System.out.println("La Dieta no exite");
+                
             }
             ps.close();
         } catch (SQLException e) {
@@ -279,7 +281,7 @@ public class DietaData {
             int fila = ps.executeUpdate();
 
             if (fila == 1) {
-                System.out.println("Se elimino con exito");
+                JOptionPane.showMessageDialog(null,"Se elimino con exito");
             }
             ps.close();
         } catch (SQLException e) {
@@ -301,9 +303,9 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXID(rs.getInt("idpaciente")));
                 dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 dietas.add(dieta);
             }
@@ -331,13 +333,13 @@ public class DietaData {
                 dieta.setNombre(rs.getString("nombre"));
                 dieta.setPaciente(pacienteData.buscarPacienteXID(idPaciente));
                 dieta.setFechaFinal(rs.getDate("fechafinal").toLocalDate());
-                dieta.setPesoInicial(rs.getInt("pesoinicial"));
-                dieta.setMeta(rs.getInt("meta"));
-                dieta.setPesoFinal(rs.getInt("pesofinal"));
+                dieta.setPesoInicial(rs.getDouble("pesoinicial"));
+                dieta.setMeta(rs.getDouble("meta"));
+                dieta.setPesoFinal(rs.getDouble("pesofinal"));
                 dieta.setFechaInicial(rs.getDate("fechainicial").toLocalDate());
                 
-            } else {
-                System.out.println("No existe la Dieta");
+//            } else {
+//                System.out.println("No existe la Dieta");
             }
             ps.close();
 

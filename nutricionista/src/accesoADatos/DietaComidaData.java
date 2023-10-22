@@ -164,13 +164,13 @@ public class DietaComidaData {
      */
     public void eliminarDietaComida(int idDietaComida) {
         try{
-            String sql = "DELETE FROM dietacomida WHERE AND iddietacomida = ?";
+            String sql = "DELETE FROM dietacomida WHERE iddietacomida = ?";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1, idDietaComida);
             int filas = ps.executeUpdate();
             
-            if(filas == 1){
-                System.out.println("Eliminado con exito");
+            if(filas >= 1){
+//                System.out.println("Eliminado con exito");
             }else{
                 System.out.println("Hubo un problema");
             }
@@ -178,7 +178,46 @@ public class DietaComidaData {
         }catch(SQLException ex){
             System.out.println("Error en la base de datos");
         }
-    } 
+    }
+    public void eliminarRelacionesXidDieta(int idDieta) {
+        try{
+            String sql = "DELETE FROM dietacomida WHERE iddieta = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idDieta);
+
+            int filas = ps.executeUpdate();
+            System.out.println(filas);
+////            if(filas == 1){
+////                System.out.println("Eliminado con exito");
+////            }else{
+////                System.out.println("Hubo un problema");
+////            }
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error en la base de datos");
+        }
+    }
+    public void eliminarRelacionesXidComida(int idComida) {
+        try{
+            String sql = "DELETE FROM dietacomida WHERE idcomida = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idComida);
+            ResultSet Relaciones = ps.executeQuery();
+            while(Relaciones.next()){
+                System.out.println(Relaciones.getInt("iddietacomida"));
+            }
+//            int filas = ps.executeUpdate();
+//            
+//            if(filas == 1){
+//                System.out.println("Eliminado con exito");
+//            }else{
+//                System.out.println("Hubo un problema");
+//            }
+            ps.close();
+        }catch(SQLException ex){
+            System.out.println("Error en la base de datos");
+        }
+    }
     /**
      * listarPacientesExitosos
      * Lista de Pacientes que han finalizado con exito su dieta
@@ -229,7 +268,29 @@ public class DietaComidaData {
         
         ComidaData cd = new ComidaData();
         try {
-            String sql = "SELECT * FROM comidadieta WHERE iddieta = ?";
+            String sql = "SELECT * FROM dietacomida WHERE iddieta = ?";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1,idDieta);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                comida = cd.buscarComida(rs.getInt("idcomida"));
+                comidas.add(comida);
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            System.out.println("Error al acceder a la tabla ComidaDieta");
+        }
+        return comidas;
+    }
+    public List<Comida> listarComidasNoDieta(int idDieta) {
+        List<Comida> comidas = new ArrayList<>();
+        Comida comida = new Comida();
+        
+        ComidaData cd = new ComidaData();
+        try {
+            String sql = "SELECT * FROM comida WHERE idcomida NOT IN ( SELECT idcomida FROM dietacomida WHERE iddieta = ?)";
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setInt(1,idDieta);
             ResultSet rs = ps.executeQuery();

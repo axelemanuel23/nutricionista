@@ -221,6 +221,11 @@ static DietaInformacion dI = new DietaInformacion();
         jBLDieta.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(102, 102, 102)));
         jBLDieta.setBorderPainted(false);
         jBLDieta.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jBLDieta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBLDietaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPToggleMenuLayout = new javax.swing.GroupLayout(jPToggleMenu);
         jPToggleMenu.setLayout(jPToggleMenuLayout);
@@ -621,12 +626,12 @@ static DietaInformacion dI = new DietaInformacion();
             .addGroup(ContenedorLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
+                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                 .addGap(85, 85, 85)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE))
+                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
         );
         ContenedorLayout.setVerticalGroup(
@@ -879,7 +884,13 @@ static DietaInformacion dI = new DietaInformacion();
 
     private void jBRDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRDietaActionPerformed
         superponerPanel(dR);
+        dR.cargarCombo();
+        
     }//GEN-LAST:event_jBRDietaActionPerformed
+
+    private void jBLDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLDietaActionPerformed
+        superponerPanel(dI);
+    }//GEN-LAST:event_jBLDietaActionPerformed
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();

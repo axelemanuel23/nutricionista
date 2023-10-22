@@ -6,6 +6,7 @@
 package vistas;
 
 import accesoADatos.ComidaData;
+import accesoADatos.DietaComidaData;
 import entidades.Comida;
 import java.awt.Color;
 import javax.swing.JOptionPane;
@@ -16,6 +17,7 @@ import javax.swing.JOptionPane;
  */
 public class ComidaRegistro extends javax.swing.JInternalFrame {
 static ComidaData cD = new ComidaData();
+static DietaComidaData dCD = new DietaComidaData();
     /**
      * Creates new form ComidaRegistro
      */
@@ -280,9 +282,11 @@ static ComidaData cD = new ComidaData();
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
         try{
+            
             String nombreC = jCBNombreComida.getSelectedItem().toString();
             cD.buscarComida(nombreC);
             Comida comida = cD.buscarComida(nombreC);
+            dCD.eliminarRelacionesXidComida(comida.getIdComida());
             cD.eliminarComida(comida.getIdComida()); 
             
             jCBNombreComida.removeAllItems();
