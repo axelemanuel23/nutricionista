@@ -107,7 +107,13 @@ public class Dieta {
     
     public boolean metaCumplida(){
         if(finalizado()){
-            return this.pesoFinal == meta ;
+            /*if(this.pesoInicial > this.meta){
+                return this.pesoFinal <= meta ;
+            }else {
+                return this.pesoFinal >= meta ;
+            }*/
+            return (this.pesoInicial > this.meta)? (this.pesoFinal <= meta) : (this.pesoFinal >= meta) ;
+            
         }else{
             return false;
         }

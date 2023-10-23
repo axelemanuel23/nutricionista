@@ -79,7 +79,7 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
         jLTotal1 = new javax.swing.JLabel();
         jLTotal = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(833, 515));
+        setPreferredSize(new java.awt.Dimension(640, 480));
 
         jTComidas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -142,7 +142,7 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(layout.createSequentialGroup()
@@ -190,7 +190,7 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBAñadir)
                     .addComponent(jBEliminar))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();

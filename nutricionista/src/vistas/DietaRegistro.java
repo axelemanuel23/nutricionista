@@ -65,7 +65,7 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
         jLNombreP = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(833, 515));
+        setPreferredSize(new java.awt.Dimension(740, 420));
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -155,6 +155,9 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTFPesoFinalKeyPressed(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTFPesoFinalKeyTyped(evt);
+            }
         });
 
         jBLimpiar.setText("Limpiar");
@@ -225,7 +228,7 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
                                             .addGap(18, 18, 18)
                                             .addComponent(jTFMeta)))
                                     .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 34, Short.MAX_VALUE)
+                                .addGap(18, 26, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel8)
@@ -281,7 +284,7 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel7)
                                 .addComponent(jTFPesoInicial, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,6 +333,7 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
     private void jCBPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBPacienteActionPerformed
         try { 
             //Hay que ver porque se repite la alerta
+            if (jCBPaciente.getSelectedIndex() != -1) {
                 int dni = Integer.parseInt(jCBPaciente.getSelectedItem().toString()) ;
                 Paciente paciente = pD.buscarPacienteXDNI(dni);
                 Dieta dieta = dD.buscarDietaXPaciente(paciente.getIdPaciente());
@@ -344,8 +348,9 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
                 jTFPesoInicial.setText(dieta.getPesoInicial()+"");
                 jTFPesoFinal.setText(dieta.getPesoFinal()+"");
                 jLNombreP.setText(paciente.getNombre());
+                
                 }
-            
+            }
         } catch (Exception e) {
         }
     }//GEN-LAST:event_jCBPacienteActionPerformed
@@ -356,33 +361,32 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
-        try{
-        int dni = Integer.parseInt(jCBPaciente.getSelectedItem().toString()) ;
-        Paciente paciente = pD.buscarPacienteXDNI(dni);
-        Dieta dieta = dD.buscarDietaXPaciente(paciente.getIdPaciente());
-        Dieta modificacion = new Dieta();
-        
-      
-        
-        modificacion.setPaciente(paciente);
-        modificacion.setNombre(jTFNombre.getText());
-        modificacion.setFechaInicial(jDCFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        modificacion.setFechaFinal(jDCFechaFinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-        modificacion.setMeta( Double.parseDouble(jTFMeta.getText()) );
-        modificacion.setPesoFinal(Double.parseDouble(jTFPesoFinal.getText()));
-        modificacion.setPesoInicial(Double.parseDouble(jTFPesoInicial.getText()));
-        
-        
-        if(dieta != null){
-            dD.modificarDieta(dieta.getIdDieta(), modificacion);
-        }else{
-            dD.crearDieta(modificacion);
-        }
-        }
-        catch(NumberFormatException e){
+        try {
+            int dni = Integer.parseInt(jCBPaciente.getSelectedItem().toString());
+            Paciente paciente = pD.buscarPacienteXDNI(dni);
+            Dieta dieta = dD.buscarDietaXPaciente(paciente.getIdPaciente());
+            Dieta modificacion = new Dieta();
+
+            modificacion.setPaciente(paciente);
+            modificacion.setNombre(jTFNombre.getText());
+            modificacion.setFechaInicial(jDCFechaInicio.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            modificacion.setFechaFinal(jDCFechaFinal.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            modificacion.setMeta(Double.parseDouble(jTFMeta.getText()));
+            modificacion.setPesoFinal(Double.parseDouble(jTFPesoFinal.getText()));
+            modificacion.setPesoInicial(Double.parseDouble(jTFPesoInicial.getText()));
+            if (modificacion.getFechaInicial().isBefore(modificacion.getFechaFinal())) {
+                if (dieta != null) {
+                    dD.modificarDieta(dieta.getIdDieta(), modificacion);
+                } else {
+                    dD.crearDieta(modificacion);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "La fecha final tiene que ser mayor a la inicial");
+            }
+        } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Ingrese valores validos");
 
-        }catch(NullPointerException e){
+        } catch (NullPointerException e) {
             JOptionPane.showMessageDialog(null, "Complete todos los campos");
         }
     }//GEN-LAST:event_jBGuardarActionPerformed
@@ -437,6 +441,14 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
     private void jTFNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTFNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTFNombreActionPerformed
+
+    private void jTFPesoFinalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTFPesoFinalKeyTyped
+            int key = evt.getKeyChar();
+
+    if (!Character.isDigit(key) && key != '.' && key != '\b') {
+                    evt.consume();
+    }
+    }//GEN-LAST:event_jTFPesoFinalKeyTyped
     public void cargarCombo(){
         jCBPaciente.removeAllItems();
         for (Paciente elem : pD.listarPacientesActivos()) {
@@ -444,6 +456,7 @@ public class DietaRegistro extends javax.swing.JInternalFrame {
         }
     }
     private void limpiar(){
+        jLNombreP.setText("");
         jTFNombre.setText("");
         jDCFechaFinal.setDate(null);
         jDCFechaInicio.setDate(null);
