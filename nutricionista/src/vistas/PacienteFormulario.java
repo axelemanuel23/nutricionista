@@ -12,7 +12,7 @@ static PacienteData pD = new PacienteData();
      */
     public PacienteFormulario() {
         initComponents();
-        coloresBotones();
+        //coloresBotones();
         //cargarCombo();
     }
 
@@ -62,62 +62,50 @@ static PacienteData pD = new PacienteData();
         jBEliminar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
         setResizable(true);
         setTitle("Formulario de Paciente");
         setFrameIcon(null);
-        setPreferredSize(new java.awt.Dimension(425, 405));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 20)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Formulario de Pacientes");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, -1));
-        getContentPane().add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 320, 10));
 
         jTFTelefono.setBackground(new java.awt.Color(242, 248, 248));
+        jTFTelefono.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jTFTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFTelefonoKeyTyped(evt);
             }
         });
-        getContentPane().add(jTFTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 167, 25));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel2.setText("Documento: ");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel3.setText("Nombre y Apellido: ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel4.setText("Domicilio: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel5.setText("Telefono: ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jTFNombre.setBackground(new java.awt.Color(242, 248, 248));
+        jTFNombre.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jTFNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 jTFNombreKeyTyped(evt);
             }
         });
-        getContentPane().add(jTFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 167, 25));
 
         jTFDomicilio.setBackground(new java.awt.Color(242, 248, 248));
-        getContentPane().add(jTFDomicilio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 167, 25));
+        jTFDomicilio.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
 
         jCBDni.setBackground(new java.awt.Color(242, 248, 248));
         jCBDni.setEditable(true);
+        jCBDni.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jCBDni.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jCBDniMouseClicked(evt);
@@ -133,11 +121,10 @@ static PacienteData pD = new PacienteData();
                 jCBDniKeyTyped(evt);
             }
         });
-        getContentPane().add(jCBDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 165, 25));
 
-        jBGuardar.setBackground(new java.awt.Color(0, 38, 255));
-        jBGuardar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jBGuardar.setForeground(new java.awt.Color(51, 51, 51));
+        jBGuardar.setBackground(new java.awt.Color(0, 255, 0));
+        jBGuardar.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jBGuardar.setForeground(new java.awt.Color(255, 255, 255));
         jBGuardar.setText("Guardar");
         jBGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBGuardar.setFocusPainted(false);
@@ -146,11 +133,10 @@ static PacienteData pD = new PacienteData();
                 jBGuardarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 90, 38));
 
-        jBEliminar.setBackground(new java.awt.Color(0, 38, 255));
-        jBEliminar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jBEliminar.setForeground(new java.awt.Color(51, 51, 51));
+        jBEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        jBEliminar.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jBEliminar.setForeground(new java.awt.Color(255, 255, 255));
         jBEliminar.setText("Eliminar");
         jBEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBEliminar.setFocusPainted(false);
@@ -159,11 +145,10 @@ static PacienteData pD = new PacienteData();
                 jBEliminarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 90, 38));
 
-        jBLimpiar.setBackground(new java.awt.Color(0, 38, 255));
-        jBLimpiar.setFont(new java.awt.Font("Segoe UI Light", 0, 14)); // NOI18N
-        jBLimpiar.setForeground(new java.awt.Color(51, 51, 51));
+        jBLimpiar.setBackground(new java.awt.Color(0, 102, 255));
+        jBLimpiar.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jBLimpiar.setForeground(new java.awt.Color(255, 255, 255));
         jBLimpiar.setText("Limpiar");
         jBLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBLimpiar.setFocusPainted(false);
@@ -172,7 +157,6 @@ static PacienteData pD = new PacienteData();
                 jBLimpiarActionPerformed(evt);
             }
         });
-        getContentPane().add(jBLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 80, 38));
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -192,10 +176,83 @@ static PacienteData pD = new PacienteData();
                 jBSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 25, 26));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul.jpeg"))); // NOI18N
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 420));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel2)
+                        .addGap(61, 61, 61)
+                        .addComponent(jCBDni, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(30, 30, 30)
+                        .addComponent(jBLimpiar)
+                        .addGap(87, 87, 87)
+                        .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(20, 20, 20)
+                        .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(100, 100, 100)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)))
+                .addGap(21, 21, 21)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jLabel2))
+                    .addComponent(jCBDni, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTFNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jTFDomicilio, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jTFTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(71, 71, 71)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jBLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -337,7 +394,6 @@ static PacienteData pD = new PacienteData();
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTFDomicilio;
     private javax.swing.JTextField jTFNombre;

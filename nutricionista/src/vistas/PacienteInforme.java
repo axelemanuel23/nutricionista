@@ -62,6 +62,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTPInforme = new javax.swing.JTable();
+        jSeparator1 = new javax.swing.JSeparator();
         jRBPacienteE = new javax.swing.JRadioButton();
         jRBPacientesS = new javax.swing.JRadioButton();
         jRBPacientesP = new javax.swing.JRadioButton();
@@ -70,12 +71,11 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jBSalir = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(730, 450));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setPreferredSize(null);
 
+        jTPInforme.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
         jTPInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -96,9 +96,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTPInforme);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 710, 310));
-
-        jRBPacienteE.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacienteE.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacienteE.setText("Exitosos");
         jRBPacienteE.setBorder(null);
         jRBPacienteE.setOpaque(false);
@@ -107,9 +105,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacienteEActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacienteE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, -1, -1));
 
-        jRBPacientesS.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacientesS.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacientesS.setText("Sin Exito");
         jRBPacientesS.setBorder(null);
         jRBPacientesS.setOpaque(false);
@@ -118,9 +115,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacientesSActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesS, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, -1, -1));
 
-        jRBPacientesP.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBPacientesP.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacientesP.setText("En Progreso");
         jRBPacientesP.setBorder(null);
         jRBPacientesP.setOpaque(false);
@@ -129,9 +125,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBPacientesPActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBPacientesP, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, -1, -1));
 
-        jRBInactivos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jRBInactivos.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBInactivos.setText("Inactivos");
         jRBInactivos.setBorder(null);
         jRBInactivos.setOpaque(false);
@@ -140,13 +135,11 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jRBInactivosActionPerformed(evt);
             }
         });
-        getContentPane().add(jRBInactivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
-        jLTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLTotal.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLTotal.setText("Total: ?");
-        getContentPane().add(jLTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 60, -1, -1));
 
-        jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
+        jBSalir.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jBSalir.setText("X");
         jBSalir.setBorder(null);
         jBSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -164,19 +157,64 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 jBSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(jBSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 25, 26));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel2.setText("Informe de Paciente");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 0, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 3, 13)); // NOI18N
-        jLabel3.setText("Eliga una opcion:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
+        jLabel3.setText("Paciente:");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/fondo azul 2.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(730, 450));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 450));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(23, 23, 23)
+                        .addComponent(jRBPacienteE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRBPacientesS)
+                        .addGap(9, 9, 9)
+                        .addComponent(jRBPacientesP)
+                        .addGap(7, 7, 7)
+                        .addComponent(jRBInactivos)
+                        .addGap(188, 188, 188)
+                        .addComponent(jLTotal))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 710, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel2)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(165, 165, 165)
+                .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2))
+                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jRBPacienteE)
+                    .addComponent(jRBPacientesS)
+                    .addComponent(jRBPacientesP)
+                    .addComponent(jRBInactivos)
+                    .addComponent(jLTotal))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -283,7 +321,6 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;
     private javax.swing.JLabel jLTotal;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JRadioButton jRBInactivos;
@@ -291,6 +328,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBPacientesP;
     private javax.swing.JRadioButton jRBPacientesS;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTPInforme;
     // End of variables declaration//GEN-END:variables
 }

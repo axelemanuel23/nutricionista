@@ -78,13 +78,15 @@ static ComidaData cD = new ComidaData();
         jBSalir = new javax.swing.JButton();
         jRBTodas = new javax.swing.JRadioButton();
         jLCantidadC = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setBorder(null);
         setMaximumSize(new java.awt.Dimension(730, 465));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel1.setText("Informacion de la Comida");
 
+        jTComida.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jTComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -98,6 +100,7 @@ static ComidaData cD = new ComidaData();
         ));
         jScrollPane1.setViewportView(jTComida);
 
+        jRBMayorCaloria.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jRBMayorCaloria.setText("Mayor");
         jRBMayorCaloria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
+        jRBMenorCaloria.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jRBMenorCaloria.setText("Menor");
         jRBMenorCaloria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,6 +116,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
+        jTFCantCalorias.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
         jTFCantCalorias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTFCantCaloriasActionPerformed(evt);
@@ -126,8 +131,8 @@ static ComidaData cD = new ComidaData();
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Buscar por Caloria");
+        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel2.setText("Buscar por Caloria: ");
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
         jBSalir.setText("X");
@@ -148,6 +153,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
+        jRBTodas.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
         jRBTodas.setText("Todos");
         jRBTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +161,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
-        jLCantidadC.setFont(new java.awt.Font("Tahoma", 0, 15)); // NOI18N
+        jLCantidadC.setFont(new java.awt.Font("Agency FB", 0, 15)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -167,7 +173,7 @@ static ComidaData cD = new ComidaData();
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(142, 142, 142)
+                        .addGap(179, 179, 179)
                         .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,16 +193,20 @@ static ComidaData cD = new ComidaData();
                                         .addComponent(jRBTodas)))
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(122, 122, 122))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1))
-                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jBSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -319,6 +329,7 @@ static ComidaData cD = new ComidaData();
     private javax.swing.JRadioButton jRBMenorCaloria;
     private javax.swing.JRadioButton jRBTodas;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTComida;
     private javax.swing.JTextField jTFCantCalorias;
     // End of variables declaration//GEN-END:variables
