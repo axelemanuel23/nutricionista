@@ -186,6 +186,31 @@ public class PacienteData {
         }
         return pacientes;
     }
+    public List<Paciente> listarPacientesConDieta() {
+        List<Paciente> pacientes = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM paciente JOIN dieta on(paciente.idPaciente = dieta.idPaciente) Where paciente.estado = true";
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Paciente paciente = new Paciente();
+
+                paciente.setNombre(rs.getString("nombre"));
+                paciente.setDni(rs.getInt("dni"));
+                paciente.setIdPaciente(rs.getInt("idPaciente"));
+                paciente.setDomicilio(rs.getString("domicilio"));
+                paciente.setTelefono(rs.getString("telefono"));
+                pacientes.add(paciente);
+            }
+            ps.close();
+
+        } catch (SQLException e) {
+            //Parte grafica del mensaje
+            System.out.println("Error al acceder a la tabla paciente");
+        }
+        return pacientes;
+    }
     
      public List<Paciente> listarPacientesInactivos() {
         List<Paciente> pacientes = new ArrayList<>();

@@ -73,9 +73,8 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(null);
 
-        jTPInforme.setFont(new java.awt.Font("Agency FB", 1, 14)); // NOI18N
+        jTPInforme.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTPInforme.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -99,7 +98,6 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBPacienteE.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacienteE.setText("Exitosos");
         jRBPacienteE.setBorder(null);
-        jRBPacienteE.setOpaque(false);
         jRBPacienteE.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacienteEActionPerformed(evt);
@@ -109,7 +107,6 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBPacientesS.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacientesS.setText("Sin Exito");
         jRBPacientesS.setBorder(null);
-        jRBPacientesS.setOpaque(false);
         jRBPacientesS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesSActionPerformed(evt);
@@ -119,7 +116,6 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBPacientesP.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBPacientesP.setText("En Progreso");
         jRBPacientesP.setBorder(null);
-        jRBPacientesP.setOpaque(false);
         jRBPacientesP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBPacientesPActionPerformed(evt);
@@ -129,7 +125,6 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
         jRBInactivos.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBInactivos.setText("Inactivos");
         jRBInactivos.setBorder(null);
-        jRBInactivos.setOpaque(false);
         jRBInactivos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRBInactivosActionPerformed(evt);

@@ -86,7 +86,7 @@ static ComidaData cD = new ComidaData();
         jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
         jLabel1.setText("Informacion de la Comida");
 
-        jTComida.setFont(new java.awt.Font("Agency FB", 0, 14)); // NOI18N
+        jTComida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTComida.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
