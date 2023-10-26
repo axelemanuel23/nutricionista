@@ -89,8 +89,10 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLFecha1" pref="374" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="350" max="-2" attributes="0"/>
+                      <Component id="jLFecha1" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="235" max="-2" attributes="0"/>
+                      <Component id="jLFecha" min="-2" pref="75" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -100,6 +102,10 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLFecha1" min="-2" pref="53" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="jLFecha" min="-2" pref="47" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -114,6 +120,20 @@
                   <Color blue="33" green="33" red="33" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Hoy es {dia}, de {mes} de {anio}"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLFecha">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ba" green="c1" red="41" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="19" style="3"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="33" green="33" red="33" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="{hora}"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -134,13 +154,13 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosPaciente" pref="306" max="32767" attributes="0"/>
-                          <Component id="jTContDatosComida" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosPaciente" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosComida" pref="304" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTContDatosDieta" pref="306" max="32767" attributes="0"/>
-                          <Component id="jTContDatosAlgo" pref="306" max="32767" attributes="0"/>
+                          <Component id="jTContDatosDieta" pref="304" max="32767" attributes="0"/>
+                          <Component id="jTContDatosAlgo" pref="304" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                   </Group>
@@ -187,19 +207,11 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jBFComida" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jBFPacientes" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                  <Component id="jBRDieta" min="-2" pref="85" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jBFComida" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="jBFPacientes" min="-2" pref="85" max="-2" attributes="0"/>
+                              <Component id="jBRDieta" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -208,8 +220,6 @@
                               <Component id="jBLComida" alignment="0" min="-2" pref="85" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLFecha" min="-2" pref="75" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -225,7 +235,6 @@
                                   <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                   <Component id="jBRDieta" min="-2" pref="30" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jLFecha" alignment="0" min="-2" pref="47" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="11" pref="11" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -236,7 +245,7 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -367,20 +376,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBLDietaActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLFecha">
-                  <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ba" green="c1" red="41" type="rgb"/>
-                    </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="19" style="3"/>
-                    </Property>
-                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="33" green="33" red="33" type="rgb"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="{hora}"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -581,9 +576,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabel13" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabel12" max="32767" attributes="0"/>
+                          <Component id="jLabel12" pref="0" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabel14" pref="102" max="32767" attributes="0"/>
+                          <Component id="jLabel14" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLDietasExitosas" max="32767" attributes="0"/>
@@ -925,9 +920,9 @@
                       <Group type="102" attributes="0">
                           <Component id="jLabelEP" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabel5" max="32767" attributes="0"/>
+                          <Component id="jLabel5" pref="0" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
-                          <Component id="jLabel7" pref="102" max="32767" attributes="0"/>
+                          <Component id="jLabel7" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLPacientesExitosos" max="32767" attributes="0"/>
@@ -1088,23 +1083,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="15" max="32767" attributes="0"/>
-                              <Component id="jBInicio" min="-2" pref="70" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jBPacientes" max="32767" attributes="0"/>
-                                  <Component id="jBComidas" max="32767" attributes="0"/>
-                                  <Component id="jBDietas" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jBPacientes" pref="100" max="32767" attributes="0"/>
+                  <Component id="jBComidas" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jBDietas" max="32767" attributes="0"/>
+                  <Component id="jBInicio" alignment="0" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1126,14 +1108,18 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="jBInicio">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="e3" green="eb" red="60" type="rgb"/>
+                </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Agency FB" size="24" style="1"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Inicio"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="null"/>
+                  <Border info="org.netbeans.modules.form.compat2.border.EmptyBorderInfo">
+                    <EmptyBorder bottom="0" left="0" right="0" top="0"/>
+                  </Border>
                 </Property>
-                <Property name="borderPainted" type="boolean" value="false"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
                   <Color id="Cursor de Mano"/>
                 </Property>
@@ -1143,6 +1129,8 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBInicioMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBInicioMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBInicioActionPerformed"/>
               </Events>
             </Component>
@@ -1164,6 +1152,8 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBPacientesMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBPacientesMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBPacientesActionPerformed"/>
               </Events>
             </Component>
@@ -1186,6 +1176,8 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBComidasMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBComidasMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBComidasActionPerformed"/>
               </Events>
             </Component>
@@ -1207,6 +1199,8 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBDietasMouseEntered"/>
+                <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jBDietasMouseExited"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBDietasActionPerformed"/>
               </Events>
             </Component>
