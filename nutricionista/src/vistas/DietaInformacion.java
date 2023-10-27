@@ -81,7 +81,6 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
         jLTotal = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(640, 480));
 
         jTComidas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jTComidas.setModel(new javax.swing.table.DefaultTableModel(
@@ -184,7 +183,7 @@ public class DietaInformacion extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(371, 382, Short.MAX_VALUE)
+                        .addGap(371, 500, Short.MAX_VALUE)
                         .addComponent(jBAñadir)
                         .addGap(18, 18, 18)
                         .addComponent(jBEliminar))

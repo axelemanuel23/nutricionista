@@ -100,7 +100,7 @@
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="24" style="0"/>
+          <Font name="Agency FB" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Informacion de la Comida"/>
       </Properties>
@@ -132,7 +132,7 @@
     <Component class="javax.swing.JRadioButton" name="jRBMayorCaloria">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="18" style="0"/>
+          <Font name="Agency FB" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Mayor"/>
       </Properties>
@@ -143,7 +143,7 @@
     <Component class="javax.swing.JRadioButton" name="jRBMenorCaloria">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="18" style="0"/>
+          <Font name="Agency FB" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Menor"/>
       </Properties>
@@ -166,7 +166,7 @@
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="18" style="0"/>
+          <Font name="Agency FB" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Buscar por Caloria: "/>
       </Properties>
@@ -194,7 +194,7 @@
     <Component class="javax.swing.JRadioButton" name="jRBTodas">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Agency FB" size="18" style="0"/>
+          <Font name="Agency FB" size="18" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Todos"/>
       </Properties>

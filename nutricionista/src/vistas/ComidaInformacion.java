@@ -83,7 +83,7 @@ static ComidaData cD = new ComidaData();
         setBorder(null);
         setMaximumSize(new java.awt.Dimension(730, 465));
 
-        jLabel1.setFont(new java.awt.Font("Agency FB", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jLabel1.setText("Informacion de la Comida");
 
         jTComida.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -100,7 +100,7 @@ static ComidaData cD = new ComidaData();
         ));
         jScrollPane1.setViewportView(jTComida);
 
-        jRBMayorCaloria.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jRBMayorCaloria.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBMayorCaloria.setText("Mayor");
         jRBMayorCaloria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,7 +108,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
-        jRBMenorCaloria.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jRBMenorCaloria.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBMenorCaloria.setText("Menor");
         jRBMenorCaloria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +131,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jLabel2.setText("Buscar por Caloria: ");
 
         jBSalir.setFont(new java.awt.Font("Microsoft Sans Serif", 0, 11)); // NOI18N
@@ -153,7 +153,7 @@ static ComidaData cD = new ComidaData();
             }
         });
 
-        jRBTodas.setFont(new java.awt.Font("Agency FB", 0, 18)); // NOI18N
+        jRBTodas.setFont(new java.awt.Font("Agency FB", 1, 18)); // NOI18N
         jRBTodas.setText("Todos");
         jRBTodas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

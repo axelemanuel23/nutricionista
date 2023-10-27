@@ -63,7 +63,7 @@ static PacienteData pD = new PacienteData();
         jBLimpiar = new javax.swing.JButton();
         jBSalir = new javax.swing.JButton();
 
-        setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        setBorder(null);
         setResizable(true);
         setTitle("Formulario de Paciente");
         setFrameIcon(null);
