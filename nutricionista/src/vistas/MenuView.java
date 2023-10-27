@@ -75,7 +75,8 @@ static DietaInformacion dI = new DietaInformacion();
     }
     
     public void toggleMenu(){
-        jPToggleMenu.setVisible(false);
+        jPToggleMenu.setVisible(true);
+        limpiarMenu();
     }
     
     /**
@@ -99,6 +100,7 @@ static DietaInformacion dI = new DietaInformacion();
         jBRDieta = new javax.swing.JButton();
         jBLDieta = new javax.swing.JButton();
         jLIndicadorMenu = new javax.swing.JLabel();
+        jLIndicadorNombre = new javax.swing.JLabel();
         jTContDatosComida = new javax.swing.JPanel();
         jLTituloComida = new javax.swing.JLabel();
         jLComidaActivas = new javax.swing.JLabel();
@@ -115,14 +117,6 @@ static DietaInformacion dI = new DietaInformacion();
         jLDietasExitosas = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLDietasSExitosas = new javax.swing.JLabel();
-        jTContDatosAlgo = new javax.swing.JPanel();
-        jLTituloAlgo = new javax.swing.JLabel();
-        jLAlgoA = new javax.swing.JLabel();
-        jLAlgo = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLPacientesExitosos3 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLSinExito3 = new javax.swing.JLabel();
         jTContDatosPaciente = new javax.swing.JPanel();
         jLTituloPaciente = new javax.swing.JLabel();
         jTPacienteActivos = new javax.swing.JLabel();
@@ -136,7 +130,6 @@ static DietaInformacion dI = new DietaInformacion();
         jBPacientes = new javax.swing.JButton();
         jBComidas = new javax.swing.JButton();
         jBDietas = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -147,33 +140,33 @@ static DietaInformacion dI = new DietaInformacion();
         jPPresentacion.setBackground(new java.awt.Color(65, 193, 186));
         jPPresentacion.setPreferredSize(new java.awt.Dimension(420, 55));
 
-        jLFecha1.setFont(new java.awt.Font("Tahoma", 3, 19)); // NOI18N
-        jLFecha1.setForeground(new java.awt.Color(255, 255, 255));
+        jLFecha1.setBackground(new java.awt.Color(153, 153, 153));
+        jLFecha1.setFont(new java.awt.Font("Tahoma", 2, 18)); // NOI18N
         jLFecha1.setText("Hoy es {dia}, de {mes} de {anio}");
 
         javax.swing.GroupLayout jPPresentacionLayout = new javax.swing.GroupLayout(jPPresentacion);
         jPPresentacion.setLayout(jPPresentacionLayout);
         jPPresentacionLayout.setHorizontalGroup(
             jPPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPPresentacionLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(jLFecha1, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
-                .addGap(310, 310, 310))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPresentacionLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLFecha1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPPresentacionLayout.setVerticalGroup(
             jPPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPPresentacionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLFecha1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
-                .addGap(10, 10, 10))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPPresentacionLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLFecha1, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
-        Contenedor.setBackground(new java.awt.Color(216, 255, 185));
+        Contenedor.setBackground(new java.awt.Color(255, 255, 255));
         Contenedor.setPreferredSize(new java.awt.Dimension(730, 465));
 
-        jPToggleMenu.setBackground(new java.awt.Color(31, 213, 181));
+        jPToggleMenu.setBackground(new java.awt.Color(65, 193, 186));
         jPToggleMenu.setPreferredSize(new java.awt.Dimension(730, 50));
 
+        jBFPacientes.setBackground(new java.awt.Color(150, 150, 150));
         jBFPacientes.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBFPacientes.setText("Registro");
         jBFPacientes.setBorder(null);
@@ -195,6 +188,7 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jBFComida.setBackground(new java.awt.Color(150, 150, 150));
         jBFComida.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBFComida.setText("Registro");
         jBFComida.setBorder(null);
@@ -216,6 +210,7 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jBIPacientes.setBackground(new java.awt.Color(150, 150, 150));
         jBIPacientes.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBIPacientes.setText("Informes");
         jBIPacientes.setBorder(null);
@@ -237,6 +232,7 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jBLComida.setBackground(new java.awt.Color(150, 150, 150));
         jBLComida.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBLComida.setText("Listado");
         jBLComida.setBorder(null);
@@ -258,6 +254,7 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jBRDieta.setBackground(new java.awt.Color(150, 150, 150));
         jBRDieta.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBRDieta.setText("Registro");
         jBRDieta.setBorder(null);
@@ -279,6 +276,7 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jBLDieta.setBackground(new java.awt.Color(150, 150, 150));
         jBLDieta.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
         jBLDieta.setText("Listado");
         jBLDieta.setBorder(null);
@@ -300,8 +298,13 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
+        jLIndicadorMenu.setBackground(new java.awt.Color(150, 150, 150));
         jLIndicadorMenu.setFont(new java.awt.Font("Agency FB", 3, 24)); // NOI18N
         jLIndicadorMenu.setForeground(new java.awt.Color(131, 249, 228));
+
+        jLIndicadorNombre.setBackground(new java.awt.Color(150, 150, 150));
+        jLIndicadorNombre.setFont(new java.awt.Font("Agency FB", 3, 36)); // NOI18N
+        jLIndicadorNombre.setForeground(new java.awt.Color(131, 249, 228));
 
         javax.swing.GroupLayout jPToggleMenuLayout = new javax.swing.GroupLayout(jPToggleMenu);
         jPToggleMenu.setLayout(jPToggleMenuLayout);
@@ -320,6 +323,11 @@ static DietaInformacion dI = new DietaInformacion();
                     .addComponent(jBLComida, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLIndicadorMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPToggleMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPToggleMenuLayout.createSequentialGroup()
+                    .addGap(292, 292, 292)
+                    .addComponent(jLIndicadorNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(10, 10, 10)))
         );
         jPToggleMenuLayout.setVerticalGroup(
             jPToggleMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -336,59 +344,66 @@ static DietaInformacion dI = new DietaInformacion();
                                 .addComponent(jBLComida, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLIndicadorMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jBFPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPToggleMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPToggleMenuLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLIndicadorNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         jTContDatosComida.setBackground(new java.awt.Color(255, 255, 255));
-        jTContDatosComida.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         jTContDatosComida.setFocusable(false);
         jTContDatosComida.setPreferredSize(new java.awt.Dimension(270, 170));
 
-        jLTituloComida.setBackground(new java.awt.Color(255, 153, 51));
+        jLTituloComida.setBackground(new java.awt.Color(65, 193, 186));
         jLTituloComida.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLTituloComida.setForeground(new java.awt.Color(255, 255, 255));
         jLTituloComida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTituloComida.setText("Comidas");
+        jLTituloComida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLTituloComida.setOpaque(true);
         jLTituloComida.setPreferredSize(new java.awt.Dimension(235, 33));
 
         jLComidaActivas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLComidaActivas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLComidaActivas.setText("**");
+        jLComidaActivas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLComidaActivas.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel15.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel15.setBackground(new java.awt.Color(251, 230, 152));
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Activos");
+        jLabel15.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel15.setOpaque(true);
         jLabel15.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel16.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel16.setBackground(new java.awt.Color(251, 230, 152));
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText(" +500 kcal");
+        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel16.setOpaque(true);
         jLabel16.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLComidaExitosa.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLComidaExitosa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLComidaExitosa.setText("**");
+        jLComidaExitosa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLComidaExitosa.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel17.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel17.setBackground(new java.awt.Color(251, 230, 152));
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText(" -500 kcal");
+        jLabel17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel17.setOpaque(true);
         jLabel17.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLComidaSExito.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLComidaSExito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLComidaSExito.setText("**");
+        jLComidaSExito.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLComidaSExito.setPreferredSize(new java.awt.Dimension(100, 50));
 
         javax.swing.GroupLayout jTContDatosComidaLayout = new javax.swing.GroupLayout(jTContDatosComida);
@@ -397,17 +412,19 @@ static DietaInformacion dI = new DietaInformacion();
             jTContDatosComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLTituloComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jTContDatosComidaLayout.createSequentialGroup()
-                .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jTContDatosComidaLayout.createSequentialGroup()
-                .addComponent(jLComidaExitosa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLComidaActivas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLComidaSExito, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jTContDatosComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jTContDatosComidaLayout.createSequentialGroup()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jTContDatosComidaLayout.createSequentialGroup()
+                        .addComponent(jLComidaExitosa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0)
+                        .addComponent(jLComidaActivas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, 0)))
+                .addGroup(jTContDatosComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLComidaSExito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jTContDatosComidaLayout.setVerticalGroup(
             jTContDatosComidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -425,55 +442,63 @@ static DietaInformacion dI = new DietaInformacion();
         );
 
         jTContDatosDieta.setBackground(new java.awt.Color(255, 255, 255));
-        jTContDatosDieta.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         jTContDatosDieta.setFocusable(false);
         jTContDatosDieta.setPreferredSize(new java.awt.Dimension(270, 170));
 
-        jLTituloDieta.setBackground(new java.awt.Color(255, 153, 51));
+        jLTituloDieta.setBackground(new java.awt.Color(65, 193, 186));
         jLTituloDieta.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLTituloDieta.setForeground(new java.awt.Color(255, 255, 255));
         jLTituloDieta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTituloDieta.setText("Dieta");
+        jLTituloDieta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLTituloDieta.setOpaque(true);
         jLTituloDieta.setPreferredSize(new java.awt.Dimension(235, 33));
 
         jLDietasActivas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLDietasActivas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLDietasActivas.setText("**");
+        jLDietasActivas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLDietasActivas.setMaximumSize(null);
         jLDietasActivas.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel12.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel12.setBackground(new java.awt.Color(251, 230, 152));
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Activos");
+        jLabel12.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel12.setMaximumSize(null);
         jLabel12.setOpaque(true);
         jLabel12.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel13.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel13.setBackground(new java.awt.Color(251, 230, 152));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel13.setText("Exitosos");
+        jLabel13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel13.setMaximumSize(null);
         jLabel13.setOpaque(true);
         jLabel13.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLDietasExitosas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLDietasExitosas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLDietasExitosas.setText("**");
+        jLDietasExitosas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLDietasExitosas.setMaximumSize(null);
         jLDietasExitosas.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel14.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel14.setBackground(new java.awt.Color(251, 230, 152));
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Sin Exito");
+        jLabel14.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel14.setMaximumSize(null);
         jLabel14.setOpaque(true);
         jLabel14.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLDietasSExitosas.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLDietasSExitosas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLDietasSExitosas.setText("**");
+        jLDietasSExitosas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLDietasSExitosas.setMaximumSize(null);
         jLDietasSExitosas.setPreferredSize(new java.awt.Dimension(100, 50));
 
         javax.swing.GroupLayout jTContDatosDietaLayout = new javax.swing.GroupLayout(jTContDatosDieta);
@@ -482,17 +507,17 @@ static DietaInformacion dI = new DietaInformacion();
             jTContDatosDietaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLTituloDieta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jTContDatosDietaLayout.createSequentialGroup()
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jTContDatosDietaLayout.createSequentialGroup()
-                .addComponent(jLDietasExitosas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLDietasActivas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLDietasSExitosas, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jTContDatosDietaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLDietasExitosas, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jTContDatosDietaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLDietasActivas, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jTContDatosDietaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jTContDatosDietaLayout.createSequentialGroup()
+                        .addGap(0, 0, 0)
+                        .addComponent(jLDietasSExitosas, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
         );
         jTContDatosDietaLayout.setVerticalGroup(
             jTContDatosDietaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,141 +534,58 @@ static DietaInformacion dI = new DietaInformacion();
                 .addGap(21, 21, 21))
         );
 
-        jTContDatosAlgo.setBackground(new java.awt.Color(255, 255, 255));
-        jTContDatosAlgo.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
-        jTContDatosAlgo.setFocusable(false);
-        jTContDatosAlgo.setPreferredSize(new java.awt.Dimension(270, 170));
-
-        jLTituloAlgo.setBackground(new java.awt.Color(255, 153, 51));
-        jLTituloAlgo.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLTituloAlgo.setForeground(new java.awt.Color(255, 255, 255));
-        jLTituloAlgo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLTituloAlgo.setText("Algo");
-        jLTituloAlgo.setOpaque(true);
-        jLTituloAlgo.setPreferredSize(new java.awt.Dimension(235, 33));
-
-        jLAlgoA.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLAlgoA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlgoA.setText("**");
-        jLAlgoA.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jLAlgo.setBackground(new java.awt.Color(255, 204, 51));
-        jLAlgo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLAlgo.setForeground(new java.awt.Color(255, 255, 255));
-        jLAlgo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLAlgo.setText("Activos");
-        jLAlgo.setOpaque(true);
-        jLAlgo.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jLabel19.setBackground(new java.awt.Color(255, 204, 51));
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setText("Exitosos");
-        jLabel19.setOpaque(true);
-        jLabel19.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jLPacientesExitosos3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLPacientesExitosos3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLPacientesExitosos3.setText("**");
-        jLPacientesExitosos3.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jLabel20.setBackground(new java.awt.Color(255, 204, 51));
-        jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setText("Sin Exito");
-        jLabel20.setOpaque(true);
-        jLabel20.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        jLSinExito3.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLSinExito3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLSinExito3.setText("**");
-        jLSinExito3.setPreferredSize(new java.awt.Dimension(100, 50));
-
-        javax.swing.GroupLayout jTContDatosAlgoLayout = new javax.swing.GroupLayout(jTContDatosAlgo);
-        jTContDatosAlgo.setLayout(jTContDatosAlgoLayout);
-        jTContDatosAlgoLayout.setHorizontalGroup(
-            jTContDatosAlgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLTituloAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jTContDatosAlgoLayout.createSequentialGroup()
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLAlgo, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-            .addGroup(jTContDatosAlgoLayout.createSequentialGroup()
-                .addComponent(jLPacientesExitosos3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLAlgoA, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLSinExito3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-        );
-        jTContDatosAlgoLayout.setVerticalGroup(
-            jTContDatosAlgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTContDatosAlgoLayout.createSequentialGroup()
-                .addComponent(jLTituloAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 44, Short.MAX_VALUE)
-                .addGroup(jTContDatosAlgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-                    .addComponent(jLAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jTContDatosAlgoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLPacientesExitosos3, javax.swing.GroupLayout.DEFAULT_SIZE, 59, Short.MAX_VALUE)
-                    .addComponent(jLAlgoA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLSinExito3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(22, 22, 22))
-        );
-
         jTContDatosPaciente.setBackground(new java.awt.Color(255, 255, 255));
-        jTContDatosPaciente.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         jTContDatosPaciente.setFocusable(false);
         jTContDatosPaciente.setPreferredSize(new java.awt.Dimension(270, 170));
 
-        jLTituloPaciente.setBackground(new java.awt.Color(255, 153, 51));
+        jLTituloPaciente.setBackground(new java.awt.Color(65, 193, 186));
         jLTituloPaciente.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
-        jLTituloPaciente.setForeground(new java.awt.Color(255, 255, 255));
         jLTituloPaciente.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLTituloPaciente.setText("Pacientes");
+        jLTituloPaciente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLTituloPaciente.setOpaque(true);
         jLTituloPaciente.setPreferredSize(new java.awt.Dimension(235, 33));
 
         jTPacienteActivos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jTPacienteActivos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jTPacienteActivos.setText("**");
+        jTPacienteActivos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTPacienteActivos.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel5.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel5.setBackground(new java.awt.Color(251, 230, 152));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Activos");
+        jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel5.setOpaque(true);
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabelEP.setBackground(new java.awt.Color(255, 204, 51));
+        jLabelEP.setBackground(new java.awt.Color(251, 230, 152));
         jLabelEP.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabelEP.setForeground(new java.awt.Color(255, 255, 255));
         jLabelEP.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelEP.setText("Exitosos");
+        jLabelEP.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabelEP.setOpaque(true);
         jLabelEP.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLPacientesExitosos.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLPacientesExitosos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLPacientesExitosos.setText("**");
+        jLPacientesExitosos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLPacientesExitosos.setPreferredSize(new java.awt.Dimension(100, 50));
 
-        jLabel7.setBackground(new java.awt.Color(255, 204, 51));
+        jLabel7.setBackground(new java.awt.Color(251, 230, 152));
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Sin Exito");
+        jLabel7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLabel7.setOpaque(true);
         jLabel7.setPreferredSize(new java.awt.Dimension(100, 50));
 
         jLSinExito.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLSinExito.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLSinExito.setText("**");
+        jLSinExito.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jLSinExito.setPreferredSize(new java.awt.Dimension(100, 50));
 
         javax.swing.GroupLayout jTContDatosPacienteLayout = new javax.swing.GroupLayout(jTContDatosPaciente);
@@ -652,71 +594,71 @@ static DietaInformacion dI = new DietaInformacion();
             jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLTituloPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jTContDatosPacienteLayout.createSequentialGroup()
-                .addComponent(jLabelEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(0, 0, 0)
-                .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jTContDatosPacienteLayout.createSequentialGroup()
-                .addComponent(jLPacientesExitosos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTPacienteActivos, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(77, 77, 77)
-                .addComponent(jLSinExito, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGroup(jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelEP, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jLPacientesExitosos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTPacienteActivos, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLSinExito, javax.swing.GroupLayout.DEFAULT_SIZE, 113, Short.MAX_VALUE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         jTContDatosPacienteLayout.setVerticalGroup(
             jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jTContDatosPacienteLayout.createSequentialGroup()
-                .addComponent(jLTituloPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jTContDatosPacienteLayout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addComponent(jLTituloPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addGroup(jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelEP, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(jLabelEP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jTContDatosPacienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLPacientesExitosos, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
+                    .addComponent(jLPacientesExitosos, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                     .addComponent(jTPacienteActivos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLSinExito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(21, 21, 21))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout ContenedorLayout = new javax.swing.GroupLayout(Contenedor);
         Contenedor.setLayout(ContenedorLayout);
         ContenedorLayout.setHorizontalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPToggleMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
             .addGroup(ContenedorLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(34, 34, 34)
+                .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addGap(34, 34, 34)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
-                .addGap(31, 31, 31))
-            .addComponent(jPToggleMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE))
+                .addGap(34, 34, 34))
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ContenedorLayout.createSequentialGroup()
                 .addComponent(jPToggleMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                    .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTContDatosAlgo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
-                .addGap(18, 18, 18))
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTContDatosDieta, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTContDatosComida, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addGap(83, 83, 83)
+                        .addComponent(jTContDatosPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         jPMenu.setBackground(new java.awt.Color(65, 193, 186));
         jPMenu.setOpaque(false);
         jPMenu.setPreferredSize(new java.awt.Dimension(100, 520));
 
-        jBInicio.setBackground(new java.awt.Color(96, 235, 227));
+        jBInicio.setBackground(new java.awt.Color(65, 193, 186));
         jBInicio.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jBInicio.setText("Inicio");
+        jBInicio.setForeground(new java.awt.Color(65, 193, 186));
+        jBInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/logo44.png"))); // NOI18N
         jBInicio.setBorder(null);
         jBInicio.setBorderPainted(false);
         jBInicio.setContentAreaFilled(false);
@@ -738,7 +680,7 @@ static DietaInformacion dI = new DietaInformacion();
         });
 
         jBPacientes.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jBPacientes.setText("Paciente");
+        jBPacientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/icn persona (1).png"))); // NOI18N
         jBPacientes.setBorder(null);
         jBPacientes.setBorderPainted(false);
         jBPacientes.setContentAreaFilled(false);
@@ -759,7 +701,7 @@ static DietaInformacion dI = new DietaInformacion();
         });
 
         jBComidas.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jBComidas.setText("Comida");
+        jBComidas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/icn comida (1).png"))); // NOI18N
         jBComidas.setToolTipText("");
         jBComidas.setBorder(null);
         jBComidas.setBorderPainted(false);
@@ -781,7 +723,7 @@ static DietaInformacion dI = new DietaInformacion();
         });
 
         jBDietas.setFont(new java.awt.Font("Agency FB", 1, 24)); // NOI18N
-        jBDietas.setText("Dieta");
+        jBDietas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/icn dieta.png"))); // NOI18N
         jBDietas.setBorder(null);
         jBDietas.setBorderPainted(false);
         jBDietas.setContentAreaFilled(false);
@@ -801,108 +743,70 @@ static DietaInformacion dI = new DietaInformacion();
             }
         });
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistas/imagenes/icono nutricion 1.png"))); // NOI18N
-
         javax.swing.GroupLayout jPMenuLayout = new javax.swing.GroupLayout(jPMenu);
         jPMenu.setLayout(jPMenuLayout);
         jPMenuLayout.setHorizontalGroup(
             jPMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jBDietas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jBPacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jBInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPMenuLayout.createSequentialGroup()
-                .addGroup(jPMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBDietas, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jBComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPMenuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
         );
         jPMenuLayout.setVerticalGroup(
             jPMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPMenuLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jBInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(87, 87, 87)
-                .addComponent(jBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jBComidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jBDietas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(21, 21, 21))
+                .addComponent(jBInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(jBPacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBComidas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jBDietas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout EscritorioLayout = new javax.swing.GroupLayout(Escritorio);
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
-            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(EscritorioLayout.createSequentialGroup()
-                .addComponent(jPMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(127, 127, 127)
-                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EscritorioLayout.createSequentialGroup()
-                .addGap(122, 122, 122)
-                .addComponent(jPPresentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE))
+                .addComponent(jPMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EscritorioLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jPPresentacion, javax.swing.GroupLayout.DEFAULT_SIZE, 741, Short.MAX_VALUE))
+                    .addComponent(Contenedor, javax.swing.GroupLayout.PREFERRED_SIZE, 762, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EscritorioLayout.createSequentialGroup()
                 .addComponent(jPPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(465, Short.MAX_VALUE))
-            .addGroup(EscritorioLayout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 461, Short.MAX_VALUE))
+            .addComponent(jPMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 872, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPacientesActionPerformed
-        if (jPToggleMenu.isVisible() ) {            
-//            if(jBFPacientes.isVisible()){
-//                jPToggleMenu.setVisible(false);     
-//            } else {
-                jBFPacientes.setVisible(true);
-                jBIPacientes.setVisible(true);
-                jBFComida.setVisible(false);
-                jBLComida.setVisible(false);
-                jBLDieta.setVisible(false);
-                jBRDieta.setVisible(false);
-            //}
-            
-        } else{
-            jPToggleMenu.setVisible(true);
-            jBFPacientes.setVisible(true);
-            jBIPacientes.setVisible(true);
-            jBFComida.setVisible(false);
-            jBLComida.setVisible(false);
-            jBLDieta.setVisible(false);
-            jBRDieta.setVisible(false);
-        }
-        jLIndicadorMenu.setText("Registro y Consultas de Paciente");
-//        superponerPanel(pF);
-//        pF.cargarCombo();
-    }//GEN-LAST:event_jBPacientesActionPerformed
-
     private void jBComidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBComidasActionPerformed
-         if (jPToggleMenu.isVisible() ) {            
+        jLIndicadorNombre.setVisible(false);
+        jLIndicadorMenu.setVisible(true);
+        if (jPToggleMenu.isVisible() ) {            
 //            if(jBFComida.isVisible()){
 //                jPToggleMenu.setVisible(false);
 //            } else {
@@ -928,6 +832,8 @@ static DietaInformacion dI = new DietaInformacion();
     }//GEN-LAST:event_jBComidasActionPerformed
 
     private void jBDietasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBDietasActionPerformed
+        jLIndicadorNombre.setVisible(false);
+        jLIndicadorMenu.setVisible(true);
         if (jPToggleMenu.isVisible() ) {            
 //            if(jBRDieta.isVisible()){
 //                jPToggleMenu.setVisible(false);
@@ -962,13 +868,15 @@ static DietaInformacion dI = new DietaInformacion();
         cR.dispose();
         dI.dispose();
         dR.dispose();
-        jLIndicadorMenu.setText("");
+       // jLIndicadorMenu.setText("");
         jTContDatosPaciente.setVisible(true);
         jTContDatosComida.setVisible(true);
         jTContDatosDieta.setVisible(true);
-        jTContDatosAlgo.setVisible(true);
         generarResumen();
-        jPToggleMenu.setVisible(false); 
+        jPToggleMenu.setVisible(true); 
+        // aca
+        limpiarMenu();
+        
     }//GEN-LAST:event_jBInicioActionPerformed
 
     private void jBLDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLDietaActionPerformed
@@ -978,7 +886,6 @@ static DietaInformacion dI = new DietaInformacion();
     private void jBRDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBRDietaActionPerformed
         superponerPanel(dR);
         dR.cargarCombo();
-
     }//GEN-LAST:event_jBRDietaActionPerformed
 
     private void jBLComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLComidaActionPerformed
@@ -1003,11 +910,6 @@ static DietaInformacion dI = new DietaInformacion();
         jBInicio.setBackground(new java.awt.Color(96,235,227));
     }//GEN-LAST:event_jBInicioMouseEntered
 
-    private void jBPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPacientesMouseEntered
-        jBPacientes.setBackground(new java.awt.Color(96,235,227));
-        jBPacientes.setContentAreaFilled(true);
-    }//GEN-LAST:event_jBPacientesMouseEntered
-
     private void jBComidasMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBComidasMouseEntered
         jBComidas.setBackground(new java.awt.Color(96,235,227));
         jBComidas.setContentAreaFilled(true);
@@ -1022,11 +924,6 @@ static DietaInformacion dI = new DietaInformacion();
         jBInicio.setContentAreaFilled(false);
         jBInicio.setBackground(new java.awt.Color(65,193,186));
     }//GEN-LAST:event_jBInicioMouseExited
-
-    private void jBPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPacientesMouseExited
-        jBPacientes.setBackground(new java.awt.Color(65,193,186));
-        jBPacientes.setContentAreaFilled(false);
-    }//GEN-LAST:event_jBPacientesMouseExited
 
     private void jBComidasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBComidasMouseExited
         jBComidas.setBackground(new java.awt.Color(65,193,186));
@@ -1097,6 +994,45 @@ static DietaInformacion dI = new DietaInformacion();
         jBLDieta.setContentAreaFilled(false);
         jBLDieta.setBackground(new java.awt.Color(96,235,227));
     }//GEN-LAST:event_jBLDietaMouseExited
+
+    private void jBPacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPacientesActionPerformed
+        jLIndicadorNombre.setVisible(false);
+        jLIndicadorMenu.setVisible(true);
+        if (jPToggleMenu.isVisible() ) {
+            //            if(jBFPacientes.isVisible()){
+                //                jPToggleMenu.setVisible(false);
+                //            } else {
+                jBFPacientes.setVisible(true);
+                jBIPacientes.setVisible(true);
+                jBFComida.setVisible(false);
+                jBLComida.setVisible(false);
+                jBLDieta.setVisible(false);
+                jBRDieta.setVisible(false);
+                //}
+
+        } else{
+            jPToggleMenu.setVisible(true);
+            jBFPacientes.setVisible(true);
+            jBIPacientes.setVisible(true);
+            jBFComida.setVisible(false);
+            jBLComida.setVisible(false);
+            jBLDieta.setVisible(false);
+            jBRDieta.setVisible(false);
+        }
+        jLIndicadorMenu.setText("Registro y Consultas de Paciente");
+        //        superponerPanel(pF);
+        //        pF.cargarCombo();
+    }//GEN-LAST:event_jBPacientesActionPerformed
+
+    private void jBPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPacientesMouseExited
+        jBPacientes.setBackground(new java.awt.Color(65,193,186));
+        jBPacientes.setContentAreaFilled(false);
+    }//GEN-LAST:event_jBPacientesMouseExited
+
+    private void jBPacientesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPacientesMouseEntered
+        jBPacientes.setBackground(new java.awt.Color(96,235,227));
+        jBPacientes.setContentAreaFilled(true);
+    }//GEN-LAST:event_jBPacientesMouseEntered
     private void fechaHoy(){
         LocalDate hoy = LocalDate.now();
         int anio = hoy.getYear();
@@ -1163,8 +1099,6 @@ static DietaInformacion dI = new DietaInformacion();
     private javax.swing.JButton jBLDieta;
     private javax.swing.JButton jBPacientes;
     private javax.swing.JButton jBRDieta;
-    private javax.swing.JLabel jLAlgo;
-    private javax.swing.JLabel jLAlgoA;
     private javax.swing.JLabel jLComidaActivas;
     private javax.swing.JLabel jLComidaExitosa;
     private javax.swing.JLabel jLComidaSExito;
@@ -1173,30 +1107,24 @@ static DietaInformacion dI = new DietaInformacion();
     private javax.swing.JLabel jLDietasSExitosas;
     private javax.swing.JLabel jLFecha1;
     private javax.swing.JLabel jLIndicadorMenu;
+    private javax.swing.JLabel jLIndicadorNombre;
     private javax.swing.JLabel jLPacientesExitosos;
-    private javax.swing.JLabel jLPacientesExitosos3;
     private javax.swing.JLabel jLSinExito;
-    private javax.swing.JLabel jLSinExito3;
-    private javax.swing.JLabel jLTituloAlgo;
     private javax.swing.JLabel jLTituloComida;
     private javax.swing.JLabel jLTituloDieta;
     private javax.swing.JLabel jLTituloPaciente;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelEP;
     private javax.swing.JPanel jPMenu;
     private javax.swing.JPanel jPPresentacion;
     private javax.swing.JPanel jPToggleMenu;
-    private javax.swing.JPanel jTContDatosAlgo;
     private javax.swing.JPanel jTContDatosComida;
     private javax.swing.JPanel jTContDatosDieta;
     private javax.swing.JPanel jTContDatosPaciente;
@@ -1207,7 +1135,6 @@ static DietaInformacion dI = new DietaInformacion();
         jTContDatosPaciente.setVisible(false);
         jTContDatosComida.setVisible(false);
         jTContDatosDieta.setVisible(false);
-        jTContDatosAlgo.setVisible(false);
         if (panelInterno.equals(pF)) {
             pI.dispose();
             cI.dispose();
@@ -1262,6 +1189,18 @@ static DietaInformacion dI = new DietaInformacion();
         Contenedor.add(cI);
         Contenedor.add(dI);
         Contenedor.add(dR);
+    }
+    
+    private void limpiarMenu () {
+        jBRDieta.setVisible(false);
+        jBFPacientes.setVisible(false);
+        jBFComida.setVisible(false);
+        jBLDieta.setVisible(false);
+        jBLComida.setVisible(false);
+        jBIPacientes.setVisible(false);
+        jLIndicadorMenu.setVisible(false);
+        jLIndicadorNombre.setVisible(true);
+        jLIndicadorNombre.setText("NutriSalud");
     }
     
 }
