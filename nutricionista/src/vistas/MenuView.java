@@ -5,17 +5,11 @@ import accesoADatos.DietaComidaData;
 import accesoADatos.DietaData;
 import accesoADatos.PacienteData;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.TimerTask;
-import javafx.scene.paint.Color;
+
 import javax.swing.JInternalFrame;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.Timer;
-import javax.swing.border.EmptyBorder;
 
 public class MenuView extends javax.swing.JFrame {
 static PacienteData pData = new PacienteData();

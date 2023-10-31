@@ -49,7 +49,6 @@ public class PacienteData {
                     ps.executeUpdate();
                     ResultSet rs = ps.getGeneratedKeys();
                     if (rs.next()) {
-                        paciente.setIdPaciente(rs.getInt("idpaciente"));
                         //Parte Grafica del mensaje
                         JOptionPane.showMessageDialog(null,"Paciente añadido con exito");
                         paciente.setIdPaciente(buscarPacienteXDNI(paciente.getDni()).getIdPaciente());

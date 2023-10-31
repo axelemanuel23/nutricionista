@@ -290,7 +290,7 @@ public class PacienteInforme extends javax.swing.JInternalFrame {
                 if (itemIndex != -1) {
                     pD.reactivarPaciente(pD.buscarPacienteXDNI(dniPaciente).getIdPaciente());
                     modelo.removeRow(itemIndex);
-                    JOptionPane.showMessageDialog(null, "Se reactivo al paciente");
+//                    JOptionPane.showMessageDialog(null, "Se reactivo al paciente");
                 }  
             }
         } catch (ArrayIndexOutOfBoundsException e) {
