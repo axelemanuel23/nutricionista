@@ -824,7 +824,7 @@ static DietaInformacion dI = new DietaInformacion();
             jBLComida.setVisible(true);
         }
         jLIndicadorMenu.setText("Registro y Consultas de Comida");
-//         superponerPanel(cR);
+         superponerPanel(cR);
 
     }//GEN-LAST:event_jBComidasActionPerformed
 
@@ -853,8 +853,8 @@ static DietaInformacion dI = new DietaInformacion();
             jBLComida.setVisible(false);
         }
         jLIndicadorMenu.setText("Registro y Consultas de Dieta");
-//        superponerPanel(dR);
-//        dR.cargarCombo();
+        superponerPanel(dR);
+        dR.cargarCombo();
     }//GEN-LAST:event_jBDietasActionPerformed
 
     private void jBInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBInicioActionPerformed
@@ -1017,8 +1017,8 @@ static DietaInformacion dI = new DietaInformacion();
             jBRDieta.setVisible(false);
         }
         jLIndicadorMenu.setText("Registro y Consultas de Paciente");
-        //        superponerPanel(pF);
-        //        pF.cargarCombo();
+              superponerPanel(pF);
+                pF.cargarCombo();
     }//GEN-LAST:event_jBPacientesActionPerformed
 
     private void jBPacientesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBPacientesMouseExited

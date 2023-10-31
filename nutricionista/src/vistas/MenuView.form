@@ -97,7 +97,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jLFecha1" pref="29" max="32767" attributes="0"/>
+                      <Component id="jLFecha1" pref="34" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -150,9 +150,9 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Component id="jTContDatosDieta" pref="191" max="32767" attributes="0"/>
+                              <Component id="jTContDatosDieta" pref="193" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="jTContDatosComida" pref="186" max="32767" attributes="0"/>
+                              <Component id="jTContDatosComida" pref="189" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -847,14 +847,14 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-                          <Component id="jLTituloPaciente" pref="55" max="32767" attributes="0"/>
+                          <Component id="jLTituloPaciente" pref="56" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelEP" pref="53" max="32767" attributes="0"/>
+                              <Component id="jLabelEP" pref="54" max="32767" attributes="0"/>
                               <Component id="jLabel5" max="32767" attributes="0"/>
                               <Component id="jLabel7" max="32767" attributes="0"/>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLPacientesExitosos" pref="53" max="32767" attributes="0"/>
+                              <Component id="jLPacientesExitosos" pref="56" max="32767" attributes="0"/>
                               <Component id="jTPacienteActivos" max="32767" attributes="0"/>
                               <Component id="jLSinExito" max="32767" attributes="0"/>
                           </Group>
